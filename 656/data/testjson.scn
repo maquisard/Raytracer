@@ -1,0 +1,29 @@
+﻿{
+	"shapes" : 
+	[
+		{ "Type" : "Sphere", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } },
+		{ "Type" : "Plane", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } }
+	],
+	
+	"camera" : 
+	{
+		"Pe" : { "Type" : "Vector3", "X" : -4.0, "Y" : -6.0, "Z" : -12.0 },
+		"View" : { "Type" : "Vector3", "X" : 4.0, "Y" : 6.0, "Z" : 12.0 },
+		"Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 },
+		"D" : 14.0,
+		"Xmax" : 800.0,
+		"Ymax" : 1000.0,
+		"Sx" : 8.0
+	},
+	"sampleperpixel" : { "m" : 5, "n" : 5 },
+	"alpha" : 1.0,
+	"lights" :
+	[
+		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 }, "Color" : { "Color" : "Vector3", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 } }
+	],
+	"shaders" :
+	[
+		{ "Name" : "shader1",  "Type" : "SimpleShader", "Color0" : [1.0, 1.0, 1.0], "Color1" : [0.0, 0.0, 0.0] },
+		{ "Name" : "shader2",  "Type" : "SimpleShader1", "Color0" : [1.0, 1.0, 1.0], "Color1" : [0.5, 0.5, 0.5] }
+	]
+}

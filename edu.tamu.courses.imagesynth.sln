@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edu.tamu.courses.imagesynth", "656\edu.tamu.courses.imagesynth.csproj", "{9EAD2CBA-08C6-4CFC-9BB2-8E8E3BC13E09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edu.tamu.courses.imagesynth.shaders", "Shaders\edu.tamu.courses.imagesynth.shaders.csproj", "{72C6834C-00B3-460B-B153-EB2B108D79C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EAD2CBA-08C6-4CFC-9BB2-8E8E3BC13E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EAD2CBA-08C6-4CFC-9BB2-8E8E3BC13E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EAD2CBA-08C6-4CFC-9BB2-8E8E3BC13E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EAD2CBA-08C6-4CFC-9BB2-8E8E3BC13E09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C6834C-00B3-460B-B153-EB2B108D79C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C6834C-00B3-460B-B153-EB2B108D79C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C6834C-00B3-460B-B153-EB2B108D79C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C6834C-00B3-460B-B153-EB2B108D79C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
