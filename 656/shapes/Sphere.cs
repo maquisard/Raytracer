@@ -26,5 +26,10 @@ namespace edu.tamu.courses.imagesynth.shapes
             this.Center = Vector3.Zero;
         }
 
+
+        public override float Intersect(Vector3 pe, Vector3 npe)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

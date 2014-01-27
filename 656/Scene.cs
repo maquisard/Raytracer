@@ -19,7 +19,20 @@ namespace edu.tamu.courses.imagesynth
         public int MSamplePerPixels { get; private set; }
         public int NSamplePerPixels { get; private set; }
 
-        public Scene() { this.Shapes = new List<Shape>(); }
+        public Scene() 
+        { 
+            this.Shapes = new List<Shape>();
+            this.Lights = new List<Light>();
+        }
+
+        public void Clear()
+        {
+            this.Shapes.Clear();
+            this.Lights.Clear();
+            this.Camera = null;
+            this.MSamplePerPixels = -1;
+            this.NSamplePerPixels = -1;
+        }
 
         public static Scene LoadFromFile(String filename)
         {
@@ -41,7 +54,7 @@ namespace edu.tamu.courses.imagesynth
                 for (int i = 0; i < jsonScene["shapes"].Count; i++)
                 {
                     JsonData jsonShape = jsonScene["shapes"][i];
-                    scene.Shapes.Add(Shape.createFromJson(jsonShape));
+                    scene.Shapes.Add(Shape.CreateFromJson(jsonShape));
                 }
 
                 //loading the lights

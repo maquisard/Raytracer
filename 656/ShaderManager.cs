@@ -12,14 +12,13 @@ namespace edu.tamu.courses.imagesynth
     public class ShaderManager
     {
         public static Shader DEFAULTSHADER = new DefaultShader();
-        private static Dictionary<String, Shader> shaders = new Dictionary<string, Shader>();
+        private static Dictionary<String, Shader> shaders = new Dictionary<string,Shader>();
         public static Shader CreateShaderFromJson(JsonData jsonShader)
         {
-            shaders.Clear();
-
             //get the freshest of the binaries from the dll
-            Assembly shaderAssembly = Assembly.LoadFile("edu.tamu.courses.imagesynth.shaders.dll");
-            Type shaderType = Type.GetType("edu.tamu.courses.imagesynth.shaders." + (String)jsonShader["Type"]);
+            String currentPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            Assembly shaderAssembly = Assembly.LoadFile(currentPath + "\\edu.tamu.courses.imagesynth.shaders.dll");
+            Type shaderType = shaderAssembly.GetType("edu.tamu.courses.imagesynth.shaders." + (String)jsonShader["Type"]);
             Shader shader = (Shader)Activator.CreateInstance(shaderType);
             foreach (PropertyInfo property in shaderType.GetProperties())
             {
@@ -48,6 +47,11 @@ namespace edu.tamu.courses.imagesynth
             String name = (String)jsonShader["Name"];
             shaders[name] = shader;
             return shader;
+        }
+
+        public static void clearShaders()
+        {
+            if (shaders != null) shaders.Clear();
         }
 
         public static Shader GetShader(String name)

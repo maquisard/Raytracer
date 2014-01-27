@@ -1,8 +1,8 @@
 ﻿{
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } },
-		{ "Type" : "Plane", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } }
+		{ "Type" : "Sphere", "Shader" : "shader1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } },
+		{ "Type" : "Plane", "Shader" : "shader2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } }
 	],
 	
 	"camera" : 
@@ -19,7 +19,7 @@
 	"alpha" : 1.0,
 	"lights" :
 	[
-		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 }, "Color" : { "Color" : "Vector3", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 } }
+		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 }, "Color" : { "Type" : "Color", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 } }
 	],
 	"shaders" :
 	[

@@ -60,7 +60,7 @@ namespace edu.tamu.courses.imagesynth
                     }
                     else if(jsonValue.IsObject)
                     {
-                        String otypeName = (String)jsonValue["Key"];
+                        String otypeName = (String)jsonValue["Type"];
                         if (otypeName.ToLower() == "vector3" || otypeName.ToLower() == "vector4")
                         {
                             Vector vector = Vector.CreateFromJson(otypeName, jsonValue);

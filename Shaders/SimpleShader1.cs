@@ -9,7 +9,7 @@ namespace edu.tamu.courses.imagesynth.shaders
     public class SimpleShader1 : SimpleShader
     {
         public SimpleShader1() { }
-        protected override float ComputeC()
+        protected override float ComputeC(float[] Nlh, float[] Nh)
         {
             return (1f + Math.Dot(Nlh, Nh)) / 2f;        
         }

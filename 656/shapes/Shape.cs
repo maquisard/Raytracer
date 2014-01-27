@@ -1,4 +1,5 @@
-﻿using edu.tamu.courses.imagesynth.shaders;
+﻿using edu.tamu.courses.imagesynth.core;
+using edu.tamu.courses.imagesynth.shaders;
 using LitJson;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,9 @@ namespace edu.tamu.courses.imagesynth.shapes
         public Shader Shader { get; private set; }
         public Shape() { }
 
-        public static Shape createFromJson(JsonData jsonShape)
+        public abstract float Intersect(Vector3 pe, Vector3 npe);
+
+        public static Shape CreateFromJson(JsonData jsonShape)
         {
             Type shapeType = Type.GetType("edu.tamu.courses.imagesynth.shapes." + (String)jsonShape["Type"]);
             ConstructorInfo constructer = shapeType.GetConstructor(new Type[] { });

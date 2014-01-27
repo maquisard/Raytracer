@@ -12,10 +12,10 @@ namespace edu.tamu.courses.imagesynth.shaders
         public float[] Color1 { get; set; }
 
         public SimpleShader() { }
-        public override float[] ComputeColor()
+        public override float[] ComputeColor(float[] Nlh, float[] Nh)
         {
             float[] color = Math.Zero3;
-            float c = this.ComputeC();
+            float c = this.ComputeC(Nlh, Nh);
             c = (float)System.Math.Pow(c, Alpha);
             c = c < 0 ? c = 0 : c;
             color = Math.Add(
@@ -26,7 +26,7 @@ namespace edu.tamu.courses.imagesynth.shaders
             return color;
         }
 
-        protected virtual float ComputeC()
+        protected virtual float ComputeC(float[] Nlh, float[] Nh)
         {
             return Math.Dot(Nlh, Nh);
         }
