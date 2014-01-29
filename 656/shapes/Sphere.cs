@@ -29,7 +29,20 @@ namespace edu.tamu.courses.imagesynth.shapes
 
         public override float Intersect(Vector3 pe, Vector3 npe)
         {
-            throw new NotImplementedException();
+            if (npe.Norm != 1) throw new ArgumentException("The ray vector must be a unit vector.");
+            Vector3 pc = this.Center;
+            float r = Radius;
+            float b = npe % (pc - pe);
+            float c = (pc - pe) % (pc - pe) - r * r;
+            if (c < 0) throw new Exception("You are inside the sphere, readjust your camera.");
+
+            float t = -1f; //No Intersection
+            float delta = b * b - c;
+            if (delta >= 0 && b >= 0)
+            {
+                t = b - (float)Math.Sqrt(delta);
+            }
+            return t;
         }
     }
 }

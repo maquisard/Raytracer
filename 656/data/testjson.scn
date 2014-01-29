@@ -19,7 +19,7 @@
 	"alpha" : 1.0,
 	"lights" :
 	[
-		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 }, "Color" : { "Type" : "Color", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 } }
+		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 }, "Color" : { "Type" : "Color", "X" : 1.0, "Y" : 2.0, "Z" : 1.0 }, "r0" : 0.05, "alpha" : 0.5 }
 	],
 	"shaders" :
 	[

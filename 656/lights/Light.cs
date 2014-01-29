@@ -11,6 +11,9 @@ namespace edu.tamu.courses.imagesynth.lights
 {
     public abstract class Light
     {
+        public Vector3 Position { get; set; }
+        public Color Color { get; set; }
+
         public static Light CreateFromJson(JsonData jsonLight)
         {
             Type lightType = Type.GetType("edu.tamu.courses.imagesynth.lights." + (string)jsonLight["Type"]);

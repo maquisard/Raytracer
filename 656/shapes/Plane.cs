@@ -28,7 +28,15 @@ namespace edu.tamu.courses.imagesynth.shapes
 
         public override float Intersect(Vector3 pe, Vector3 npe)
         {
-            throw new NotImplementedException();
+            Vector3 p0 = Point;
+            Vector3 n0 = Normal;
+            float t = -1f;
+            float denom = npe % n0;
+            if (denom != 0) //Ray and plane are parallel
+            {
+                t = ((p0 - pe) % n0) / (npe % n0);
+            }
+            return t;
         }
     }
 }
