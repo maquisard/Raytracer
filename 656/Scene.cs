@@ -70,7 +70,7 @@ namespace edu.tamu.courses.imagesynth
                 scene.NSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["n"].ToString());
 
                 Shader.Alpha = float.Parse(jsonScene["alpha"].ToString());
-                Shader.LightColor = (scene.Lights[0] as PointLight).Color.ToArray(); //for now
+                Shader.LightColor = (scene.Lights[0] as PointLight).Color; //for now
             }
             return scene;
         }

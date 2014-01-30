@@ -1,4 +1,5 @@
-﻿using System;
+﻿using edu.tamu.courses.imagesynth.core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,9 @@ namespace edu.tamu.courses.imagesynth.shaders
     {
         public DefaultShader()
         {
-            this.Color0 = new float[3] { 1f, 1f, 1f };
-            this.Color1 = new float[3] { 0f, 0f, 0f };
+            this.Color0 = Color.WHITE;
+            this.Color1 = Color.BLACK;
+            this.Color2 = (Color.WHITE) / 2f as Color;
         }
     }
 }

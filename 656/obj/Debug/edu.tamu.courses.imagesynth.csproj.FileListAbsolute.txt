@@ -8,3 +8,5 @@ C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\Raytracer.pdb
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\obj\Debug\Raytracer.exe
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\obj\Debug\Raytracer.pdb
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.core.dll
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.core.pdb

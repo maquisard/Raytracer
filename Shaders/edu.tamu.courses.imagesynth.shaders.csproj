@@ -40,11 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultShader.cs" />
-    <Compile Include="Math.cs" />
     <Compile Include="Shader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleShader.cs" />
     <Compile Include="SimpleShader1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\core\edu.tamu.courses.imagesynth.core.csproj">
+      <Project>{fa47f3bc-4733-4dc0-ba47-4e1d9fdcba37}</Project>
+      <Name>edu.tamu.courses.imagesynth.core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9EAD2CBA-08C6-4CFC-9BB2-8E8E3BC13E09}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{FA47F3BC-4733-4DC0-BA47-4E1D9FDCBA37}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>edu.tamu.courses.imagesynth</RootNamespace>
-    <AssemblyName>Raytracer</AssemblyName>
+    <RootNamespace>edu.tamu.courses.imagesynth.core</RootNamespace>
+    <AssemblyName>edu.tamu.courses.imagesynth.core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -51,38 +49,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Camera.cs" />
-    <Compile Include="lights\Light.cs" />
-    <Compile Include="lights\PointLight.cs" />
-    <Compile Include="lights\SpotLight.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="core\Color.cs" />
+    <Compile Include="core\imaging\ColorConverter.cs" />
+    <Compile Include="core\imaging\Exceptions.cs" />
+    <Compile Include="core\imaging\Image.cs" />
+    <Compile Include="core\imaging\UnmanagedImage.cs" />
+    <Compile Include="core\Matrix3x3.cs" />
+    <Compile Include="core\Matrix4x4.cs" />
+    <Compile Include="core\PerlinNoise.cs" />
+    <Compile Include="core\Polynomial2.cs" />
+    <Compile Include="core\random\ExponentialGenerator.cs" />
+    <Compile Include="core\random\GaussianGenerator.cs" />
+    <Compile Include="core\random\IRandomNumberGenerator.cs" />
+    <Compile Include="core\random\StandardGenerator.cs" />
+    <Compile Include="core\random\UniformGenerator.cs" />
+    <Compile Include="core\random\UniformOneGenerator.cs" />
+    <Compile Include="core\Statistics.cs" />
+    <Compile Include="core\SVD.cs" />
+    <Compile Include="core\system\DoublePoint.cs" />
+    <Compile Include="core\system\DoubleRange.cs" />
+    <Compile Include="core\system\IntPoint.cs" />
+    <Compile Include="core\system\IntRange.cs" />
+    <Compile Include="core\system\Point.cs" />
+    <Compile Include="core\system\Range.cs" />
+    <Compile Include="core\system\SystemTools.cs" />
+    <Compile Include="core\system\ThreadSafeRandom.cs" />
+    <Compile Include="core\Vector.cs" />
+    <Compile Include="core\Vector3.cs" />
+    <Compile Include="core\Vector4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Raytracer.cs" />
-    <Compile Include="Scene.cs" />
-    <Compile Include="ShaderManager.cs" />
-    <Compile Include="shapes\Plane.cs" />
-    <Compile Include="shapes\Shape.cs" />
-    <Compile Include="shapes\Sphere.cs" />
-    <Compile Include="tests\IntersectionTest.cs" />
-    <Compile Include="tests\VectorTest.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="data\testjson.scn" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libraries\LitJson.dll" />
     <Content Include="libraries\Newtonsoft.Json.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\core\edu.tamu.courses.imagesynth.core.csproj">
-      <Project>{fa47f3bc-4733-4dc0-ba47-4e1d9fdcba37}</Project>
-      <Name>edu.tamu.courses.imagesynth.core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shaders\edu.tamu.courses.imagesynth.shaders.csproj">
-      <Project>{72c6834c-00b3-460b-b153-eb2b108d79c0}</Project>
-      <Name>edu.tamu.courses.imagesynth.shaders</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
