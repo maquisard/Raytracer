@@ -42,6 +42,7 @@ namespace edu.tamu.courses.imagesynth
                 String rawScene = filereader.ReadToEnd();
                 JsonData jsonScene = JsonMapper.ToObject(rawScene);
                 scene = new Scene();
+                scene.Camera = Camera.CreateFromJson(jsonScene["camera"]);
 
                 //loading all the referenced shaders
                 for (int i = 0; i < jsonScene["shaders"].Count; i++)
@@ -54,7 +55,16 @@ namespace edu.tamu.courses.imagesynth
                 for (int i = 0; i < jsonScene["shapes"].Count; i++)
                 {
                     JsonData jsonShape = jsonScene["shapes"][i];
-                    scene.Shapes.Add(Shape.CreateFromJson(jsonShape));
+                    Shape shape = Shape.CreateFromJson(jsonShape);
+                    if (shape is SkySphere)
+                    {
+                        SkySphere skySphere = shape as SkySphere;
+                        if (!skySphere.Contains(scene.Camera.Pe))
+                        {
+                            throw new Exception("Blasphemy!!!! - You are out of the world. Please readjust you camera.");
+                        }
+                    }
+                    scene.Shapes.Add(shape);
                 }
 
                 //loading the lights
@@ -64,13 +74,13 @@ namespace edu.tamu.courses.imagesynth
                     scene.Lights.Add(Light.CreateFromJson(jsonLight));
                 }
 
-                scene.Camera = Camera.CreateFromJson(jsonScene["camera"]);
                 Console.WriteLine(scene.Camera.ToString());
                 scene.MSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["m"].ToString());
                 scene.NSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["n"].ToString());
 
                 Shader.Alpha = float.Parse(jsonScene["alpha"].ToString());
-                Shader.LightColor = (scene.Lights[0] as PointLight).Color; //for now
+
+                //handling the sky
             }
             return scene;
         }

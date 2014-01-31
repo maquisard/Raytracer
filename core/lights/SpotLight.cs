@@ -14,7 +14,7 @@ namespace edu.tamu.courses.imagesynth.lights
 
         public Vector3 Nl { get; set; }
         public SpotLight() { }
-        public float alpha { get; set; } //0 <= alpha <= 2
+        public float Alpha { get; set; } //0 <= alpha <= 2
         public int ShadingMethod { get; set; }
         public Color Color0 { get; set; }
         public Color Color1 { get; set; }
@@ -26,8 +26,9 @@ namespace edu.tamu.courses.imagesynth.lights
             v.Normalize();
             float s = this.Nl % v; //try truncation also later and see what you get
             s = ShadingMethod == TRUNCATE ? (s < 0 ? 0 : s) : (s + 1f) / 2f;
-            s = (float)Math.Pow(s, alpha);
-            return (Color0 * (1f - s) + Color1 * s) as Color;
+            s = (float)Math.Pow(s, Alpha);
+            Color = (Color0 * (1f - s) + Color1 * s) as Color;;
+            return Color;
         }
     }
 }

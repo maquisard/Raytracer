@@ -13,7 +13,13 @@ namespace edu.tamu.courses.imagesynth.shapes
     public abstract class Shape
     {
         public Shader Shader { get; private set; }
+
+        public virtual void PreLoad() { }
+        public virtual void PostLoad() { }
+
         public Shape() { }
+
+        public abstract Vector3 NormalAt(Vector3 p);
 
         public abstract float Intersect(Vector3 pe, Vector3 npe);
 
@@ -22,6 +28,7 @@ namespace edu.tamu.courses.imagesynth.shapes
             Type shapeType = Type.GetType("edu.tamu.courses.imagesynth.shapes." + (String)jsonShape["Type"]);
             ConstructorInfo constructer = shapeType.GetConstructor(new Type[] { });
             Shape shape = (Shape)constructer.Invoke(null);
+            shape.PreLoad();
             String shaderName = (String)jsonShape["Shader"];
             Shader shader = ShaderManager.GetShader(shaderName);
             shape.Shader = shader == null ? ShaderManager.DEFAULTSHADER : shader;
@@ -64,6 +71,7 @@ namespace edu.tamu.courses.imagesynth.shapes
                     }
                 }
             }
+            shape.PostLoad();
             return shape;
         }
     }

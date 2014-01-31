@@ -26,6 +26,11 @@ namespace edu.tamu.courses.imagesynth.shapes
             this.Point = Vector3.Zero;
         }
 
+        public override void PostLoad()
+        {
+            Normal.Normalize();
+        }
+
         public override float Intersect(Vector3 pe, Vector3 npe)
         {
             Vector3 p0 = Point;
@@ -34,9 +39,14 @@ namespace edu.tamu.courses.imagesynth.shapes
             float denom = npe % n0;
             if (denom != 0) //Ray and plane are parallel
             {
-                t = ((p0 - pe) % n0) / (npe % n0);
+                t = ((p0 - pe) % n0) / denom;
             }
             return t;
+        }
+
+        public override Vector3 NormalAt(Vector3 p)
+        {
+            return Normal;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using edu.tamu.courses.imagesynth.core;
+using edu.tamu.courses.imagesynth.lights;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,12 @@ namespace edu.tamu.courses.imagesynth.shaders
         public const int TRUNCTATE = 0;
         public const int OFFSET = 1;
 
-        public static Color LightColor { get; set; }
         public static float Alpha { get; set; }
         
         public float Ks { get; set; } //specular coefficient
         public float KsAlpha { get; set; }
         public int SMethod { get; set; }
 
-        public abstract Color ComputeColor(Vector3 npe, Vector3 Nlh, Vector3 Nh);
+        public abstract Color ComputeColor(Light light, Vector3 Ph, Vector3 npe, Vector3 Nlh, Vector3 Nh);
     }
 }

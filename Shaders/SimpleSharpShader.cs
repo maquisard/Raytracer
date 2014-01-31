@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace edu.tamu.courses.imagesynth.shaders
 {
-    public class SimpleShader : Shader
+    public class SimpleSharpShader : SimpleShader
     {
-        public Color Color0 { get; set; }
-        public Color Color1 { get; set; }
-        public Color Color2 { get; set; }
+        public float CUTOFF { get; set; }
 
-        public SimpleShader() { }
+        public SimpleSharpShader() { }
         public override Color ComputeColor(Light light, Vector3 Ph, Vector3 npe, Vector3 Nlh, Vector3 Nh)
         {
             Color color = Color.BLACK;
@@ -27,14 +25,11 @@ namespace edu.tamu.courses.imagesynth.shaders
             float s = r % Nlh;
             s = SMethod == TRUNCTATE ? (s < 0 ? 0 : s) : (s + 1f) / 2f;
             s = (float)System.Math.Pow(s, KsAlpha);
+            s = s > CUTOFF ? 1f : 0f;
             color = (Color0 * (1f - c) + Color1 * c) as Color;
             color = color * (1f - s * Ks) + Color2 * s * KsAlpha as Color;
             return light.Color * color as Color;
         }
 
-        protected virtual float ComputeC(Vector3 Nlh, Vector3 Nh) //the diffuse coefficient
-        {
-            return Nlh % Nh;
-        }
     }
 }

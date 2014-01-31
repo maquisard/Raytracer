@@ -77,6 +77,10 @@
     <Compile Include="core\Vector.cs" />
     <Compile Include="core\Vector3.cs" />
     <Compile Include="core\Vector4.cs" />
+    <Compile Include="lights\Light.cs" />
+    <Compile Include="lights\PointLight.cs" />
+    <Compile Include="lights\SpotLight.cs" />
+    <Compile Include="lights\SquareLight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

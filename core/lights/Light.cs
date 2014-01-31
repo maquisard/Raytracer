@@ -14,11 +14,15 @@ namespace edu.tamu.courses.imagesynth.lights
         public Vector3 Position { get; set; }
         public Color Color { get; set; }
 
+        public virtual void PreLoad() { }
+        public virtual void PostLoad() { }
+
         public static Light CreateFromJson(JsonData jsonLight)
         {
             Type lightType = Type.GetType("edu.tamu.courses.imagesynth.lights." + (string)jsonLight["Type"]);
             ConstructorInfo constructer = lightType.GetConstructor(new Type[] { });
             Light light = (Light)constructer.Invoke(null);
+            light.PreLoad();
             foreach (PropertyInfo property in lightType.GetProperties())
             {
                 if (jsonLight.ToJson().Contains(property.Name))
@@ -44,6 +48,7 @@ namespace edu.tamu.courses.imagesynth.lights
                     }
                 }
             }
+            light.PostLoad();
             return light;
         }
     }

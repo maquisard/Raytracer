@@ -16,7 +16,8 @@ namespace edu.tamu.courses.imagesynth.lights
             alpha = alpha <= 0 ? 0.1f : alpha;
 
             float attenuation = (float)Math.Pow(r0 / r, alpha);
-            return (attenuation * Color) as Color;
+            Color = (attenuation * Color) as Color;
+            return Color;
         }
     }
 }

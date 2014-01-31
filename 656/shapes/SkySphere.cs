@@ -7,25 +7,9 @@ using System.Threading.Tasks;
 
 namespace edu.tamu.courses.imagesynth.shapes
 {
-    public class Sphere : Shape
+    public class SkySphere : Sphere
     {
-        public float Radius { get; set; }
-        public Vector3 Center { get; set; }
-
-        public Sphere() { this.Radius = 1.0f; this.Center = Vector3.Zero; }
-
-        public Sphere(float radius, Vector3 center)
-        {
-            this.Radius = radius;
-            this.Center = center;
-        }
-
-        public Sphere(float radius)
-        {
-            this.Radius = radius;
-            this.Center = Vector3.Zero;
-        }
-
+        public SkySphere() { }
 
         public override float Intersect(Vector3 pe, Vector3 npe)
         {
@@ -34,7 +18,6 @@ namespace edu.tamu.courses.imagesynth.shapes
             float r = Radius;
             float b = npe % (pc - pe);
             float c = (pc - pe) % (pc - pe) - r * r;
-            if (c < 0) throw new Exception("You are inside the sphere, readjust your camera.");
 
             float t = -1f; //No Intersection
             float delta = b * b - c;
@@ -45,9 +28,15 @@ namespace edu.tamu.courses.imagesynth.shapes
             return t;
         }
 
+        public bool Contains(Vector3 p)
+        {
+            float r = Radius;
+            return r * r - ((p - Center) % (p - Center)) <= 0f;
+        }
+
         public override Vector3 NormalAt(Vector3 p)
         {
-            Vector3 normal = p - Center;
+            Vector3 normal = Center - p;
             normal.Normalize();
             return normal;
         }
