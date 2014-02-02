@@ -12,13 +12,17 @@ namespace edu.tamu.courses.imagesynth
     {
         public static void Main(string[] args)
         {
+
+            Quiz2 quiz = new Quiz2();
+            quiz.Run();
+
             //Scene scene = Scene.LoadFromFile("../../data/testjson.scn");
             //Raytracer rt = new Raytracer();
             //rt.Scene = scene;
             //rt.Compute(255, 190, 1, 3, 4, 5, 0.0f, 0.2f);
 
-            IntersectionTest test = new IntersectionTest();
-            test.run();
+            //IntersectionTest test = new IntersectionTest();
+            //test.run();
             
             //float sx = 8f;
             //float sy = 12f;

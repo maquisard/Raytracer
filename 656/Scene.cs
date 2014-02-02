@@ -1,4 +1,5 @@
-﻿using edu.tamu.courses.imagesynth.lights;
+﻿using edu.tamu.courses.imagesynth.core;
+using edu.tamu.courses.imagesynth.lights;
 using edu.tamu.courses.imagesynth.shaders;
 using edu.tamu.courses.imagesynth.shapes;
 using LitJson;
@@ -34,6 +35,11 @@ namespace edu.tamu.courses.imagesynth
             this.NSamplePerPixels = -1;
         }
 
+        public Shape GetIntersectedShape(Vector3 pe, Vector3 npe)
+        {
+            return null;
+        }
+
         public static Scene LoadFromFile(String filename)
         {
             Scene scene = null;
@@ -59,9 +65,19 @@ namespace edu.tamu.courses.imagesynth
                     if (shape is SkySphere)
                     {
                         SkySphere skySphere = shape as SkySphere;
-                        if (!skySphere.Contains(scene.Camera.Pe))
+                        float value = skySphere.Evaluate(scene.Camera.Pe);
+                        if (value > 0f)
                         {
                             throw new Exception("Blasphemy!!!! - You are out of the world. Please readjust you camera.");
+                        }
+                    }
+                    else if (shape is Sphere)
+                    {
+                        Sphere sphere = shape as Sphere;
+                        float value = sphere.Evaluate(scene.Camera.Pe);
+                        if (value < 0f)
+                        {
+                            throw new Exception("Warning!!!! - You are inside an object. Please readjust you camera.");
                         }
                     }
                     scene.Shapes.Add(shape);

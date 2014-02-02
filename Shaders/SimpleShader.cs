@@ -24,6 +24,7 @@ namespace edu.tamu.courses.imagesynth.shaders
 
             Vector3 v = -1f * npe;
             Vector3 r = 2f * (Nh % v) * Nh - v;
+            r.Normalize();
             float s = r % Nlh;
             s = SMethod == TRUNCTATE ? (s < 0 ? 0 : s) : (s + 1f) / 2f;
             s = (float)System.Math.Pow(s, KsAlpha);

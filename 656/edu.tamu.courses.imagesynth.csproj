@@ -62,6 +62,7 @@
     <Compile Include="shapes\SkySphere.cs" />
     <Compile Include="shapes\Sphere.cs" />
     <Compile Include="tests\IntersectionTest.cs" />
+    <Compile Include="tests\Quiz2.cs" />
     <Compile Include="tests\VectorTest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -28,12 +28,6 @@ namespace edu.tamu.courses.imagesynth.shapes
             return t;
         }
 
-        public bool Contains(Vector3 p)
-        {
-            float r = Radius;
-            return r * r - ((p - Center) % (p - Center)) <= 0f;
-        }
-
         public override Vector3 NormalAt(Vector3 p)
         {
             Vector3 normal = Center - p;

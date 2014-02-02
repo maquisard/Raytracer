@@ -18,11 +18,13 @@ namespace edu.tamu.courses.imagesynth.shapes
         {
             this.Point = point;
             this.Normal = normal;
+            this.Normal.Normalize();
         }
 
         public Plane(Vector3 normal)
         {
             this.Normal = normal;
+            this.Normal.Normalize();
             this.Point = Vector3.Zero;
         }
 

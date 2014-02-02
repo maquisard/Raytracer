@@ -23,6 +23,7 @@ namespace edu.tamu.courses.imagesynth.shaders
 
             Vector3 v = -1f * npe;
             Vector3 r = 2f * (Nh % v) * Nh - v;
+            r.Normalize();
 
             float s = 0f;
             float denom = r % sLight.Nl;
