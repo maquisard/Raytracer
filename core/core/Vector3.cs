@@ -600,5 +600,6 @@ namespace edu.tamu.courses.imagesynth.core
         {
             return new Vector4( X, Y, Z, 1 );
         }
+
     }
 }

@@ -1,5 +1,8 @@
 ﻿using edu.tamu.courses.imagesynth.core;
+using edu.tamu.courses.imagesynth.core.imaging;
 using edu.tamu.courses.imagesynth.core.random;
+using edu.tamu.courses.imagesynth.lights;
+using edu.tamu.courses.imagesynth.shaders;
 using edu.tamu.courses.imagesynth.shapes;
 using System;
 using System.Collections.Generic;
@@ -33,6 +36,7 @@ namespace edu.tamu.courses.imagesynth
 
         public void Raytrace()
         {
+            ImageData image = new ImageData((int)Scene.Camera.Xmax, (int)Scene.Camera.Ymax);
             for (int I = 0; I < Scene.Camera.Xmax; I++)
             {
                 for (int J = 0; J < Scene.Camera.Ymax; J++)
@@ -52,19 +56,30 @@ namespace edu.tamu.courses.imagesynth
                             Pp = Scene.Camera.P0 + (x * Scene.Camera.Sx * Scene.Camera.N0) + (y * Scene.Camera.Sy * Scene.Camera.N1);
                             Npe = Pp - Scene.Camera.Pe;
                             Npe.Normalize();
-                            Shape shape = Scene.GetIntersectedShape(Scene.Camera.Pe, Npe); //Implement the Get Intersected Shape
-                            if (shape == null)
+                            float t = -1f;
+                            Shape shape = Scene.GetIntersectedShape(Scene.Camera.Pe, Npe, ref t); //Implement the Get Intersected Shape
+                            if (shape != null)
                             {
-                                //return the color Black at X, Y
-                            }
-                            else 
-                            { 
-                                //get the shader, get the scene lights and compute the color at X, Y 
+                                Vector3 iPoint = Scene.Camera.Pe + Npe * t; //Intersection point
+                                Vector3 iNormal = shape.NormalAt(iPoint);   //Normal at the intersection
+                                foreach(Light light in Scene.Lights)
+                                {
+                                    Vector3 lightVector = light.Position - iPoint;
+                                    lightVector.Normalize();
+
+                                     color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+                                    //get the shader, get the scene lights and compute the color at X, Y 
+                                }
                             }
                         }
                     }
+
+                    color = new Color(color / (float)(Scene.MSamplePerPixels * Scene.NSamplePerPixels));
+                    image.SetPixel(I, J, color);
                 }
             }
+
+            image.SaveToFile(Scene.Name + ".jpg");
         }
     }
 }

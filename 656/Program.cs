@@ -13,7 +13,7 @@ namespace edu.tamu.courses.imagesynth
         public static void Main(string[] args)
         {
 
-            Quiz2 quiz = new Quiz2();
+            Quiz3 quiz = new Quiz3();
             quiz.Run();
 
             //Scene scene = Scene.LoadFromFile("../../data/testjson.scn");

@@ -28,9 +28,9 @@ namespace edu.tamu.courses.imagesynth.shaders
             float s = r % Nlh;
             s = SMethod == TRUNCTATE ? (s < 0 ? 0 : s) : (s + 1f) / 2f;
             s = (float)System.Math.Pow(s, KsAlpha);
-            color = (Color0 * (1f - c) + Color1 * c) as Color;
-            color = color * (1f - s * Ks) + Color2 * s * KsAlpha as Color;
-            return light.Color * color as Color;
+            color = new Color(Color0 * (1f - c) + Color1 * c);
+            color = new Color(color * (1f - s * Ks) + Color2 * s * KsAlpha);
+            return new Color(light.Color * color);
         }
 
         protected virtual float ComputeC(Vector3 Nlh, Vector3 Nh) //the diffuse coefficient

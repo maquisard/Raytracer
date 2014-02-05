@@ -19,6 +19,7 @@ namespace edu.tamu.courses.imagesynth
         public Camera Camera { get; private set; }
         public int MSamplePerPixels { get; private set; }
         public int NSamplePerPixels { get; private set; }
+        public String Name { get; private set; }
 
         public Scene() 
         { 
@@ -35,9 +36,20 @@ namespace edu.tamu.courses.imagesynth
             this.NSamplePerPixels = -1;
         }
 
-        public Shape GetIntersectedShape(Vector3 pe, Vector3 npe)
+        public Shape GetIntersectedShape(Vector3 pe, Vector3 npe, ref float t)
         {
-            return null;
+            SortedList<float, int> ts = new SortedList<float, int>();
+            for (int i = 0; i < Shapes.Count; i++)
+            {
+                float _t = Shapes[i].Intersect(pe, npe);
+                if (_t >= 0f)
+                {
+                    ts.Add(_t, i);
+                }
+            }
+            if (ts.Count == 0) return null;
+            t = ts.Keys[0];
+            return this.Shapes[ts[t]];
         }
 
         public static Scene LoadFromFile(String filename)
@@ -90,9 +102,10 @@ namespace edu.tamu.courses.imagesynth
                     scene.Lights.Add(Light.CreateFromJson(jsonLight));
                 }
 
-                Console.WriteLine(scene.Camera.ToString());
+                //Console.WriteLine(scene.Camera.ToString());
                 scene.MSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["m"].ToString());
                 scene.NSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["n"].ToString());
+                scene.Name = jsonScene["name"].ToString();
 
                 Shader.Alpha = float.Parse(jsonScene["alpha"].ToString());
 

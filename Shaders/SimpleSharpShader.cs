@@ -29,7 +29,7 @@ namespace edu.tamu.courses.imagesynth.shaders
             s = s > CUTOFF ? 1f : 0f;
             color = (Color0 * (1f - c) + Color1 * c) as Color;
             color = color * (1f - s * Ks) + Color2 * s * KsAlpha as Color;
-            return light.Color * color as Color;
+            return new Color(light.Color * color);
         }
 
     }

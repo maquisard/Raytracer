@@ -33,7 +33,16 @@ namespace edu.tamu.courses.imagesynth.core
 
         public Color() : this(Color.BLACK) { }
         public Color(Color color) : this(color.R, color.G, color.B) { }
+        public Color(System.Drawing.Color color) : this(color.R, color.G, color.B) { }
         public Color(float r, float g, float b) : base(r, g, b) { }
+        public Color(Vector3 v) : this(v.X, v.Y, v.Z) { }
 
+        public static explicit operator System.Drawing.Color(Color color)
+        {
+            int r = (int)(color.R > 1f ? 255 : 255f * color.R);
+            int g = (int)(color.G > 1f ? 255 : 255f * color.G);
+            int b = (int)(color.B > 1f ? 255 : 255f * color.B);
+            return System.Drawing.Color.FromArgb(r, g, b);
+        }
     }
 }

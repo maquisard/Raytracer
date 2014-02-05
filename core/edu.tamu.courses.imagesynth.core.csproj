@@ -53,6 +53,7 @@
     <Compile Include="core\imaging\ColorConverter.cs" />
     <Compile Include="core\imaging\Exceptions.cs" />
     <Compile Include="core\imaging\Image.cs" />
+    <Compile Include="core\imaging\ImageData.cs" />
     <Compile Include="core\imaging\UnmanagedImage.cs" />
     <Compile Include="core\Matrix3x3.cs" />
     <Compile Include="core\Matrix4x4.cs" />
