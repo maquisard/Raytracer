@@ -23,6 +23,11 @@ namespace edu.tamu.courses.imagesynth.lights
             this.Update();
         }
 
+        public override Color ComputeFinalLightColor(Vector3 ph)
+        {
+            return this.Color;
+        }
+
         public void Update()
         {
             N0 = Nl ^ Vup;

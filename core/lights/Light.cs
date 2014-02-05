@@ -17,6 +17,8 @@ namespace edu.tamu.courses.imagesynth.lights
         public virtual void PreLoad() { }
         public virtual void PostLoad() { }
 
+        public abstract Color ComputeFinalLightColor(Vector3 ph);
+
         public static Light CreateFromJson(JsonData jsonLight)
         {
             Type lightType = Type.GetType("edu.tamu.courses.imagesynth.lights." + (string)jsonLight["Type"]);

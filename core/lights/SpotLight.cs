@@ -19,7 +19,7 @@ namespace edu.tamu.courses.imagesynth.lights
         public Color Color0 { get; set; }
         public Color Color1 { get; set; }
 
-        public Color ComputeFinalLightColor(Vector3 ph) //ph is the intersection point
+        public override Color ComputeFinalLightColor(Vector3 ph) //ph is the intersection point
         {
             Vector3 pl = this.Position;
             Vector3 v = ph - pl; //vector from the light to the intersection point
