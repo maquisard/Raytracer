@@ -107,7 +107,7 @@ namespace edu.tamu.courses.imagesynth
                 scene.NSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["n"].ToString());
                 scene.Name = jsonScene["name"].ToString();
 
-                Shader.Alpha = float.Parse(jsonScene["alpha"].ToString());
+                //Shader.Alpha = float.Parse(jsonScene["alpha"].ToString());
 
                 //handling the sky
             }

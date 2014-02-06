@@ -14,8 +14,8 @@ namespace edu.tamu.courses.imagesynth.tests
 
         public void Run()
         {
-            Vector3 ph = new Vector3(17, 19, 22);
-            Vector3 pl = new Vector3(17, 35, 34);
+            Vector3 ph = new Vector3(22, 36, 24);
+            Vector3 pl = new Vector3(26, 44, 32);
 
             Vector3 nlh = pl - ph;
             float d = nlh.Norm;
@@ -23,20 +23,20 @@ namespace edu.tamu.courses.imagesynth.tests
 
             Console.WriteLine("Nlh: ({0})", nlh);
             Console.WriteLine("Distance d:={0}", d);
-            Sphere sphere = new Sphere(5f, new Vector3(17f, 7f, 13f));
+            Sphere sphere = new Sphere(6f, new Vector3(14f, 20f, 8f));
             this.LightSphereIntersection(sphere, ph, nlh, d);
-            sphere = new Sphere(5f, new Vector3(17, 43, 40));
+            sphere = new Sphere(6f, new Vector3(30, 52, 40));
             this.LightSphereIntersection(sphere, ph, nlh, d);
 
-            Color c0 = new Color(2.9f, 13.1f, 4.1f);
-            Color c1 = new Color(15.2f, 13.3f, 4.9f);
-            Color c2 = new Color(11.9f, 11.9f, 5.2f);
+            Color c0 = new Color(0.3f, 7.2f, 19f);
+            Color c1 = new Color(4.5f, 13f, 9.3f);
+            Color c2 = new Color(1.8f, 4.3f, 2.8f);
 
-            float t = 0.5f; float s = 0.8f;
+            float t = 0.4f; float s = 0.9f;
             Color c = new Color(c0 + (t * c1) + (s * c2));
             Console.WriteLine("Color c: ({0})", c);
             
-            t = 0.5f; s = 0.8f;
+            t = 0.4f; s = 0.9f;
             c = new Color((1 - s) * ((1 - t) * c0 + t * c1) + s * c2);
             Console.WriteLine("Color c: ({0})", c);
         }

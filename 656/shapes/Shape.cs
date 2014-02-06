@@ -31,7 +31,7 @@ namespace edu.tamu.courses.imagesynth.shapes
             shape.PreLoad();
             String shaderName = (String)jsonShape["Shader"];
             Shader shader = ShaderManager.GetShader(shaderName);
-            shape.Shader = shader == null ? ShaderManager.DEFAULTSHADER : shader;
+            shape.Shader = shader;
 
             foreach(PropertyInfo property in shapeType.GetProperties())
             {

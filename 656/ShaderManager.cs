@@ -11,7 +11,6 @@ namespace edu.tamu.courses.imagesynth
 {
     public class ShaderManager
     {
-        public static Shader DEFAULTSHADER = new DefaultShader();
         private static Dictionary<String, Shader> shaders = new Dictionary<string,Shader>();
         public static Shader CreateShaderFromJson(JsonData jsonShader)
         {
