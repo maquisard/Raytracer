@@ -10,11 +10,16 @@ namespace edu.tamu.courses.imagesynth.core
 {
     public abstract class Vector
     {
+
+        public virtual void PreLoad() { }
+        public virtual void PostLoad() { }
+
         public static Vector CreateFromJson(String otypeName, JsonData jsonVector)
         {
             Type vectorType = Type.GetType("edu.tamu.courses.imagesynth.core." + otypeName);
             ConstructorInfo vectorConstructor = vectorType.GetConstructor(new Type[] { });
             Vector vector = vectorConstructor.Invoke(null) as Vector;
+            vector.PreLoad();
             foreach (FieldInfo vProperty in vectorType.GetFields())
             {
                 if (jsonVector.ToJson().Contains(vProperty.Name))
@@ -26,6 +31,7 @@ namespace edu.tamu.courses.imagesynth.core
                     }
                 }
             }
+            vector.PostLoad();
             return vector;
         }
     }

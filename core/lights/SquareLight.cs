@@ -32,6 +32,10 @@ namespace edu.tamu.courses.imagesynth.lights
         {
             N0 = Nl ^ Vup;
             N1 = N0 ^ Nl;
+            Vup.Normalize();
+            Nl.Normalize();
+            N0.Normalize();
+            N1.Normalize();
         }
     }
 }

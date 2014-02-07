@@ -36,6 +36,8 @@ namespace edu.tamu.courses.imagesynth
 
         public void Raytrace()
         {
+            float max = Scene.Camera.Xmax * Scene.Camera.Ymax;
+            float iteration = 0f;
             ImageData image = new ImageData((int)Scene.Camera.Xmax, (int)Scene.Camera.Ymax);
             for (int I = 0; I < Scene.Camera.Xmax; I++)
             {
@@ -68,7 +70,11 @@ namespace edu.tamu.courses.imagesynth
                                     lightVector.Normalize();
 
                                      color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
-                                    //get the shader, get the scene lights and compute the color at X, Y 
+                                    
+                                    //get the shader, get the scene lights and compute the color at X, Y
+                                    //if (shape is Plane) color = new Color(0, 1, 0);
+                                    //else color = new Color(1, 1, 0);
+
                                 }
                             }
                         }
@@ -76,6 +82,8 @@ namespace edu.tamu.courses.imagesynth
 
                     color = new Color(color / (float)(Scene.MSamplePerPixels * Scene.NSamplePerPixels));
                     image.SetPixel(I, J, color);
+                    Console.WriteLine("{0:0.00}% Computed...", (iteration / max) * 100f );
+                    iteration++;
                 }
             }
 

@@ -44,8 +44,8 @@ namespace edu.tamu.courses.imagesynth.shaders
                 }
             }
             s = SMethod == TRUNCATE ? (s < 0 ? 0 : s) : (s + 1f) / 2f;
-            s = (float)System.Math.Pow(s, KsAlpha);
-            s = s > CUTOFF ? 1f : 0f;
+            //s = (float)System.Math.Pow(s, KsAlpha);
+            //s = s > CUTOFF ? 1f : 0f;
             return s;
         }
 

@@ -44,5 +44,12 @@ namespace edu.tamu.courses.imagesynth.core
             int b = (int)(color.B > 1f ? 255 : 255f * color.B);
             return System.Drawing.Color.FromArgb(r, g, b);
         }
+
+        public override void PostLoad()
+        {
+            R = R / 255f;
+            G = G / 255f;
+            B = B / 255f;
+        }
     }
 }

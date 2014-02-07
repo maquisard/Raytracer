@@ -36,6 +36,7 @@ namespace edu.tamu.courses.imagesynth
 
         private void updateValues()
         {
+            Up.Normalize();
             Sy = (Ymax / Xmax) * Sx;
             N2 = -1f * (View / View.Norm);
             N0 = (View ^ Up);

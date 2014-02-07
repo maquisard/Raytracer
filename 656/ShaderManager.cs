@@ -1,4 +1,5 @@
-﻿using edu.tamu.courses.imagesynth.shaders;
+﻿using edu.tamu.courses.imagesynth.core;
+using edu.tamu.courses.imagesynth.shaders;
 using LitJson;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,10 @@ namespace edu.tamu.courses.imagesynth
                         {
                             value[i] = float.Parse(jsonShader[property.Name][i].ToString());
                         }
-                        property.SetValue(shader, value);
+                        Color color = new Color(value[0], value[1], value[2]);
+                        color.PostLoad();
+                        property.SetValue(shader, color);
+                        //property.SetValue(shader, value);
                     }
                 }
             }

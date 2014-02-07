@@ -60,7 +60,7 @@ namespace edu.tamu.courses.imagesynth.core.imaging
                     unmanage.SetPixel(x, y, (System.Drawing.Color)this.GetPixel(x, y));
                 }
             }
-            temp.Dispose();
+            //temp.Dispose();
             return unmanage.ToManagedImage();
         }
         public ImageData GetSubImage(int x, int y, int width, int height)

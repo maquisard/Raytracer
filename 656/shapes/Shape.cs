@@ -52,7 +52,7 @@ namespace edu.tamu.courses.imagesynth.shapes
                         String otypeName = (String)jsonValue["Type"];
                         if (otypeName.ToLower() == "vector3" || otypeName.ToLower() == "vector4")
                         {
-                            Type vectorType = Type.GetType("edu.tamu.courses.imagesynth.core." + otypeName);
+                            Type vectorType = CoreAssembly.Current.GetType("edu.tamu.courses.imagesynth.core." + otypeName);
                             ConstructorInfo vectorConstructor = vectorType.GetConstructor(new Type[] { });
                             Object vector = vectorConstructor.Invoke(null);
                             foreach (FieldInfo vProperty in vectorType.GetFields())
