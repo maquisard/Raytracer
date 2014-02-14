@@ -33,6 +33,18 @@ namespace edu.tamu.courses.imagesynth.shaders
             return new Color(light.ComputeFinalLightColor(Ph) * color);
         }
 
+        public override Color ComputeColor(Light light, Vector3 Ph, Vector3 npe, Vector3 Nlh, Vector3 Nh, float c)
+        {
+            Color color = Color.BLACK;
+            //float c = this.ComputeC(Nlh, Nh);
+
+            float s = this.ComputeS(npe, Nh, Nlh);
+
+            color = new Color(Color0 * (1f - c) + Color1 * c);
+            color = new Color(color * (1f - s * Ks) + Color2 * s * Ks);
+            return new Color(light.ComputeFinalLightColor(Ph) * color);
+        }
+
         public virtual float ComputeS(Vector3 npe, Vector3 nh, Vector3 nlh)
         {
             Vector3 v = -1f * npe;

@@ -1,8 +1,16 @@
+C:\Users\El Zede\Desktop\656\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.shaders.dll
+C:\Users\El Zede\Desktop\656\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.shaders.pdb
+C:\Users\El Zede\Desktop\656\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.core.dll
+C:\Users\El Zede\Desktop\656\656\Shaders\bin\Debug\LitJson.dll
+C:\Users\El Zede\Desktop\656\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.core.pdb
+C:\Users\El Zede\Desktop\656\656\Shaders\obj\Debug\edu.tamu.courses.imagesynth.shaders.csprojResolveAssemblyReference.cache
+C:\Users\El Zede\Desktop\656\656\Shaders\obj\Debug\edu.tamu.courses.imagesynth.shaders.dll
+C:\Users\El Zede\Desktop\656\656\Shaders\obj\Debug\edu.tamu.courses.imagesynth.shaders.pdb
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.shaders.dll
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.shaders.pdb
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.core.dll
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\bin\Debug\LitJson.dll
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.core.pdb
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\obj\Debug\edu.tamu.courses.imagesynth.shaders.csprojResolveAssemblyReference.cache
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\obj\Debug\edu.tamu.courses.imagesynth.shaders.dll
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\obj\Debug\edu.tamu.courses.imagesynth.shaders.pdb
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\bin\Debug\LitJson.dll
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.core.dll
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\Shaders\bin\Debug\edu.tamu.courses.imagesynth.core.pdb

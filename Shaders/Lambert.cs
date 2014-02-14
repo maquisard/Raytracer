@@ -23,6 +23,13 @@ namespace edu.tamu.courses.imagesynth.shaders
             return new Color(light.ComputeFinalLightColor(Ph) * finalColor);
         }
 
+        public override Color ComputeColor(Light light, Vector3 Ph, Vector3 npe, Vector3 Nlh, Vector3 Nh, float c)
+        {
+            //float c = this.ComputeC(Nlh, Nh);
+            Vector3 finalColor = (1f - c) * Color0 + c * Color1;
+            return new Color(light.ComputeFinalLightColor(Ph) * finalColor);
+        }
+
         public override float ComputeC(Vector3 Nlh, Vector3 Nh) //the diffuse coefficient
         {
             float c = Nlh % Nh;

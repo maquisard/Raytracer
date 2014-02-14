@@ -39,9 +39,13 @@ namespace edu.tamu.courses.imagesynth.core
 
         public static explicit operator System.Drawing.Color(Color color)
         {
-            int r = (int)(color.R > 1f ? 255 : 255f * color.R);
-            int g = (int)(color.G > 1f ? 255 : 255f * color.G);
-            int b = (int)(color.B > 1f ? 255 : 255f * color.B);
+            //color.R = float.IsNaN(color.R) ? 0f : color.R;
+            //color.G = float.IsNaN(color.G) ? 0f : color.G;
+            //color.B = float.IsNaN(color.B) ? 0f : color.B;
+
+            int r = (int)(color.R > 1f ? 255 : color.R < 0f ? 0 : 255f * color.R);
+            int g = (int)(color.G > 1f ? 255 : color.G < 0f ? 0 : 255f * color.G);
+            int b = (int)(color.B > 1f ? 255 : color.B < 0f ? 0 : 255f * color.B);
             return System.Drawing.Color.FromArgb(r, g, b);
         }
 

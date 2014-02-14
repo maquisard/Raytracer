@@ -2,34 +2,36 @@
 	"name"	 : "test_scene",
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Shader" : "SQP1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 } },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } }
+		{ "Type" : "Sphere", "Shader" : "G1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 } },
+		{ "Type" : "Sphere", "Shader" : "G2", "Radius" : 0.5, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.5, "Z" : 0.0 } },
+		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } }
 	],
 	
 	"camera" : 
 	{
-		"Pe" : { "Type" : "Vector3", "X" : 5.0, "Y" : 3.0, "Z" : -1.5 },
-		"View" : { "Type" : "Vector3", "X" : -5.0, "Y" : -3.0, "Z" : 1.5 },
-		"Up" : { "Type" : "Vector3", "X" : -5.0, "Y" : 8, "Z" : 1.5 },
+		"Pe" : { "Type" : "Vector3", "X" : 5.0, "Y" : -3.0, "Z" : 0.0 },
+		"View" : { "Type" : "Vector3", "X" : -5.0, "Y" : 3.0, "Z" : 0.0 },
+		"Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },
 		"D" : 3.0,
-		"Xmax" : 240.0,
-		"Ymax" : 240.0,
-		"Sx" : 3.0
+		"Xmax" : 320.0,
+		"Ymax" : 320.0,
+		"Sx" : 3.5
 	},
-	"sampleperpixel" : { "m" : 4, "n" : 4 },
+	"sampleperpixel" : { "m" : 1, "n" : 1 },
 	"lights" :
 	[
-		{ "Type" : "SquareLight", "Position" : { "Type" : "Vector3", "X" : 4.0, "Y" : -1.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, 
-		  "Nl" : { "Type" : "Vector3", "X" : -4.0, "Y" : 1.0, "Z" : 0.0 }, "Vup" : { "Type" : "Vector3", "X" : -1.0, "Y" : 4.0, "Z" : 0.0 }, "Sx" : 50, "Sy" : 50 }
+		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -5.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, "R0" : 0.5, "Alpha" : 1.5 }		
 	],
 	"shaders" :
 	[
 		{ "Name" : "L1",  "Type" : "Lambert", "Color0" : [0.0, 0.0, 0.0], "Color1" : [200.0, 200.0, 0.0], "Alpha" : 1.0 },
-		{ "Name" : "L2",  "Type" : "Lambert", "Color0" : [120.0, 120.0, 120.0], "Color1" : [250.0, 250.0, 250.0], "Alpha" : 1.0 },
+		{ "Name" : "L2",  "Type" : "Lambert", "Color0" : [20.0, 20.0, 20.0], "Color1" : [250.0, 250.0, 250.0], "Alpha" : 1.0 },
 		{ "Name" : "G1",  "Type" : "Gooch", "Color0" : [0.0, 0.0, 0.0], "Color1" : [200.0, 200.0, 0.0], "Alpha" : 1.0 },
 		{ "Name" : "G2",  "Type" : "Gooch", "Color0" : [120.0, 120.0, 120.0], "Color1" : [250.0, 250.0, 250.0], "Alpha" : 1.0 },
 		{ "Name" : "P1",  "Type" : "Phong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0 },
 		{ "Name" : "SP1",  "Type" : "SharpPhong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
-		{ "Name" : "SQP1",  "Type" : "SquarePhong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 }
+		{ "Name" : "SQP1",  "Type" : "SquarePhong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+		{ "Name" : "FW1",  "Type" : "FrenchWindow", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], 
+		  "KsAlpha": 18.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5, "WindowFrameThickness" : 0.15 }
 	]
 }

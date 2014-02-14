@@ -43,7 +43,7 @@ namespace edu.tamu.courses.imagesynth.lights
                         String otypeName = (String)jsonValue["Type"];
                         if (otypeName.ToLower() == "vector3" || otypeName.ToLower() == "vector4" || otypeName.ToLower() == "color")
                         {
-                            Type vectorType = Type.GetType("edu.tamu.courses.imagesynth.core." + otypeName);
+                            Type vectorType = CoreAssembly.Current.GetType("edu.tamu.courses.imagesynth.core." + otypeName);
                             Vector vector = Vector.CreateFromJson(otypeName, jsonValue);
                             property.SetValue(light, vector);
                         }

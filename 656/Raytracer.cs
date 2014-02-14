@@ -64,12 +64,59 @@ namespace edu.tamu.courses.imagesynth
                             {
                                 Vector3 iPoint = Scene.Camera.Pe + Npe * t; //Intersection point
                                 Vector3 iNormal = shape.NormalAt(iPoint);   //Normal at the intersection
+
                                 foreach(Light light in Scene.Lights)
                                 {
                                     Vector3 lightVector = light.Position - iPoint;
+                                    float distanceToLight = lightVector.Norm;
                                     lightVector.Normalize();
 
-                                     color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+                                    //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+
+                                    Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight);
+                                    if (intersectedShapes.Count == 0)
+                                    {
+                                        color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+                                    }
+                                    else
+                                    {
+                                        float[] weights = new float[intersectedShapes.Count];
+                                        float[] coefs = new float[intersectedShapes.Count];
+                                        float weight_sum = 0;
+                                        int g = 0;
+                                        foreach (KeyValuePair<float, Shape> iShape in intersectedShapes)
+                                        {
+                                            Vector3 point = iPoint + iShape.Key * lightVector;
+                                            if ((point - iPoint).Norm > 0.000001) // self intersection
+                                            {
+                                                Vector3 normal = iShape.Value.NormalAt(point);
+                                                weights[g] = (point - light.Position).Norm / distanceToLight;
+                                                weight_sum += weights[g];
+                                                Vector3 nlh = light.Position - point;
+                                                nlh.Normalize();
+                                                float cosTheta = nlh % normal;
+                                                cosTheta = (cosTheta + 1.25f) / 2.25f;
+                                                coefs[g] = cosTheta;
+                                                g++;
+                                            }
+                                        }
+
+                                        if (weight_sum == 0)
+                                        {
+                                            color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+                                        }
+                                        else
+                                        {
+                                            float c = 1;
+                                            for (int k = 0; k < weights.Length; k++)
+                                            {
+                                                c *= (float)Math.Pow(coefs[k], weights[k] / weight_sum);
+                                                //c *= coefs[k];
+                                            }
+                                            //c = (float)Math.Pow(2f, weights.Length) * c;
+                                            color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal, c));
+                                        }
+                                    }
                                     
                                     //get the shader, get the scene lights and compute the color at X, Y
                                     //if (shape is Plane) color = new Color(0, 1, 0);
@@ -87,7 +134,7 @@ namespace edu.tamu.courses.imagesynth
                 }
             }
 
-            image.SaveToFile(Scene.Name + ".jpg");
+            image.SaveToFile(Scene.Name + ".png");
         }
     }
 }

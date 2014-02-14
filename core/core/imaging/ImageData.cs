@@ -107,7 +107,7 @@ namespace edu.tamu.courses.imagesynth.core.imaging
 
         public void SaveToFile(string filename)
         {
-            this.ToBitmap().Save(filename, System.Drawing.Imaging.ImageFormat.Jpeg);
+            this.ToBitmap().Save(filename, System.Drawing.Imaging.ImageFormat.Png);
         }
 
         private void FillImageData(Color color)

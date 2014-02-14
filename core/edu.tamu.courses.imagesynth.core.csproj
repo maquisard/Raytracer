@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoreAssembly.cs" />
     <Compile Include="core\Color.cs" />
     <Compile Include="core\imaging\ColorConverter.cs" />
     <Compile Include="core\imaging\Exceptions.cs" />

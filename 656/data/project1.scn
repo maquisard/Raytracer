@@ -1,0 +1,62 @@
+﻿{
+	"name"	 : "project1_frenchwindow_trunc",
+	"shapes" : 
+	[
+		{ "Type" : "Sphere", "Shader" : "FW3", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 } },
+		{ "Type" : "Sphere", "Shader" : "FW2", "Radius" : 0.5, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.8, "Z" : 0.0 } },
+		{ "Type" : "Sphere", "Shader" : "FW4", "Radius" : 0.5, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -1.8 } },
+		{ "Type" : "Sphere", "Shader" : "FW4", "Radius" : 0.5, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 1.8 } },
+		{ "Type" : "Sphere", "Shader" : "FW2", "Radius" : 0.5, "Center" : { "Type" : "Vector3", "X" : 1.8, "Y" : 0.0, "Z" : 0.0 } },
+		{ "Type" : "Plane", "Shader" : "FW1", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } }
+	],
+	
+	"camera" : 
+	{
+		"Pe" : { "Type" : "Vector3", "X" : 5.0, "Y" : -3.0, "Z" : 0.0 },
+		"View" : { "Type" : "Vector3", "X" : -5.0, "Y" : 3.0, "Z" : 0.0 },
+		"Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },
+		"D" : 3.0,
+		"Xmax" : 620.0,
+		"Ymax" : 620.0,
+		"Sx" : 3.5
+	},
+	"sampleperpixel" : { "m" : 4, "n" : 4 },
+	"lights" :
+	[
+		{ "Type" : "SquareLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, 
+				  "Nl" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },  "Vup" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 4.0, "Sy" :  4.0 }
+	],
+	"shaders" :
+	[
+		{ "Name" : "L1",  "Type" : "Lambert", "Color0" : [132.0, 146.0, 155.0], "Color1" : [232.0, 246.0, 255.0], "Alpha" : 1.0 },
+		{ "Name" : "L2",  "Type" : "Lambert", "Color0" : [150.0, 43.0, 0.0], "Color1" : [250.0, 143.0, 72.0], "Alpha" : 1.0 },
+		{ "Name" : "L3",  "Type" : "Lambert", "Color0" : [0.0, 81.0, 152.0], "Color1" : [73.0, 181.0, 252.0], "Alpha" : 1.0 },
+		{ "Name" : "L4",  "Type" : "Lambert", "Color0" : [0.0, 12.0, 100.0], "Color1" : [30.0, 162.0, 250.0], "Alpha" : 1.0 },
+
+		{ "Name" : "G1",  "Type" : "Gooch", "Color0" : [132.0, 146.0, 155.0], "Color1" : [232.0, 246.0, 255.0], "Alpha" : 1.0 },
+		{ "Name" : "G2",  "Type" : "Gooch", "Color0" : [150.0, 43.0, 0.0], "Color1" : [250.0, 143.0, 72.0], "Alpha" : 1.0 },
+		{ "Name" : "G3",  "Type" : "Gooch", "Color0" : [0.0, 81.0, 152.0], "Color1" : [73.0, 181.0, 252.0], "Alpha" : 1.0 },
+		{ "Name" : "G4",  "Type" : "Gooch", "Color0" : [0.0, 12.0, 100.0], "Color1" : [30.0, 162.0, 250.0], "Alpha" : 1.0 },
+
+
+		{ "Name" : "P1",  "Type" : "Phong", "Color0" : [132.0, 146.0, 155.0], "Color1" : [232.0, 246.0, 255.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 0, "Alpha" : 1.0 },
+		{ "Name" : "P2",  "Type" : "Phong", "Color0" : [150.0, 43.0, 0.0], "Color1" : [250.0, 143.0, 72.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 0, "Alpha" : 1.0 },
+		{ "Name" : "P3",  "Type" : "Phong", "Color0" : [0.0, 81.0, 152.0], "Color1" : [73.0, 181.0, 252.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 0, "Alpha" : 1.0 },
+		{ "Name" : "P4",  "Type" : "Phong", "Color0" : [0.0, 12.0, 100.0], "Color1" : [30.0, 162.0, 250.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 0, "Alpha" : 1.0 },
+
+		{ "Name" : "SP1",  "Type" : "SharpPhong", "Color0" : [132.0, 146.0, 155.0], "Color1" : [232.0, 246.0, 255.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+		{ "Name" : "SP2",  "Type" : "SharpPhong", "Color0" : [150.0, 43.0, 0.0], "Color1" : [250.0, 143.0, 72.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+		{ "Name" : "SP3",  "Type" : "SharpPhong", "Color0" : [0.0, 81.0, 152.0], "Color1" : [73.0, 181.0, 252.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+		{ "Name" : "SP4",  "Type" : "SharpPhong", "Color0" : [0.0, 12.0, 100.0], "Color1" : [30.0, 162.0, 250.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+
+		{ "Name" : "SQP1",  "Type" : "SquarePhong", "Color0" : [132.0, 146.0, 155.0], "Color1" : [232.0, 246.0, 255.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+		{ "Name" : "SQP2",  "Type" : "SquarePhong", "Color0" : [150.0, 43.0, 0.0], "Color1" : [250.0, 143.0, 72.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+		{ "Name" : "SQP3",  "Type" : "SquarePhong", "Color0" : [0.0, 81.0, 152.0], "Color1" : [73.0, 181.0, 252.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+		{ "Name" : "SQP4",  "Type" : "SquarePhong", "Color0" : [0.0, 12.0, 100.0], "Color1" : [30.0, 162.0, 250.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
+
+		{ "Name" : "FW1",  "Type" : "FrenchWindow", "Color0" : [132.0, 146.0, 155.0], "Color1" : [232.0, 246.0, 255.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 0, "Alpha" : 1.0, "CUTOFF" : 0.5, "WindowFrameThickness" : 0.15 },
+		{ "Name" : "FW2",  "Type" : "FrenchWindow", "Color0" : [150.0, 43.0, 0.0], "Color1" : [250.0, 143.0, 72.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 0, "Alpha" : 1.0, "CUTOFF" : 0.5, "WindowFrameThickness" : 0.15 },
+		{ "Name" : "FW3",  "Type" : "FrenchWindow", "Color0" : [0.0, 81.0, 152.0], "Color1" : [73.0, 181.0, 252.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 0, "Alpha" : 1.0, "CUTOFF" : 0.5, "WindowFrameThickness" : 0.15 },
+		{ "Name" : "FW4",  "Type" : "FrenchWindow", "Color0" : [0.0, 12.0, 100.0], "Color1" : [30.0, 162.0, 250.0], "Color2" : [232.0, 246.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 0, "Alpha" : 1.0, "CUTOFF" : 0.5, "WindowFrameThickness" : 0.15 }
+	]
+}

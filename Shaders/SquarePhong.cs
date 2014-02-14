@@ -24,6 +24,18 @@ namespace edu.tamu.courses.imagesynth.shaders
             return new Color(light.Color * color);
         }
 
+        public override Color ComputeColor(Light light, Vector3 pIntersection, Vector3 npe, Vector3 Nlh, Vector3 Nh, float c)
+        {
+            if (!(light is SquareLight)) throw new ArgumentException("Square Specular Light only support");
+            SquareLight sLight = light as SquareLight;
+            Color color = Color.BLACK;
+           // float c = this.ComputeC(Nlh, Nh);
+            float s = this.ComputeS(sLight, pIntersection, npe, Nh, Nlh);
+            color = new Color(Color0 * (1f - c) + Color1 * c);
+            color = new Color(color * (1f - s * Ks) + Color2 * s * Ks);
+            return new Color(light.Color * color);
+        }
+
         public float ComputeS(SquareLight sLight, Vector3 pIntersection, Vector3 npe, Vector3 nh, Vector3 nlh)
         {
             Vector3 v = -1f * npe;
@@ -56,7 +68,7 @@ namespace edu.tamu.courses.imagesynth.shaders
             {
                 s = 1f;
             }
-            return 0;
+            return s;
         }
     }
 }

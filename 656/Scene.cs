@@ -52,6 +52,20 @@ namespace edu.tamu.courses.imagesynth
             return this.Shapes[ts[t]];
         }
 
+        public Dictionary<float, Shape> GetIntersectedShapes(Vector3 iPoint, Vector3 lightVector, float lightDistance)
+        {
+            Dictionary<float, Shape> shapes = new Dictionary<float, Shape>();
+            for (int i = 0; i < Shapes.Count; i++)
+            {
+                float t = Shapes[i].Intersect(iPoint, lightVector);
+                if (t > 0.01f && t < lightDistance)
+                {
+                    shapes[t] = Shapes[i];
+                }
+            }
+            return shapes;
+        }
+
         public static Scene LoadFromFile(String filename)
         {
             Scene scene = null;

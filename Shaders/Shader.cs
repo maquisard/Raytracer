@@ -12,6 +12,7 @@ namespace edu.tamu.courses.imagesynth.shaders
     {        
 
         public abstract Color ComputeColor(Light light, Vector3 Ph, Vector3 npe, Vector3 Nlh, Vector3 Nh);
+        public abstract Color ComputeColor(Light light, Vector3 Ph, Vector3 npe, Vector3 Nlh, Vector3 Nh, float c); ///Shadow case
 
         public virtual float ComputeC(Vector3 Nlh, Vector3 Nh) //the diffuse coefficient
         {

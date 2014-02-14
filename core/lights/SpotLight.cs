@@ -19,6 +19,12 @@ namespace edu.tamu.courses.imagesynth.lights
         public Color Color0 { get; set; }
         public Color Color1 { get; set; }
 
+        public override void PostLoad()
+        {
+            base.PostLoad();
+            this.Nl.Normalize();
+        }
+
         public override Color ComputeFinalLightColor(Vector3 ph) //ph is the intersection point
         {
             Vector3 pl = this.Position;
@@ -27,7 +33,7 @@ namespace edu.tamu.courses.imagesynth.lights
             float s = this.Nl % v; //try truncation also later and see what you get
             s = ShadingMethod == TRUNCATE ? (s < 0 ? 0 : s) : (s + 1f) / 2f;
             s = (float)Math.Pow(s, Alpha);
-            Color = (Color0 * (1f - s) + Color1 * s) as Color;;
+            Color = new Color(Color0 * (1f - s) + Color1 * s);
             return Color;
         }
     }

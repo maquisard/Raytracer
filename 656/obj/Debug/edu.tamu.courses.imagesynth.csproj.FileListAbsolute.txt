@@ -1,12 +1,24 @@
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\obj\Debug\edu.tamu.courses.imagesynth.csprojResolveAssemblyReference.cache
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\Newtonsoft.Json.dll
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\LitJson.dll
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.shaders.dll
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.shaders.pdb
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\Raytracer.exe.config
+C:\Users\El Zede\Desktop\656\656\656\obj\Debug\Raytracer.exe
+C:\Users\El Zede\Desktop\656\656\656\obj\Debug\Raytracer.pdb
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\Raytracer.exe
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\Raytracer.pdb
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\edu.tamu.courses.imagesynth.core.dll
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\edu.tamu.courses.imagesynth.shaders.dll
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\LitJson.dll
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\Newtonsoft.Json.dll
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\edu.tamu.courses.imagesynth.core.pdb
+C:\Users\El Zede\Desktop\656\656\656\bin\Debug\edu.tamu.courses.imagesynth.shaders.pdb
+C:\Users\El Zede\Desktop\656\656\656\obj\Debug\edu.tamu.courses.imagesynth.csprojResolveAssemblyReference.cache
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\Raytracer.exe.config
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\Raytracer.exe
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\Raytracer.pdb
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.core.dll
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.shaders.dll
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\LitJson.dll
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\Newtonsoft.Json.dll
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.core.pdb
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.shaders.pdb
+C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\obj\Debug\edu.tamu.courses.imagesynth.csprojResolveAssemblyReference.cache
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\obj\Debug\Raytracer.exe
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\obj\Debug\Raytracer.pdb
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.core.dll
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\656\bin\Debug\edu.tamu.courses.imagesynth.core.pdb

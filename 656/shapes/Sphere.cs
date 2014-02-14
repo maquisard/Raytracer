@@ -43,16 +43,19 @@ namespace edu.tamu.courses.imagesynth.shapes
             //Console.WriteLine("Value of c: {0}", c);
             //Console.WriteLine("Value of b: {0}", b);
 
-            if (c < 0) throw new Exception("You are inside the sphere, readjust your camera.");
+            //if (c < 0) throw new Exception("You are inside the sphere, readjust your camera.");
 
             float t = -1f; //No Intersection
-            float delta = b * b - c;
-            
-           // Console.WriteLine("Value of Delta: {0}", delta);
-
-            if (delta >= 0 && b >= 0)
+            if (c > 0.01f)
             {
-                t = b - (float)Math.Sqrt(delta);
+                float delta = b * b - c;
+
+                // Console.WriteLine("Value of Delta: {0}", delta);
+
+                if (delta >= 0 && b >= 0)
+                {
+                    t = b - (float)Math.Sqrt(delta);
+                }
             }
             return t;
         }

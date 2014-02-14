@@ -1,0 +1,9 @@
+{ "Type" : "SpotLight", "Position" : { "Type" : "Vector3", "X" : 3.0, "Y" : -2.0, "Z" : 0.0 }, "Color0" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, 
+		  "Nl" : { "Type" : "Vector3", "X" : 3.0, "Y" : -2.0, "Z" : 0.0 }, "Color1" : { "Type" : "Color", "X" : 100.0, "Y" : 100.0, "Z" : 100.0 }, 
+		  "ShadingMethod" : 0, "Alpha" : 2, "Color" : { "Type" : "Color", "X" : 0, "Y" : 0, "Z" : 0.0 }}
+
+
+{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, "R0" : 0.5, "Alpha" : 1.5 }		
+
+		{ "Type" : "SquareLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, 
+				  "Nl" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },  "Vup" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 4.0, "Sy" :  4.0 }
