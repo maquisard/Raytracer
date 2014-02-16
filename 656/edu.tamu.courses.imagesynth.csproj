@@ -57,13 +57,18 @@
     <Compile Include="Raytracer.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="ShaderManager.cs" />
+    <Compile Include="shapes\Cylinder.cs" />
+    <Compile Include="shapes\Ellipsoid.cs" />
     <Compile Include="shapes\Plane.cs" />
+    <Compile Include="shapes\Quadrics.cs" />
+    <Compile Include="shapes\Repeater.cs" />
     <Compile Include="shapes\Shape.cs" />
     <Compile Include="shapes\SkySphere.cs" />
     <Compile Include="shapes\Sphere.cs" />
     <Compile Include="tests\IntersectionTest.cs" />
     <Compile Include="tests\Quiz2.cs" />
     <Compile Include="tests\Quiz3.cs" />
+    <Compile Include="tests\Quiz4.cs" />
     <Compile Include="tests\VectorTest.cs" />
   </ItemGroup>
   <ItemGroup>

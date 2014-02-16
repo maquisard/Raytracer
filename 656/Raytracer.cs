@@ -67,8 +67,9 @@ namespace edu.tamu.courses.imagesynth
 
                                 foreach(Light light in Scene.Lights)
                                 {
-                                    Vector3 lightVector = light.Position - iPoint;
-                                    float distanceToLight = lightVector.Norm;
+                                    //Vector3 lightVector = light.Position - iPoint;
+                                    Vector3 lightVector = light.ComputeLightVector(iPoint);
+                                    float distanceToLight = (light.Position - iPoint).Norm;
                                     lightVector.Normalize();
 
                                     //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
@@ -87,7 +88,7 @@ namespace edu.tamu.courses.imagesynth
                                         foreach (KeyValuePair<float, Shape> iShape in intersectedShapes)
                                         {
                                             Vector3 point = iPoint + iShape.Key * lightVector;
-                                            if ((point - iPoint).Norm > 0.000001) // self intersection
+                                            if ((point - iPoint).Norm > 0.001f && shape != iShape.Value) // self intersection
                                             {
                                                 Vector3 normal = iShape.Value.NormalAt(point);
                                                 weights[g] = (point - light.Position).Norm / distanceToLight;
@@ -95,8 +96,8 @@ namespace edu.tamu.courses.imagesynth
                                                 Vector3 nlh = light.Position - point;
                                                 nlh.Normalize();
                                                 float cosTheta = nlh % normal;
-                                                cosTheta = (cosTheta + 1.25f) / 2.25f;
-                                                coefs[g] = cosTheta;
+                                                cosTheta = (cosTheta + 1f) / 2f;
+                                                coefs[g] = cosTheta < 0f ? 0f : cosTheta;
                                                 g++;
                                             }
                                         }

@@ -79,6 +79,7 @@
     <Compile Include="core\Vector.cs" />
     <Compile Include="core\Vector3.cs" />
     <Compile Include="core\Vector4.cs" />
+    <Compile Include="lights\DirectionalLight.cs" />
     <Compile Include="lights\Light.cs" />
     <Compile Include="lights\PointLight.cs" />
     <Compile Include="lights\SpotLight.cs" />

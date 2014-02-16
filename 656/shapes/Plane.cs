@@ -46,6 +46,13 @@ namespace edu.tamu.courses.imagesynth.shapes
             return t;
         }
 
+        public float Evaluate(Vector3 P)
+        {
+            Vector3 v = Point - P;
+            v.Normalize();
+            return Normal % v; 
+        }
+
         public override Vector3 NormalAt(Vector3 p)
         {
             return Normal;

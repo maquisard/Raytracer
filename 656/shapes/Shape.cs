@@ -12,7 +12,7 @@ namespace edu.tamu.courses.imagesynth.shapes
 {
     public abstract class Shape
     {
-        public Shader Shader { get; private set; }
+        public Shader Shader { get; protected set; }
 
         public virtual void PreLoad() { }
         public virtual void PostLoad() { }

@@ -41,10 +41,10 @@ namespace edu.tamu.courses.imagesynth
             SortedList<float, int> ts = new SortedList<float, int>();
             for (int i = 0; i < Shapes.Count; i++)
             {
-                float _t = Shapes[i].Intersect(pe, npe);
-                if (_t >= 0f)
+                float ti = Shapes[i].Intersect(pe, npe);
+                if (ti >= 0f)
                 {
-                    ts.Add(_t, i);
+                    ts[ti] = i;
                 }
             }
             if (ts.Count == 0) return null;
@@ -107,6 +107,15 @@ namespace edu.tamu.courses.imagesynth
                         }
                     }
                     scene.Shapes.Add(shape);
+                }
+
+                if (jsonScene["repeater"] != null)
+                {
+                    Repeater repeater = Repeater.CreateFromJson(jsonScene["repeater"]);
+                    foreach (Shape shape in repeater.CreateShapes())
+                    {
+                        scene.Shapes.Add(shape);
+                    }
                 }
 
                 //loading the lights

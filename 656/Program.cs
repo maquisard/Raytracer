@@ -1,5 +1,6 @@
 ﻿using edu.tamu.courses.imagesynth.core;
 using edu.tamu.courses.imagesynth.core.imaging;
+using edu.tamu.courses.imagesynth.shapes;
 using edu.tamu.courses.imagesynth.tests;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,16 @@ namespace edu.tamu.courses.imagesynth
 
             Console.WriteLine("Loading Scene from file...");
             Scene scene = Scene.LoadFromFile("../../data/testjson.scn");
+            //Cylinder cylinder = new Cylinder();
+            //cylinder.Center = new Vector3(-3f, 0f, 0f);
+            //cylinder.Direction = new Vector3(0f, -1f, 0f);
+            //cylinder.Up = new Vector3(-1f, 0f, 0f);
+            //cylinder.S0 = 2f;
+            //cylinder.S1 = 2f;
+            //cylinder.S2 = 1f;
+            //cylinder.PostLoad();
+            //scene.Shapes.Add(cylinder);
+            
             Console.WriteLine("Scene Loaded....");
             Raytracer rt = new Raytracer();
             rt.Scene = scene;
@@ -26,8 +37,6 @@ namespace edu.tamu.courses.imagesynth
             rt.Raytrace();
             Console.WriteLine("Done Raytracing....");
 
-            //ImageData data = new ImageData(128, 128, new Color(1f, 0f, 34/255));
-            //data.SaveToFile("test_image.jpg");
         }
     }
 }

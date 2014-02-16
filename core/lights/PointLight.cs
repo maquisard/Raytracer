@@ -10,6 +10,7 @@ namespace edu.tamu.courses.imagesynth.lights
         public float R0 { get; set; }
         public float Alpha { get; set; } //0 <= alpha <= 2
 
+
         public override Color ComputeFinalLightColor(Vector3 ph)
         {
             float R = (this.Position - ph).Norm;

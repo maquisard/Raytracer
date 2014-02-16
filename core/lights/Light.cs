@@ -18,6 +18,10 @@ namespace edu.tamu.courses.imagesynth.lights
         public virtual void PostLoad() { }
 
         public abstract Color ComputeFinalLightColor(Vector3 ph);
+        public virtual Vector3 ComputeLightVector(Vector3 P)
+        {
+            return this.Position - P;
+        }
 
         public static Light CreateFromJson(JsonData jsonLight)
         {
