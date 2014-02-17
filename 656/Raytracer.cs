@@ -1,6 +1,7 @@
 ﻿using edu.tamu.courses.imagesynth.core;
 using edu.tamu.courses.imagesynth.core.imaging;
 using edu.tamu.courses.imagesynth.core.random;
+using edu.tamu.courses.imagesynth.core.system;
 using edu.tamu.courses.imagesynth.lights;
 using edu.tamu.courses.imagesynth.shaders;
 using edu.tamu.courses.imagesynth.shapes;
@@ -21,6 +22,7 @@ namespace edu.tamu.courses.imagesynth
         public Vector3 Npe { get; private set; }
 
         private UniformOneGenerator randomGenerator = new UniformOneGenerator();
+        private UniformGenerator randomGeneratorLight;
 
         public void Compute(int I, int J, int i, int j, int m, int n, float rx, float ry)
         {
@@ -36,6 +38,7 @@ namespace edu.tamu.courses.imagesynth
 
         public void Raytrace()
         {
+            randomGeneratorLight = new UniformGenerator(new Range(0, Scene.MSamplePerPixels * Scene.NSamplePerPixels - 1));
             float max = Scene.Camera.Xmax * Scene.Camera.Ymax;
             float iteration = 0f;
             ImageData image = new ImageData((int)Scene.Camera.Xmax, (int)Scene.Camera.Ymax);
@@ -46,6 +49,8 @@ namespace edu.tamu.courses.imagesynth
                     Color color = Color.BLACK;
                     float randx = randomGenerator.Next() / (float)Scene.MSamplePerPixels;
                     float randy = randomGenerator.Next() / (float)Scene.NSamplePerPixels;
+
+                    float rnd = randomGenerator.Next();
 
                     for (int i = 0; i < Scene.MSamplePerPixels; i++)
                     {
@@ -67,9 +72,15 @@ namespace edu.tamu.courses.imagesynth
 
                                 foreach(Light light in Scene.Lights)
                                 {
-                                    //Vector3 lightVector = light.Position - iPoint;
+                                    //Light light = _light;
+                                    if (light is AreaLight)
+                                    {
+                                        ((AreaLight)light).Rnd = rnd;
+                                    }
+
                                     Vector3 lightVector = light.ComputeLightVector(iPoint);
-                                    float distanceToLight = (light.Position - iPoint).Norm;
+                                    //float distanceToLight = (light.Position - iPoint).Norm;
+                                    float distanceToLight = lightVector.Norm;
                                     lightVector.Normalize();
 
                                     //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
@@ -88,7 +99,7 @@ namespace edu.tamu.courses.imagesynth
                                         foreach (KeyValuePair<float, Shape> iShape in intersectedShapes)
                                         {
                                             Vector3 point = iPoint + iShape.Key * lightVector;
-                                            if ((point - iPoint).Norm > 0.001f && shape != iShape.Value) // self intersection
+                                            if ((point - iPoint).Norm > 0.00001f && shape != iShape.Value) // self intersection
                                             {
                                                 Vector3 normal = iShape.Value.NormalAt(point);
                                                 weights[g] = (point - light.Position).Norm / distanceToLight;
@@ -96,7 +107,7 @@ namespace edu.tamu.courses.imagesynth
                                                 Vector3 nlh = light.Position - point;
                                                 nlh.Normalize();
                                                 float cosTheta = nlh % normal;
-                                                cosTheta = (cosTheta + 1f) / 2f;
+                                                //cosTheta = (cosTheta + 1f) / 2f;
                                                 coefs[g] = cosTheta < 0f ? 0f : cosTheta;
                                                 g++;
                                             }
@@ -111,8 +122,8 @@ namespace edu.tamu.courses.imagesynth
                                             float c = 1;
                                             for (int k = 0; k < weights.Length; k++)
                                             {
-                                                c *= (float)Math.Pow(coefs[k], weights[k] / weight_sum);
-                                                //c *= coefs[k];
+                                                //c *= (float)Math.Pow(coefs[k], weights[k] / weight_sum);
+                                                c *= coefs[k];
                                             }
                                             //c = (float)Math.Pow(2f, weights.Length) * c;
                                             color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal, c));

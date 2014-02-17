@@ -13,11 +13,13 @@ namespace edu.tamu.courses.imagesynth.shapes
     public abstract class Shape
     {
         public Shader Shader { get; protected set; }
+        public bool IsTransparent { get; set; }
+
 
         public virtual void PreLoad() { }
         public virtual void PostLoad() { }
 
-        public Shape() { }
+        public Shape() { this.IsTransparent = false; }
 
         public abstract Vector3 NormalAt(Vector3 p);
 
@@ -47,7 +49,11 @@ namespace edu.tamu.courses.imagesynth.shapes
                     {
                         property.SetValue(shape, int.Parse(jsonShape[property.Name].ToString()));
                     }
-                    else if(jsonValue.IsObject)
+                    else if (jsonValue.IsBoolean)
+                    {
+                        property.SetValue(shape, bool.Parse(jsonShape[property.Name].ToString()));
+                    }
+                    else if (jsonValue.IsObject)
                     {
                         String otypeName = (String)jsonValue["Type"];
                         if (otypeName.ToLower() == "vector3" || otypeName.ToLower() == "vector4")

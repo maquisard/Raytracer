@@ -42,7 +42,7 @@ namespace edu.tamu.courses.imagesynth
             for (int i = 0; i < Shapes.Count; i++)
             {
                 float ti = Shapes[i].Intersect(pe, npe);
-                if (ti >= 0f)
+                if (ti >= 0f && !Shapes[i].IsTransparent)
                 {
                     ts[ti] = i;
                 }
@@ -118,21 +118,23 @@ namespace edu.tamu.courses.imagesynth
                     }
                 }
 
-                //loading the lights
-                for (int i = 0; i < jsonScene["lights"].Count; i++)
-                {
-                    JsonData jsonLight = jsonScene["lights"][i];
-                    scene.Lights.Add(Light.CreateFromJson(jsonLight));
-                }
-
                 //Console.WriteLine(scene.Camera.ToString());
                 scene.MSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["m"].ToString());
                 scene.NSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["n"].ToString());
                 scene.Name = jsonScene["name"].ToString();
 
-                //Shader.Alpha = float.Parse(jsonScene["alpha"].ToString());
+                //loading the lights
+                for (int i = 0; i < jsonScene["lights"].Count; i++)
+                {
+                    JsonData jsonLight = jsonScene["lights"][i];
+                    Light light = Light.CreateFromJson(jsonLight);
+                    if (light is AreaLight)
+                    {
+                        ((AreaLight)light).CreateLightGrid(scene.MSamplePerPixels, scene.NSamplePerPixels);
+                    }
+                    scene.Lights.Add(light);
+                }
 
-                //handling the sky
             }
             return scene;
         }

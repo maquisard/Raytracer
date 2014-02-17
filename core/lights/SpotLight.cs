@@ -18,6 +18,7 @@ namespace edu.tamu.courses.imagesynth.lights
         public int ShadingMethod { get; set; }
         public Color Color0 { get; set; }
         public Color Color1 { get; set; }
+        public float K { get; set; }
 
         public override void PostLoad()
         {
@@ -39,7 +40,7 @@ namespace edu.tamu.courses.imagesynth.lights
             //float s = this.Nl % v; //try truncation also later and see what you get
             float s = costheta1 * costheta2 + sintheta1 * sintheta2;
             s = ShadingMethod == TRUNCATE ? (s < 0 ? 0 : s) : (s + 1f) / 2f;
-            //s = (float)Math.Pow(s, Alpha);
+            s = (float)Math.Pow(s, K);
             Color = new Color(Color0 * (1f - s) + Color1 * s);
             return Color;
         }
