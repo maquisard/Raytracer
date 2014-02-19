@@ -2,10 +2,10 @@
 	"name"	 : "test_scene",
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Shader" : "L1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 } },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : -25.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 } },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -1.0 } },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } }
+		{ "Type" : "Sphere", "Shader" : "G1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 } },
+		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : -25.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 } },
+		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -1.0 } },
+		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } }
 	],
 
 	"repeater" :
@@ -21,7 +21,7 @@
 		"StartPoint" : { "Type" : "Vector3", "X" : 2.5, "Y" : 1.0, "Z" : 2.5 },
 		"StaticProperties" :
 		[
-			{ "Name" : "Shader", "Value" : "L2" },
+			{ "Name" : "Shader", "Value" : "G2" },
 			{ "Name" : "Direction", "Value" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } },
 			{ "Name" : "Up", "Value" : { "Type" : "Vector3", "X" : -1.0, "Y" : 0.0, "Z" : 0.0 } },
 			{ "Name" : "S0", "Value" : 0.5 },
@@ -39,11 +39,11 @@
 		"Ymax" : 320.0,
 		"Sx" : 5.5
 	},
-	"sampleperpixel" : { "m" : 4, "n" : 4 },
+	"sampleperpixel" : { "m" : 64, "n" : 64 },
 	"lights" :
 	[
 		{ "Type" : "AreaLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -10.5, "Z" : -5.0 }, "Color" : { "Type" : "Color", "X" : 250.0, "Y" : 250.0, "Z" : 250.0 }, 
-				  "Nl" : { "Type" : "Vector3", "X" : 0.0, "Y" : 10.5, "Z" : 5.0 }, "Vup" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },  "Sx" : 50.0, "Sy" : 50.0 }
+				  "Nl" : { "Type" : "Vector3", "X" : 0.0, "Y" : 10.5, "Z" : 5.0 }, "Vup" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },  "Sx" : 1.0, "Sy" : 1.0 }
 	],
 	"shaders" :
 	[

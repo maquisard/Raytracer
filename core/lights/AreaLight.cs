@@ -17,10 +17,21 @@ namespace edu.tamu.courses.imagesynth.lights
         public Vector3 N0 { get; set; }
         public Vector3 N1 { get; set; }
 
-        public float OffsetX { get; set; }
-        public float OffsetY { get; set; }
 
-        private Light[,] grid;
+        private float M { get; set; }
+        private float N { get; set; }
+
+        private float Nx { get; set; }
+        private float Ny { get; set; }
+        private Vector3 Origin { get; set; }
+
+        public int Rnd { get; set; }
+        public int Ith { get; set; }
+        public int Jth { get; set; }
+
+        public float RndOffsetX { get; set; }
+        public float RndOffsetY { get; set; }
+
 
         public override void PostLoad()
         {
@@ -44,30 +55,33 @@ namespace edu.tamu.courses.imagesynth.lights
 
         public void CreateLightGrid(int m, int n)
         {
-            grid = new PointLight[m, n];
-            float nx = Sx / (float)m;
-            float ny = Sy / (float)n;
-            Vector3 currentPoint = Position - 0.5f * ((Sx * N0) + (Sy * N1));
-            for (int i = 0; i < m; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    currentPoint = currentPoint + (0.5f * (float)i * nx) * N0 + (0.5f * (float)j * ny) * N1;
-                    grid[i, j] = new PointLight();
-                    grid[i, j].Position = currentPoint;
-                    grid[i, j].Color = Color;
-                }
-            }
+            M = (float)m;
+            N = (float)n;
+            Nx = Sx / M;
+            Ny = Sy / N;
+            Origin = Position - 0.5f * ((Sx * N0) + (Sy * N1));
         }
 
-        public Light GetSubLight(int m, int n, int i, int j, float r)
+        public override Vector3 ComputeLightVector(Vector3 P)
         {
-            float k = (float)(i + j * m);
-            float ks = (k + r) % ((float)(m * n));
-            int J = (int)(ks / (float)m);
-            int I = (int)(ks - (float)J);
-            return grid[I, J];
-        }
+            int k = (int)(Ith + Jth * N);
+            int ks = (int)((k + Rnd) % (M * N));
+            float J = (ks / M);
+            float I = (ks - J) / N;
 
+            float s = Ith * Nx + (RndOffsetX / M);
+            float t = Jth * Ny + (RndOffsetY / N);
+
+            //s = s / Sx;
+            //t = t / Sy;
+
+            if (s > Sx || t > Sy)
+            {
+                throw new Exception("Fuck??");
+            }
+
+            Position = Origin + (s * N0  + t * N1);
+            return base.ComputeLightVector(P);
+        }
     }
 }
