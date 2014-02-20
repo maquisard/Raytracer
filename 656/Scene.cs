@@ -19,7 +19,7 @@ namespace edu.tamu.courses.imagesynth
         public Camera Camera { get; private set; }
         public int MSamplePerPixels { get; private set; }
         public int NSamplePerPixels { get; private set; }
-        public String Name { get; private set; }
+        public String Name { get; set; }
 
         public Scene() 
         { 
@@ -58,7 +58,7 @@ namespace edu.tamu.courses.imagesynth
             for (int i = 0; i < Shapes.Count; i++)
             {
                 float t = Shapes[i].Intersect(iPoint, lightVector);
-                if (t > 0.01f && t < lightDistance)
+                if (t >= 0.0f && t < lightDistance)
                 {
                     shapes[t] = Shapes[i];
                 }

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animations\Custom\Project2_LightMotion.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +75,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="data\project1.scn" />
+    <None Include="data\project2.scn" />
     <None Include="data\testjson.scn" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +93,7 @@
       <Name>edu.tamu.courses.imagesynth.shaders</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -77,7 +77,7 @@ namespace edu.tamu.courses.imagesynth
                                     //Light light = _light;
                                     if (light is AreaLight)
                                     {
-                                        ((AreaLight)light).Rnd = (int)randomGeneratorLight.Next();
+                                        ((AreaLight)light).Rnd = (int)rnd;
                                         ((AreaLight)light).Ith = i;
                                         ((AreaLight)light).Jth = j;
                                         ((AreaLight)light).RndOffsetX = rndoffsetx;
@@ -105,7 +105,7 @@ namespace edu.tamu.courses.imagesynth
                                         foreach (KeyValuePair<float, Shape> iShape in intersectedShapes)
                                         {
                                             Vector3 point = iPoint + iShape.Key * lightVector;
-                                            if ((point - iPoint).Norm > 0.00001f && shape != iShape.Value) // self intersection
+                                            if (shape != iShape.Value) // self intersection
                                             {
                                                 Vector3 normal = iShape.Value.NormalAt(point);
                                                 weights[g] = (point - light.Position).Norm / distanceToLight;
@@ -131,7 +131,7 @@ namespace edu.tamu.courses.imagesynth
                                                 c *= (float)Math.Pow(coefs[k], weights[k] / weight_sum);
                                                 //c *= coefs[k];
                                             }
-                                            c = 2f * c;
+                                            //c = 2f * c;
                                             color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal, c));
                                         }
                                     }

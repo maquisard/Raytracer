@@ -1,13 +1,13 @@
 ﻿{
-	"name"	 : "test_scene",
+	"name"	 : "project2_pointlight_soft_anim",
 	"shapes" : 
 	[
 		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 } },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : -25.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 } },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -1.0 } },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 1.0 } },
-		{ "Type" : "Plane", "Shader" : "L1", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.5, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } },
-		{ "Type" : "Plane", "Shader" : "L3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } }
+		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : -25.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 } },
+		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -1.0 } },
+		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 1.0 } },
+		{ "Type" : "Plane", "Shader" : "G1", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.5, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } },
+		{ "Type" : "Plane", "Shader" : "G3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } }
 	],
 
 	"repeater" :
@@ -23,7 +23,7 @@
 		"StartPoint" : { "Type" : "Vector3", "X" : 2.5, "Y" : 1.0, "Z" : 2.5 },
 		"StaticProperties" :
 		[
-			{ "Name" : "Shader", "Value" : "L4" },
+			{ "Name" : "Shader", "Value" : "G4" },
 			{ "Name" : "Direction", "Value" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } },
 			{ "Name" : "Up", "Value" : { "Type" : "Vector3", "X" : -1.0, "Y" : 0.0, "Z" : 0.0 } },
 			{ "Name" : "S0", "Value" : 0.5 },

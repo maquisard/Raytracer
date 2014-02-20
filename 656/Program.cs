@@ -1,4 +1,5 @@
-﻿using edu.tamu.courses.imagesynth.core;
+﻿using edu.tamu.courses.imagesynth.Animations.Custom;
+using edu.tamu.courses.imagesynth.core;
 using edu.tamu.courses.imagesynth.core.imaging;
 using edu.tamu.courses.imagesynth.shapes;
 using edu.tamu.courses.imagesynth.tests;
@@ -18,24 +19,16 @@ namespace edu.tamu.courses.imagesynth
             //Quiz3 quiz = new Quiz3();
             //quiz.Run();
 
-            Console.WriteLine("Loading Scene from file...");
-            Scene scene = Scene.LoadFromFile("../../data/testjson.scn");
-            //Cylinder cylinder = new Cylinder();
-            //cylinder.Center = new Vector3(-3f, 0f, 0f);
-            //cylinder.Direction = new Vector3(0f, -1f, 0f);
-            //cylinder.Up = new Vector3(-1f, 0f, 0f);
-            //cylinder.S0 = 2f;
-            //cylinder.S1 = 2f;
-            //cylinder.S2 = 1f;
-            //cylinder.PostLoad();
-            //scene.Shapes.Add(cylinder);
-            
-            Console.WriteLine("Scene Loaded....");
-            Raytracer rt = new Raytracer();
-            rt.Scene = scene;
-            Console.WriteLine("Starting Raytracing....");
-            rt.Raytrace();
-            Console.WriteLine("Done Raytracing....");
+            //Console.WriteLine("Loading Scene from file...");
+            //Scene scene = Scene.LoadFromFile("../../data/project2.scn");            
+            //Console.WriteLine("Scene Loaded....");
+            //Raytracer rt = new Raytracer();
+            //rt.Scene = scene;
+            //Console.WriteLine("Starting Raytracing....");
+            //rt.Raytrace();
+            //Console.WriteLine("Done Raytracing....");
+            Project2_LightMotion animation = new Project2_LightMotion(-20f, 10f);
+            animation.Execute();
 
         }
     }
