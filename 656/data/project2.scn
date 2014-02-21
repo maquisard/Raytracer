@@ -1,12 +1,10 @@
 ﻿{
-	"name"	 : "project2_pointlight_soft_anim",
+	"name"	 : "project2_directional",
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 } },
+		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : -0.0, "Z" : 0.0 } },
 		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : -25.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 } },
 		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -1.0 } },
-		{ "Type" : "Plane", "Shader" : "G2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 1.0 } },
-		{ "Type" : "Plane", "Shader" : "G1", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.5, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 } },
 		{ "Type" : "Plane", "Shader" : "G3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } }
 	],
 
@@ -44,7 +42,8 @@
 	"sampleperpixel" : { "m" : 1, "n" : 1 },
 	"lights" :
 	[
-		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : -10.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, "R0" : 0.5, "Alpha" : 1.5 }		
+		{ "Type" : "DirectionalLight", "Position" : { "Type" : "Vector3", "X" : 5.0, "Y" : -10.5, "Z" : -5.0 }, "Color" : { "Type" : "Color", "X" : 250.0, "Y" : 250.0, "Z" : 250.0 },  
+				   "Normal" : { "Type" : "Vector3", "X" : -0.5, "Y" : 8.5, "Z" : 5.0 } }		
 	],
 	"shaders" :
 	[
@@ -58,7 +57,7 @@
 		{ "Name" : "G3",  "Type" : "Gooch", "Color0" : [45.0, 22.0, 0.0], "Color1" : [245.0, 222.0, 179.0], "Alpha" : 1.0 },
 		{ "Name" : "G4",  "Type" : "Gooch", "Color0" : [55.0, 44.0, 0.0], "Color1" : [255.0, 244.0, 168.0], "Alpha" : 1.0 },
 		
-		{ "Name" : "P1",  "Type" : "Phong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [102.0, 204.0, 255.0], "Color2" : [233.0, 241.0, 245.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0 },
+		{ "Name" : "P1",  "Type" : "Phong", "Color0" : [0.0, 4.0, 55.0], "Color1" : [102.0, 204.0, 255.0], "Color2" : [233.0, 241.0, 245.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0 },
 
 		{ "Name" : "SP1",  "Type" : "SharpPhong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
 		{ "Name" : "SQP1",  "Type" : "SquarePhong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },

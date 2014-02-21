@@ -8,7 +8,8 @@
 		{ "Type" : "SquareLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, 
 				  "Nl" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },  "Vup" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 4.0, "Sy" :  4.0 }
 
-{ "Type" : "DirectionalLight", "Position" : { "Type" : "Vector3", "X" : 5.0, "Y" : -10.5, "Z" : -5.0 }, "Color" : { "Type" : "Color", "X" : 250.0, "Y" : 250.0, "Z" : 250.0 },  "Normal" : { "Type" : "Vector3", "X" : -5.0, "Y" : 10.5, "Z" : 5.0 } }		
+{ "Type" : "DirectionalLight", "Position" : { "Type" : "Vector3", "X" : 5.0, "Y" : -10.5, "Z" : -5.0 }, "Color" : { "Type" : "Color", "X" : 250.0, "Y" : 250.0, "Z" : 250.0 },  
+		   "Normal" : { "Type" : "Vector3", "X" : -5.0, "Y" : 10.5, "Z" : 5.0 } }		
 
 { "Type" : "SpotLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -10.5, "Z" : -5.0 }, "Color0" : { "Type" : "Color", "X" : 10.0, "Y" : 10.0, "Z" : 10.0 }, 
 			"Nl" : { "Type" : "Vector3", "X" : 0.0, "Y" : 10.5, "Z" : 5.0 }, "Color1" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, 

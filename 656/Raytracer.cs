@@ -85,8 +85,8 @@ namespace edu.tamu.courses.imagesynth
                                     }
 
                                     Vector3 lightVector = light.ComputeLightVector(iPoint);
-                                    //float distanceToLight = (light.Position - iPoint).Norm;
-                                    float distanceToLight = lightVector.Norm;
+                                    float distanceToLight = (light.Position - iPoint).Norm;
+                                    //float distanceToLight = lightVector.Norm;
                                     lightVector.Normalize();
 
                                     //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
@@ -113,7 +113,7 @@ namespace edu.tamu.courses.imagesynth
                                                 Vector3 nlh = light.Position - point;
                                                 nlh.Normalize();
                                                 float cosTheta = nlh % normal;
-                                                cosTheta = (cosTheta + 1f) / 2f;
+                                                //cosTheta = (cosTheta + 1f) / 2f;
                                                 coefs[g] = cosTheta < 0f ? 0f : cosTheta;
                                                 g++;
                                             }
@@ -128,8 +128,8 @@ namespace edu.tamu.courses.imagesynth
                                             float c = 1;
                                             for (int k = 0; k < weights.Length; k++)
                                             {
-                                                c *= (float)Math.Pow(coefs[k], weights[k] / weight_sum);
-                                                //c *= coefs[k];
+                                                //c *= (float)Math.Pow(coefs[k], weights[k] / weight_sum);
+                                                c *= coefs[k];
                                             }
                                             //c = 2f * c;
                                             color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal, c));

@@ -20,15 +20,16 @@ namespace edu.tamu.courses.imagesynth
             //quiz.Run();
 
             //Console.WriteLine("Loading Scene from file...");
-            //Scene scene = Scene.LoadFromFile("../../data/project2.scn");            
-            //Console.WriteLine("Scene Loaded....");
-            //Raytracer rt = new Raytracer();
-            //rt.Scene = scene;
-            //Console.WriteLine("Starting Raytracing....");
-            //rt.Raytrace();
-            //Console.WriteLine("Done Raytracing....");
-            Project2_LightMotion animation = new Project2_LightMotion(-20f, 10f);
-            animation.Execute();
+            Scene scene = Scene.LoadFromFile("../../data/project2.scn");
+            Console.WriteLine("Scene Loaded....");
+            Raytracer rt = new Raytracer();
+            rt.Scene = scene;
+            Console.WriteLine("Starting Raytracing....");
+            rt.Raytrace();
+            Console.WriteLine("Done Raytracing....");
+
+            //Project2_LightMotion animation = new Project2_LightMotion(-20f, 10f);
+            //animation.Execute();
 
         }
     }
