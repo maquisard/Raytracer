@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edu.tamu.courses.imagesynth
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edu.tamu.courses.imagesynth.core", "core\edu.tamu.courses.imagesynth.core.csproj", "{FA47F3BC-4733-4DC0-BA47-4E1D9FDCBA37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edu.tamu.courses.imagesynth.video", "video\edu.tamu.courses.imagesynth.video.csproj", "{FA3F500E-1AF3-40B0-A852-5AA64D78ED1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{FA47F3BC-4733-4DC0-BA47-4E1D9FDCBA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA47F3BC-4733-4DC0-BA47-4E1D9FDCBA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA47F3BC-4733-4DC0-BA47-4E1D9FDCBA37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA3F500E-1AF3-40B0-A852-5AA64D78ED1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA3F500E-1AF3-40B0-A852-5AA64D78ED1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA3F500E-1AF3-40B0-A852-5AA64D78ED1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA3F500E-1AF3-40B0-A852-5AA64D78ED1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

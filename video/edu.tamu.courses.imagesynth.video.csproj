@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA3F500E-1AF3-40B0-A852-5AA64D78ED1F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>edu.tamu.courses.imagesynth.video</RootNamespace>
+    <AssemblyName>edu.tamu.courses.imagesynth.video</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libraries\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.FFMPEG, Version=2.2.5.0, Culture=neutral, PublicKeyToken=03563089b1be05dd, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libraries\AForge.Video.FFMPEG.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425262728.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526272829.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627282930.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425262728293031.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526272829303132.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627282930313233.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425262728293031323334.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526272829303132333435.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627282930313233343536.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425262728293031323334353637.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526272829303132333435363738.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627282930313233343536373839.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425262728293031323334353637383940.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526272829303132333435363738394041.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627282930313233343536373839404142.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425262728293031323334353637383940414243.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526272829303132333435363738394041424344.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627282930313233343536373839404142434445.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425262728293031323334353637383940414243444546.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526272829303132333435363738394041424344454647.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627282930313233343536373839404142434445464748.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950.png" />
+    <Content Include="animations\pointlight\project2_pointlight_soft_anim123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051.png" />
+    <Content Include="libraries\AForge.Video.dll" />
+    <Content Include="libraries\AForge.Video.FFMPEG.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

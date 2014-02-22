@@ -9,6 +9,5 @@ C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\core
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\core\bin\Debug\edu.tamu.courses.imagesynth.core.pdb
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\core\bin\Debug\LitJson.dll
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\core\bin\Debug\Newtonsoft.Json.dll
-C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\core\obj\Debug\edu.tamu.courses.imagesynth.core.csprojResolveAssemblyReference.cache
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\core\obj\Debug\edu.tamu.courses.imagesynth.core.dll
 C:\Users\El Zede @ CSDL\Documents\projects\development\edu\tamu\courses\656\core\obj\Debug\edu.tamu.courses.imagesynth.core.pdb
