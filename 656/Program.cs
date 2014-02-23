@@ -20,6 +20,7 @@ namespace edu.tamu.courses.imagesynth
             //quiz.Run();
 
             //Console.WriteLine("Loading Scene from file...");
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Scene scene = Scene.LoadFromFile("../../data/project2.scn");
             Console.WriteLine("Scene Loaded....");
             Raytracer rt = new Raytracer();
@@ -27,7 +28,8 @@ namespace edu.tamu.courses.imagesynth
             Console.WriteLine("Starting Raytracing....");
             rt.Raytrace();
             Console.WriteLine("Done Raytracing....");
-
+            timer.Stop();
+            Console.WriteLine("Duration: {0}", timer.Elapsed.ToString("mm' : 'ss"));
             //Project2_LightMotion animation = new Project2_LightMotion(-20f, 10f);
             //animation.Execute();
 

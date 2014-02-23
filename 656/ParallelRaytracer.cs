@@ -3,7 +3,6 @@ using edu.tamu.courses.imagesynth.core.imaging;
 using edu.tamu.courses.imagesynth.core.random;
 using edu.tamu.courses.imagesynth.core.system;
 using edu.tamu.courses.imagesynth.lights;
-using edu.tamu.courses.imagesynth.shaders;
 using edu.tamu.courses.imagesynth.shapes;
 using System;
 using System.Collections.Generic;
@@ -13,36 +12,16 @@ using System.Threading.Tasks;
 
 namespace edu.tamu.courses.imagesynth
 {
-    public class Raytracer
+    public class ParallelRaytracer : Raytracer
     {
-        public Scene Scene;
-        public float X { get; protected set; }
-        public float Y { get; protected set; }
-        public Vector3 Pp { get; protected set; }
-        public Vector3 Npe { get; protected set; }
-
-        protected UniformOneGenerator randomGenerator = new UniformOneGenerator();
-        protected UniformGenerator randomGeneratorLight;
-
-        public void Compute(int I, int J, int i, int j, int m, int n, float rx, float ry)
-        {
-            X = I + (i / (float)m) + (rx / (float)m);
-            Y = J + (j / (float)n) + (ry / (float)n);
-            float x = X / Scene.Camera.Xmax;
-            float y = Y / Scene.Camera.Ymax;
-            Pp = Scene.Camera.P0 + (x * Scene.Camera.Sx * Scene.Camera.N0) + (y * Scene.Camera.Sy * Scene.Camera.N1);
-            Npe = Pp - Scene.Camera.Pe;
-            Npe.Normalize();
-            Console.WriteLine("\nX: {0}\nY: {1}\nPP: {2}\nNPE: {3}", X, Y, Pp, Npe);
-        }
-
-        public virtual void Raytrace()
+        public override void Raytrace()
         {
             randomGeneratorLight = new UniformGenerator(new Range(0, Scene.MSamplePerPixels * Scene.NSamplePerPixels - 1));
             float max = Scene.Camera.Xmax * Scene.Camera.Ymax;
             float iteration = 0f;
             ImageData image = new ImageData((int)Scene.Camera.Xmax, (int)Scene.Camera.Ymax);
-            for (int I = 0; I < Scene.Camera.Xmax; I++)
+            //for (int I = 0; I < Scene.Camera.Xmax; I++)
+            Parallel.For(0, (int)Scene.Camera.Xmax, I =>
             {
                 for (int J = 0; J < Scene.Camera.Ymax; J++)
                 {
@@ -150,7 +129,7 @@ namespace edu.tamu.courses.imagesynth
                     Console.WriteLine("{0:0.00}% Computed...", (iteration / max) * 100f);
                     iteration++;
                 }
-            }
+            });
 
             image.SaveToFile(Scene.Name + ".png");
         }
