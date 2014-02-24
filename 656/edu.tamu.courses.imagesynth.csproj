@@ -71,7 +71,9 @@
     <Compile Include="tests\Quiz2.cs" />
     <Compile Include="tests\Quiz3.cs" />
     <Compile Include="tests\Quiz4.cs" />
+    <Compile Include="tests\Quiz5.cs" />
     <Compile Include="tests\VectorTest.cs" />
+    <Compile Include="TextureManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -81,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\bak.txt" />
+    <Content Include="data\textures\testtexture.jpg" />
     <Content Include="libraries\LitJson.dll" />
     <Content Include="libraries\Newtonsoft.Json.dll" />
   </ItemGroup>

@@ -94,7 +94,15 @@ namespace edu.tamu.courses.imagesynth
                                     Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight);
                                     if (intersectedShapes.Count == 0)
                                     {
-                                        color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+                                        ShaderProperties properties = new ShaderProperties();
+                                        properties.IsCPrecomputed = false;
+                                        properties.Light = light;
+                                        properties.IPoint = iPoint;
+                                        properties.EyeVector = Npe;
+                                        properties.LightVector = lightVector;
+                                        properties.NormalVector = iNormal;
+                                        //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+                                        color = new Color(color + shape.Shader.ComputeColor(properties));
                                     }
                                     else
                                     {
@@ -121,7 +129,15 @@ namespace edu.tamu.courses.imagesynth
 
                                         if (weight_sum == 0)
                                         {
-                                            color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+                                            ShaderProperties properties = new ShaderProperties();
+                                            properties.IsCPrecomputed = false;
+                                            properties.Light = light;
+                                            properties.IPoint = iPoint;
+                                            properties.EyeVector = Npe;
+                                            properties.LightVector = lightVector;
+                                            properties.NormalVector = iNormal;
+                                            //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
+                                            color = new Color(color + shape.Shader.ComputeColor(properties));
                                         }
                                         else
                                         {
@@ -132,7 +148,16 @@ namespace edu.tamu.courses.imagesynth
                                                 c *= coefs[k];
                                             }
                                             //c = 2f * c;
-                                            color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal, c));
+                                            ShaderProperties properties = new ShaderProperties();
+                                            properties.IsCPrecomputed = true;
+                                            properties.C = c;
+                                            properties.Light = light;
+                                            properties.IPoint = iPoint;
+                                            properties.EyeVector = Npe;
+                                            properties.LightVector = lightVector;
+                                            properties.NormalVector = iNormal;
+                                            //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal, c));
+                                            color = new Color(color + shape.Shader.ComputeColor(properties));
                                         }
                                     }
 

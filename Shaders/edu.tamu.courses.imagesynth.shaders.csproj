@@ -46,6 +46,7 @@
     <Compile Include="Shader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrenchWindow.cs" />
+    <Compile Include="ShaderProperties.cs" />
     <Compile Include="SharpPhong.cs" />
     <Compile Include="SquarePhong.cs" />
   </ItemGroup>

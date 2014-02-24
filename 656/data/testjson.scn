@@ -44,7 +44,7 @@
 	"sampleperpixel" : { "m" : 1, "n" : 1 },
 	"lights" :
 	[
-		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : -10.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, "R0" : 0.5, "Alpha" : 1.5 }		
+		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, "R0" : 0.5, "Alpha" : 1.5 }		
 	],
 	"shaders" :
 	[
@@ -64,5 +64,10 @@
 		{ "Name" : "SQP1",  "Type" : "SquarePhong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
 		{ "Name" : "FW1",  "Type" : "FrenchWindow", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], 
 		  "KsAlpha": 18.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5, "WindowFrameThickness" : 0.15 }
+	],
+	"textures" :
+	[
+		{ "Name" : "test",  "Type" : "ImageTexture", "FileName" : "../../data/textures/testtexture.jpg" },
 	]
+
 }
