@@ -18,7 +18,7 @@ namespace edu.tamu.courses.imagesynth
             //get the freshest of the binaries from the dll
             String currentPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             Assembly shaderAssembly = Assembly.LoadFile(currentPath + "\\edu.tamu.courses.imagesynth.core.dll");
-            Type TextureType = shaderAssembly.GetType("edu.tamu.courses.imagesynth.core.texture." + (String)jsonShader["Type"]);
+            Type TextureType = shaderAssembly.GetType("edu.tamu.courses.imagesynth.core.textures." + (String)jsonShader["Type"]);
             Texture texture = (Texture)Activator.CreateInstance(TextureType);
             texture.PreLoad();
             foreach (PropertyInfo property in TextureType.GetProperties())
@@ -36,7 +36,7 @@ namespace edu.tamu.courses.imagesynth
                     }
                     else if (jsonValue.IsString)
                     {
-                        property.SetValue(texture, jsonValue[property.Name].ToString());
+                        property.SetValue(texture, jsonShader[property.Name].ToString());
                     }
                     else if (jsonValue.IsArray)
                     {

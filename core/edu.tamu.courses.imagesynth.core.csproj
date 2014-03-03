@@ -89,6 +89,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="textures\ImageTexture.cs" />
     <Compile Include="textures\Texture.cs" />
+    <Compile Include="textures\UVInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libraries\LitJson.dll" />

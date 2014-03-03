@@ -1,4 +1,5 @@
 ﻿using edu.tamu.courses.imagesynth.core;
+using edu.tamu.courses.imagesynth.core.textures;
 using edu.tamu.courses.imagesynth.shaders;
 using LitJson;
 using System;
@@ -13,6 +14,7 @@ namespace edu.tamu.courses.imagesynth.shapes
     public abstract class Shape
     {
         public Shader Shader { get; protected set; }
+        public Texture Texture { get; protected set; }
         public bool IsTransparent { get; set; }
 
 
@@ -32,8 +34,12 @@ namespace edu.tamu.courses.imagesynth.shapes
             Shape shape = (Shape)constructer.Invoke(null);
             shape.PreLoad();
             String shaderName = (String)jsonShape["Shader"];
-            Shader shader = ShaderManager.GetShader(shaderName);
-            shape.Shader = shader;
+            if (jsonShape.ToJson().Contains("Texture"))
+            {
+                String textureName = (String)jsonShape["Texture"];
+                shape.Texture = TextureManager.GetTexture(textureName);
+            }
+            shape.Shader = ShaderManager.GetShader(shaderName);
 
             foreach(PropertyInfo property in shapeType.GetProperties())
             {

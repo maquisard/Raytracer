@@ -14,20 +14,26 @@ namespace edu.tamu.courses.imagesynth.core.textures
         public String FileName { get; set; }
         public override Color ComputeColor(Vector2 uvcoordinates)
         {
-            float X = uvcoordinates.X * (float)Image.Width;
-            float Y = uvcoordinates.Y * (float)Image.Height;
-            int Is = (int)(X + 0.5f);
-            int Js = (int)(Y + 0.5f);
+            float X = uvcoordinates.X * (float)(Image.Width - 3);
+            float Y = uvcoordinates.Y * (float)(Image.Height - 3);
+            int Is = (int)Math.Ceiling(X + 0.5f);
+            int Js = (int)Math.Ceiling(Y + 0.5f);
+
+            if (Is > 120f || Js > 120f)
+            {
+                Is = Is;
+                Js = Js;
+            }
 
             float a11 = (X - Is + 0.5f) * (Y - Js + 0.5f);
             float a10 = (X - Is + 0.5f) * (Js - Y + 0.5f);
             float a01 = (Is - X + 0.5f) * (Y - Js + 0.5f);
             float a00 = (Is - X + 0.5f) * (Js - Y + 0.5f);
             Color color = new Color(
-                a00 * new Color(Image.GetPixel(Is - 1, Js - 1)) +
-                a10 * new Color(Image.GetPixel(Is, Js - 1)) +
-                a11 * new Color(Image.GetPixel(Is, Js)) +
-                a01 * new Color(Image.GetPixel(Is - 1, Js)));
+                a00 * GetLocalPixel(Is - 1, Js - 1) +
+                a10 * GetLocalPixel(Is, Js - 1) +
+                a11 * GetLocalPixel(Is, Js) +
+                a01 * GetLocalPixel(Is - 1, Js));
 
             return color;
         }
@@ -36,6 +42,13 @@ namespace edu.tamu.courses.imagesynth.core.textures
         {
             Bitmap fileImage = edu.tamu.courses.imagesynth.core.imaging.Image.FromFile(FileName);
             Image = UnmanagedImage.FromManagedImage(fileImage);
+        }
+
+        private Color GetLocalPixel(int i, int j)
+        {
+            Color color = new Color(Image.GetPixel(i, j));
+            color.PostLoad();
+            return color;
         }
 
         public override void PostLoad()

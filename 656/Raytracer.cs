@@ -2,6 +2,7 @@
 using edu.tamu.courses.imagesynth.core.imaging;
 using edu.tamu.courses.imagesynth.core.random;
 using edu.tamu.courses.imagesynth.core.system;
+using edu.tamu.courses.imagesynth.core.textures;
 using edu.tamu.courses.imagesynth.lights;
 using edu.tamu.courses.imagesynth.shaders;
 using edu.tamu.courses.imagesynth.shapes;
@@ -101,6 +102,11 @@ namespace edu.tamu.courses.imagesynth
                                         properties.EyeVector = Npe;
                                         properties.LightVector = lightVector;
                                         properties.NormalVector = iNormal;
+                                        properties.Texture = shape.Texture;
+                                        if (shape is UVInterface)
+                                        {
+                                            properties.UVCoordinates = (shape as UVInterface).UVCoordinates(iPoint);
+                                        }
                                         //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
                                         color = new Color(color + shape.Shader.ComputeColor(properties));
                                     }
@@ -136,6 +142,11 @@ namespace edu.tamu.courses.imagesynth
                                             properties.EyeVector = Npe;
                                             properties.LightVector = lightVector;
                                             properties.NormalVector = iNormal;
+                                            properties.Texture = shape.Texture;
+                                            if (shape is UVInterface)
+                                            {
+                                                properties.UVCoordinates = (shape as UVInterface).UVCoordinates(iPoint);
+                                            }
                                             //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
                                             color = new Color(color + shape.Shader.ComputeColor(properties));
                                         }
@@ -156,6 +167,11 @@ namespace edu.tamu.courses.imagesynth
                                             properties.EyeVector = Npe;
                                             properties.LightVector = lightVector;
                                             properties.NormalVector = iNormal;
+                                            properties.Texture = shape.Texture;
+                                            if (shape is UVInterface)
+                                            {
+                                                properties.UVCoordinates = (shape as UVInterface).UVCoordinates(iPoint);
+                                            }
                                             //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal, c));
                                             color = new Color(color + shape.Shader.ComputeColor(properties));
                                         }

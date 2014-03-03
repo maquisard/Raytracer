@@ -83,6 +83,12 @@ namespace edu.tamu.courses.imagesynth
                     ShaderManager.CreateShaderFromJson(jsonShader);
                 }
 
+                for (int i = 0; i < jsonScene["textures"].Count; i++)
+                {
+                    JsonData jsonShader = jsonScene["textures"][i];
+                    TextureManager.CreateShaderFromJson(jsonShader);
+                }
+
                 //locading the shapes -- which will also call the shaders
                 for (int i = 0; i < jsonScene["shapes"].Count; i++)
                 {
