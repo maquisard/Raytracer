@@ -45,6 +45,17 @@ namespace edu.tamu.courses.imagesynth.shaders
             return new Color(light.ComputeFinalLightColor(Ph) * color);
         }
 
+        public override Color ComputeColor(ShaderProperties properties)
+        {
+            if (properties.Texture != null)
+            {
+                Color1 = new Color(properties.Texture.ComputeColor(properties.UVCoordinates));
+                Color0 = new Color(Color1 - (155f / 255f));
+            }
+            return base.ComputeColor(properties);
+        }
+
+
         public virtual float ComputeS(Vector3 npe, Vector3 nh, Vector3 nlh)
         {
             Vector3 v = -1f * npe;

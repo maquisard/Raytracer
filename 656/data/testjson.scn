@@ -2,17 +2,18 @@
 	"name"	 : "test_scene",
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 } },
+		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "soccerball" },
+
 		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : -25.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 },
-		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } },
+		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 },
 		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -1.0 },
-		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } },
+		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 },
 		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 1.0 },
-		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 } },
+		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 },
 		{ "Type" : "Plane", "Shader" : "L1", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.5, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },
-		  "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 } },
+		  "Texture" : "test-2", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 },
 		{ "Type" : "Plane", "Shader" : "L3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },
-		  "Texture" : "test", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 } }
+		  "Texture" : "test", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 }
 	],
 
 	"repeater" :
@@ -72,7 +73,9 @@
 	],
 	"textures" :
 	[
-		{ "Name" : "test",  "Type" : "ImageTexture", "FileName" : "../../data/textures/wallpapertest-small.png" }
+		{ "Name" : "soccerball",  "Type" : "ImageTexture", "FileName" : "../../data/textures/soccerball-2.jpg" },
+		{ "Name" : "test-2",  "Type" : "ImageTexture", "FileName" : "../../data/textures/wallpaper-2-small.png" },
+		{ "Name" : "test",  "Type" : "ImageTexture", "FileName" : "../../data/textures/wallpaper-small.png" }
 	]
 
 }

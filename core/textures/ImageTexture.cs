@@ -19,7 +19,7 @@ namespace edu.tamu.courses.imagesynth.core.textures
             int Is = (int)Math.Ceiling(X + 0.5f);
             int Js = (int)Math.Ceiling(Y + 0.5f);
 
-            if (Is > 120f || Js > 120f)
+            if (Is < 0 || Is > Image.Width || Js <0 || Js > Image.Height)
             {
                 Is = Is;
                 Js = Js;

@@ -1,6 +1,7 @@
 ﻿using edu.tamu.courses.imagesynth.Animations.Custom;
 using edu.tamu.courses.imagesynth.core;
 using edu.tamu.courses.imagesynth.core.imaging;
+using edu.tamu.courses.imagesynth.core.textures;
 using edu.tamu.courses.imagesynth.shapes;
 using edu.tamu.courses.imagesynth.tests;
 using System;
@@ -19,6 +20,17 @@ namespace edu.tamu.courses.imagesynth
             //Quiz6 quiz = new Quiz6();
             //quiz.Run();
 
+            LaunchRaytracer();
+
+            //WallPaper wallpaper = new WallPaper("../../data/textures/wallpapertest-2-small.png");
+            //wallpaper.CountX = 20;
+            //wallpaper.CountY = 20;
+            //wallpaper.Generate("../../data/textures/wallpaper-2-small.png");
+            //Console.WriteLine("Done....");
+        }
+
+        public static void LaunchRaytracer()
+        {
             Console.WriteLine("Loading Scene from file...");
             var timer = System.Diagnostics.Stopwatch.StartNew();
             Scene scene = Scene.LoadFromFile("../../data/testjson.scn");
@@ -30,7 +42,6 @@ namespace edu.tamu.courses.imagesynth
             Console.WriteLine("Done Raytracing....");
             timer.Stop();
             Console.WriteLine("Duration: {0}", timer.Elapsed.ToString("mm' : 'ss"));
-
         }
     }
 }
