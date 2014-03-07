@@ -42,6 +42,10 @@ namespace edu.tamu.courses.imagesynth.lights
                     {
                         property.SetValue(light, int.Parse(jsonLight[property.Name].ToString()));
                     }
+                    else if (jsonValue.IsString)
+                    {
+                        property.SetValue(light, (String)jsonLight[property.Name]);
+                    }
                     else if (jsonValue.IsObject)
                     {
                         String otypeName = (String)jsonValue["Type"];

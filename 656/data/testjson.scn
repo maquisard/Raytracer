@@ -4,21 +4,13 @@
 	[
 		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "soccerball" },
 
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : -25.0, "Y" : 0.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 },
-		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -1.0 },
-		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 },
-		{ "Type" : "Plane", "Shader" : "L2", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : -10.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 1.0 },
-		  "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 },
-		{ "Type" : "Plane", "Shader" : "L1", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.5, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },
-		  "Texture" : "test-2", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 },
 		{ "Type" : "Plane", "Shader" : "L3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },
 		  "Texture" : "test", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 }
 	],
 
 	"repeater" :
 	{
-		"CountX" : 4,
+		"CountX" : 2,
 		"CountY" : 1,
 		"CountZ" : 2,
 		"OffsetX" : -5.0,
@@ -48,10 +40,14 @@
 		"Sx" : 5.5
 	},
 	"sampleperpixel" : { "m" : 4, "n" : 4 },
+
 	"lights" :
 	[
-		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, "R0" : 0.5, "Alpha" : 1.5 }		
+		{ "Type" : "LightProjection", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, 
+		 "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 1.0 }, "Distance" : 4.0, "Sx" : 10.0, "Sy" : 10.0, 
+		 "ImageTexturePath" : "../../data/textures/testtexture.jpg" }		
 	],
+
 	"shaders" :
 	[
 		{ "Name" : "L1",  "Type" : "Lambert", "Color0" : [27.0, 46.0,55.0], "Color1" : [227.0, 246.0, 255.0], "Alpha" : 1.0 },
@@ -71,6 +67,7 @@
 		{ "Name" : "FW1",  "Type" : "FrenchWindow", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], 
 		  "KsAlpha": 18.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5, "WindowFrameThickness" : 0.15 }
 	],
+
 	"textures" :
 	[
 		{ "Name" : "soccerball",  "Type" : "ImageTexture", "FileName" : "../../data/textures/soccerball-2.jpg" },

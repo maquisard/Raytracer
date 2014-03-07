@@ -93,7 +93,7 @@ namespace edu.tamu.courses.imagesynth
                                     //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
 
                                     Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight);
-                                    if (intersectedShapes.Count == 0)
+                                    if (intersectedShapes.Count == 0 || light is LightProjection)
                                     {
                                         ShaderProperties properties = new ShaderProperties();
                                         properties.IsCPrecomputed = false;

@@ -26,20 +26,27 @@ namespace edu.tamu.courses.imagesynth.lights
         {
             //shoot the ray from here.
             Vector3 L = this.ComputeLightVector(P);
+            L = -1f * L;
             L.Normalize();
 
             float t = -1f;
             float denom = L % Normal;
-            if (denom == 0f) return Color.BLACK;
 
-            t = (((Position + Normal * Distance) - P) % Normal) / denom;
+            if (denom < 0) return this.Color;
+
+            if (Math.Abs(denom) <= 0.01f) return this.Color;
+
+            Vector3 P0 = (Position + Normal * Distance);
+            t = ((P0 - P) % Normal) / denom;
             //Now check that the plane is within the bounds of the plane
-            Vector3 Ph = P + t * L;
+            if (t <= -0.01) return this.Color; 
+
+            Vector3 Ph = P - t * L;
             float u = ((Ph - P00) % Nx) / Sx;
             float v = ((Ph - P00) % Ny) / Sy;
-            if (!(u <= 1f && v <= 1f))
+            if (!(u >= 0f && u <= 1f && v >= 0f && v <= 1f))
             {
-                return Color.BLACK;
+                return this.Color;
             }
 
             return Texture.ComputeColor(new Vector2(u, v));
@@ -57,7 +64,7 @@ namespace edu.tamu.courses.imagesynth.lights
             Nx.Normalize();
             Ny.Normalize();
 
-            P00 = P0 - 0.5f * (Sx * Nx + Sy * Ny);
+            P00 = P0 - 0.5f * ((Sx * Nx) + (Sy * Ny));
             this.CreateTexture();
         }
 
