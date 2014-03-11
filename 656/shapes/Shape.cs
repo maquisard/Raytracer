@@ -15,6 +15,7 @@ namespace edu.tamu.courses.imagesynth.shapes
     {
         public Shader Shader { get; protected set; }
         public Texture Texture { get; protected set; }
+        public NormalMap NormalMap { get; set; }
         public bool IsTransparent { get; set; }
 
 
@@ -24,6 +25,11 @@ namespace edu.tamu.courses.imagesynth.shapes
         public Shape() { this.IsTransparent = false; }
 
         public abstract Vector3 NormalAt(Vector3 p);
+
+        public virtual Vector3 RealNormalAt(Vector3 p)
+        {
+            return NormalAt(p);
+        }
 
         public abstract float Intersect(Vector3 pe, Vector3 npe);
 
@@ -39,6 +45,12 @@ namespace edu.tamu.courses.imagesynth.shapes
                 String textureName = (String)jsonShape["Texture"];
                 shape.Texture = TextureManager.GetTexture(textureName);
             }
+            if (jsonShape.ToJson().Contains("NormalMap"))
+            {
+                String mapName = (String)jsonShape["NormalMap"];
+                shape.NormalMap = (NormalMap)TextureManager.GetTexture(mapName);
+            }
+
             shape.Shader = ShaderManager.GetShader(shaderName);
 
             foreach(PropertyInfo property in shapeType.GetProperties())

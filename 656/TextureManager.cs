@@ -23,7 +23,7 @@ namespace edu.tamu.courses.imagesynth
             texture.PreLoad();
             foreach (PropertyInfo property in TextureType.GetProperties())
             {
-                if (jsonShader.ToJson().Contains(property.Name))
+                if (jsonShader.ToJson().Contains(property.Name) && !property.Name.Equals("Image"))
                 {
                     JsonData jsonValue = jsonShader[property.Name];
                     if (jsonValue.IsDouble)

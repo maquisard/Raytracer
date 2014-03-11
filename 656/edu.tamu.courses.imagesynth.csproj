@@ -85,8 +85,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\bak.txt" />
+    <Content Include="data\textures\normalmaptest.jpg" />
+    <Content Include="data\textures\soccerball-1.jpg" />
+    <Content Include="data\textures\soccerball-1.png" />
+    <Content Include="data\textures\soccerball-2.jpg" />
+    <Content Include="data\textures\soccerball-2.png" />
+    <Content Include="data\textures\soccerball-template.png" />
+    <Content Include="data\textures\soccerBallTexture.jpg" />
     <Content Include="data\textures\testtexture-small.jpg" />
     <Content Include="data\textures\testtexture.jpg" />
+    <Content Include="data\textures\wallpaper-2-small.png" />
+    <Content Include="data\textures\wallpaper-2.png" />
+    <Content Include="data\textures\wallpaper-small.png" />
+    <Content Include="data\textures\wallpaper.png" />
+    <Content Include="data\textures\wallpapertest-2-small.png" />
+    <Content Include="data\textures\wallpapertest-2.png" />
+    <Content Include="data\textures\wallpapertest-small.png" />
+    <Content Include="data\textures\wallpapertest-xsmall.png" />
+    <Content Include="data\textures\wallpapertest.png" />
     <Content Include="libraries\LitJson.dll" />
     <Content Include="libraries\Newtonsoft.Json.dll" />
   </ItemGroup>

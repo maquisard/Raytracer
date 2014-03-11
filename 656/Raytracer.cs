@@ -121,13 +121,21 @@ namespace edu.tamu.courses.imagesynth
                                             Vector3 point = iPoint + iShape.Key * lightVector;
                                             if (shape != iShape.Value) // self intersection
                                             {
-                                                Vector3 normal = iShape.Value.NormalAt(point);
+                                                Vector3 normal;
+                                                if (iShape.Value.NormalMap != null)
+                                                {
+                                                    normal = iShape.Value.RealNormalAt(point);
+                                                }
+                                                else
+                                                {
+                                                    normal = iShape.Value.NormalAt(point);
+                                                }
                                                 weights[g] = (point - light.Position).Norm / distanceToLight;
                                                 weight_sum += weights[g];
                                                 Vector3 nlh = light.Position - point;
                                                 nlh.Normalize();
                                                 float cosTheta = nlh % normal;
-                                                //cosTheta = (cosTheta + 1f) / 2f;
+                                                cosTheta = (cosTheta + 1f);
                                                 coefs[g] = cosTheta < 0f ? 0f : cosTheta;
                                                 g++;
                                             }

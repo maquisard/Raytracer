@@ -88,7 +88,14 @@
     <Compile Include="lights\SpotLight.cs" />
     <Compile Include="lights\SquareLight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="textures\ImageSolidTexture.cs" />
     <Compile Include="textures\ImageTexture.cs" />
+    <Compile Include="textures\MarbleTexture.cs" />
+    <Compile Include="textures\NormalInterface.cs" />
+    <Compile Include="textures\NormalMap.cs" />
+    <Compile Include="textures\NormalNoise.cs" />
+    <Compile Include="textures\SolidNoise.cs" />
+    <Compile Include="textures\SolidTexture.cs" />
     <Compile Include="textures\Texture.cs" />
     <Compile Include="textures\UVInterface.cs" />
     <Compile Include="textures\WallPaper.cs" />

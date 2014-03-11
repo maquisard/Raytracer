@@ -49,7 +49,7 @@ namespace edu.tamu.courses.imagesynth.lights
                 return this.Color;
             }
 
-            return Texture.ComputeColor(new Vector2(u, v));
+            return Texture.ComputeColor(new Vector2(u, v), P);
         }
 
         public override void PostLoad()

@@ -10,10 +10,11 @@ namespace edu.tamu.courses.imagesynth.core.textures
 {
     public class ImageTexture : Texture
     {
-        protected UnmanagedImage Image { get; private set; }
+        public UnmanagedImage Image { get; private set; }
         public String FileName { get; set; }
-        public override Color ComputeColor(Vector2 uvcoordinates)
+        public override Color ComputeColor(Vector texCoordinates, Vector3 iPoint)
         {
+            Vector2 uvcoordinates = texCoordinates as Vector2;
             float X = uvcoordinates.X * (float)(Image.Width - 3);
             float Y = uvcoordinates.Y * (float)(Image.Height - 3);
             int Is = (int)Math.Ceiling(X + 0.5f);

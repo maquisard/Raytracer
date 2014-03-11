@@ -2,7 +2,7 @@
 	"name"	 : "test_scene",
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "soccerball" },
+		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "marble", "NormalMap" : "test-map" },
 
 		{ "Type" : "Plane", "Shader" : "L3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },
 		  "Texture" : "test", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 }
@@ -43,9 +43,7 @@
 
 	"lights" :
 	[
-		{ "Type" : "LightProjection", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, 
-		 "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 1.0 }, "Distance" : 4.0, "Sx" : 10.0, "Sy" : 10.0, 
-		 "ImageTexturePath" : "../../data/textures/testtexture.jpg" }		
+		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 5.0, "Y" : -3.0, "Z" : 0.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 }, "R0" : 0.5, "Alpha" : 1.5 }		
 	],
 
 	"shaders" :
@@ -72,6 +70,8 @@
 	[
 		{ "Name" : "soccerball",  "Type" : "ImageTexture", "FileName" : "../../data/textures/soccerball-2.jpg" },
 		{ "Name" : "test-2",  "Type" : "ImageTexture", "FileName" : "../../data/textures/wallpaper-2-small.png" },
+		{ "Name" : "test-map",  "Type" : "NormalMap", "FileName" : "../../data/textures/normal_3.png", "Scale" : 0.1, "Amount" : 50.0 },
+		{ "Name" : "marble",  "Type" : "MarbleTexture", "StripesPerUnit" : 0.15, "Scale" : 5.0, "Octaves" : 8 },
 		{ "Name" : "test",  "Type" : "ImageTexture", "FileName" : "../../data/textures/wallpaper-small.png" }
 	]
 

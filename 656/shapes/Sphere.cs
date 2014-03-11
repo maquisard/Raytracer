@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace edu.tamu.courses.imagesynth.shapes
 {
-    public class Sphere : Shape, UVInterface
+    public class Sphere : Shape, UVInterface, NormalInterface
     {
         public float Radius { get; set; }
         public Vector3 Center { get; set; }
@@ -72,11 +72,25 @@ namespace edu.tamu.courses.imagesynth.shapes
             return t;
         }
 
-        public override Vector3 NormalAt(Vector3 p)
+        public override Vector3 RealNormalAt(Vector3 p)
         {
             Vector3 normal = p - Center;
             normal.Normalize();
             return normal;
+        }
+
+        public override Vector3 NormalAt(Vector3 p)
+        {
+            Vector3 normal = p - Center;
+            normal.Normalize();
+            if (NormalMap == null)
+            {
+                return normal;
+            }
+            else
+            {
+                return this.GetNormalVector(normal, p, this.UVCoordinates(p));
+            }
         }
 
         public Vector2 UVCoordinates(Vector3 P)
@@ -94,12 +108,47 @@ namespace edu.tamu.courses.imagesynth.shapes
             uvcoordinates.X = phi / (float)(2 * Math.PI);
             uvcoordinates.Y = (float)((Math.PI - theta) / Math.PI);
 
-            if (uvcoordinates.X > 1 || uvcoordinates.Y > 1 || float.IsNaN(uvcoordinates.X))
+            if (uvcoordinates.X > 1 || uvcoordinates.Y > 1 || float.IsNaN(uvcoordinates.X) || float.IsNaN(uvcoordinates.Y))
             {
                 throw new Exception("This must never happen");
             }
 
             return uvcoordinates;
         }
+
+        public Vector3 GetNormalVector(Vector3 iNormal, Vector3 iPoint, Vector texCoordinates)
+        {
+            //return NormalMap.GenerateNormal(iNormal, iPoint);
+            Color color = NormalMap.ComputeColor(texCoordinates, iPoint);
+            Vector2 uvcoordinates = texCoordinates as Vector2;
+            float X = uvcoordinates.X * (float)(NormalMap.Image.Width - 3);
+            float Y = uvcoordinates.Y * (float)(NormalMap.Image.Height - 3);
+
+            Vector3 Phx = GetCartesianCoordinates(X + 2, Y);
+            Vector3 Phy = GetCartesianCoordinates(X, Y + 2);
+            Vector3 Nx = Phx - iPoint; Nx.Normalize();
+            Vector3 Ny = Phy - iPoint; Ny.Normalize();
+
+            float nx = 2 * color.R - 1;
+            float nz = 2 * color.G - 1;
+            float ny = color.B;
+
+            Vector3 NewNormal = iNormal * ny + Nx * nx + Ny * nz;
+            NewNormal.Normalize();
+            return NewNormal;
+        }
+
+        public Vector3 GetCartesianCoordinates(float x, float y)
+        {
+            float phi = (float)((x / NormalMap.Image.Width) * 2 * Math.PI);
+            float theta = (float)((1 - (y / NormalMap.Image.Height)) * Math.PI);
+
+            float r = Radius;
+            float xh = Center.X + (float)(r * Math.Cos(phi) * Math.Sin(theta));
+            float yh = Center.Y + (float)(r * Math.Sin(phi) * Math.Sin(theta));
+            float zh = Center.Z + (float)Math.Cos(theta);
+            return new Vector3(xh, yh, zh);
+        }
+
     }
 }
