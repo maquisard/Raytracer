@@ -35,7 +35,7 @@ namespace edu.tamu.courses.imagesynth.shaders
             if (properties.Texture != null)
             {
                 Color1 = new Color(properties.Texture.ComputeColor(properties.UVCoordinates, properties.IPoint));
-                Color0 = new Color(Color1 - (155f/255f));
+                Color0 = new Color(Color1 * 0.1f);
             }
             return base.ComputeColor(properties);
         }

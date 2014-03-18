@@ -2,7 +2,7 @@
 	"name"	 : "test_scene",
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "marble", "NormalMap" : "test-map" },
+		{ "Type" : "Sphere", "Shader" : "P1", "Radius" : 1.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "marble" },
 
 		{ "Type" : "Plane", "Shader" : "L3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },
 		  "Texture" : "test", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 }

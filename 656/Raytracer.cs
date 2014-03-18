@@ -163,8 +163,8 @@ namespace edu.tamu.courses.imagesynth
                                             float c = 1;
                                             for (int k = 0; k < weights.Length; k++)
                                             {
-                                                //c *= (float)Math.Pow(coefs[k], weights[k] / weight_sum);
-                                                c *= coefs[k];
+                                                c *= (float)Math.Pow(coefs[k], weights[k] / weight_sum);
+                                                //c *= coefs[k];
                                             }
                                             //c = 2f * c;
                                             ShaderProperties properties = new ShaderProperties();
