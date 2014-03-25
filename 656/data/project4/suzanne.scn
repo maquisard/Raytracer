@@ -1,8 +1,8 @@
 ﻿{
-	"name"	 : "tetahedron",
+	"name"	 : "Suzanne",
 	"shapes" : 
 	[
-		{ "Type" : "Mesh", "Shader" : "G1", "FileName" : "../../data/objects/tetahedron.obj" },
+		{ "Type" : "Mesh", "Shader" : "G1", "FileName" : "../../data/objects/Suzanne.obj" },
 
 		{ "Type" : "Plane", "Shader" : "L3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },
 		  "Texture" : "test", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 }

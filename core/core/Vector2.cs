@@ -426,6 +426,17 @@ namespace edu.tamu.courses.imagesynth.core
         /// 
         public static bool operator ==( Vector2 vector1, Vector2 vector2 )
         {
+            if (System.Object.ReferenceEquals(vector1, vector2))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)vector1 == null) || ((object)vector2 == null))
+            {
+                return false;
+            }
+
             return ( ( vector1.X == vector2.X ) && ( vector1.Y == vector2.Y ) );
         }
 

@@ -61,6 +61,8 @@
     <Compile Include="ShaderManager.cs" />
     <Compile Include="shapes\Cylinder.cs" />
     <Compile Include="shapes\Ellipsoid.cs" />
+    <Compile Include="shapes\Face.cs" />
+    <Compile Include="shapes\Mesh.cs" />
     <Compile Include="shapes\Plane.cs" />
     <Compile Include="shapes\Quadrics.cs" />
     <Compile Include="shapes\Repeater.cs" />
@@ -68,20 +70,34 @@
     <Compile Include="shapes\SkySphere.cs" />
     <Compile Include="shapes\Sphere.cs" />
     <Compile Include="shapes\Triangle.cs" />
+    <Compile Include="shapes\Vertex.cs" />
     <Compile Include="tests\IntersectionTest.cs" />
     <Compile Include="tests\Quiz2.cs" />
     <Compile Include="tests\Quiz3.cs" />
     <Compile Include="tests\Quiz4.cs" />
     <Compile Include="tests\Quiz5.cs" />
     <Compile Include="tests\Quiz6.cs" />
+    <Compile Include="tests\Quiz7.cs" />
     <Compile Include="tests\VectorTest.cs" />
     <Compile Include="TextureManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="data\objects\cube.obj" />
+    <None Include="data\objects\Suzanne.obj" />
+    <None Include="data\objects\t-cube.obj" />
+    <None Include="data\objects\t-suzanne.obj" />
+    <None Include="data\objects\t-tetahedron.obj" />
+    <None Include="data\objects\teapot.obj" />
+    <None Include="data\objects\tetahedron.obj" />
     <None Include="data\project1.scn" />
     <None Include="data\project2.scn" />
     <None Include="data\project3\comprehensive.scn" />
+    <None Include="data\project4\cube.scn" />
+    <None Include="data\project4\suzanne.scn" />
+    <None Include="data\project4\textture_cube.scn" />
+    <None Include="data\project4\texture_suzanne.scn" />
+    <None Include="data\project4\texture_tetrahedron.scn" />
     <None Include="data\testjson.scn" />
   </ItemGroup>
   <ItemGroup>

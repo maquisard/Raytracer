@@ -20,14 +20,14 @@ namespace edu.tamu.courses.imagesynth.shapes
         private Vector3 Nx { get; set; }
         private Vector3 Ny { get; set; }
 
-        public Plane() { this.Point = Vector3.Zero; this.Normal = new Vector3(0.0f, 1.0f, 0.0f); Sx = Sy = 25; }
+        public Plane() { this.Point = Vector3.Zero; this.Normal = new Vector3(0.0f, 1.0f, 0.0f); Sx = Sy = 50; }
 
         public Plane(Vector3 point, Vector3 normal)
         {
             this.Point = point;
             this.Normal = normal;
             this.Normal.Normalize();
-            Sx = Sy = 25;
+            Sx = Sy = 50;
         }
 
         public Plane(Vector3 normal)

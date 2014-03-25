@@ -1,8 +1,8 @@
 ﻿{
-	"name"	 : "tetahedron",
+	"name"	 : "texture_cube",
 	"shapes" : 
 	[
-		{ "Type" : "Mesh", "Shader" : "G1", "FileName" : "../../data/objects/tetahedron.obj" },
+		{ "Type" : "Mesh", "Shader" : "G1", "FileName" : "../../data/objects/t-cube.obj", "Texture" : "brick" },
 
 		{ "Type" : "Plane", "Shader" : "L3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },
 		  "Texture" : "test", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 50.0, "Sy" : 50.0 }
@@ -39,7 +39,7 @@
 		"Ymax" : 320.0,
 		"Sx" : 5.5
 	},
-	"sampleperpixel" : { "m" : 1, "n" : 1 },
+	"sampleperpixel" : { "m" : 4, "n" : 4 },
 
 	"lights" :
 	[
@@ -72,8 +72,6 @@
 		{ "Name" : "soccerball",  "Type" : "ImageTexture", "FileName" : "../../data/textures/soccerball-2.jpg" },
 		{ "Name" : "brick",  "Type" : "ImageTexture", "FileName" : "../../data/textures/brick-small.jpg" },
 		{ "Name" : "wood",  "Type" : "ImageTexture", "FileName" : "../../data/textures/woodimage.jpg" },
-		{ "Name" : "fabric",  "Type" : "ImageTexture", "FileName" : "../../data/textures/fabric.jpg" },
-		{ "Name" : "fabric-normal",  "Type" : "NormalMap", "FileName" : "../../data/textures/fabric_normal.jpg" },
 		{ "Name" : "test-2",  "Type" : "ImageTexture", "FileName" : "../../data/textures/wallpaper-2-small.png" },
 		{ "Name" : "test-map",  "Type" : "NormalMap", "FileName" : "../../data/textures/normal_3.png", "Scale" : 0.1, "Amount" : 50.0 },
 		{ "Name" : "marble",  "Type" : "MarbleTexture", "StripesPerUnit" : 0.15, "Scale" : 5.0, "Octaves" : 8 },

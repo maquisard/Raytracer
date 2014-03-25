@@ -56,7 +56,7 @@ namespace edu.tamu.courses.imagesynth.shapes
             foreach(PropertyInfo property in shapeType.GetProperties())
             {
                 //Console.WriteLine(property.Name);
-                if (jsonShape.ToJson().Contains(property.Name))
+                if (jsonShape.ToJson().Contains(property.Name) && property.Name != "Shader" && property.Name != "Texture" && property.Name != "NormalMap")
                 {
                     JsonData  jsonValue = jsonShape[property.Name];
                     if (jsonValue.IsDouble)
@@ -70,6 +70,10 @@ namespace edu.tamu.courses.imagesynth.shapes
                     else if (jsonValue.IsBoolean)
                     {
                         property.SetValue(shape, bool.Parse(jsonShape[property.Name].ToString()));
+                    }
+                    else if (jsonValue.IsString && !((String)jsonValue).Contains("Shader"))
+                    {
+                        property.SetValue(shape, jsonShape[property.Name].ToString());
                     }
                     else if (jsonValue.IsObject)
                     {

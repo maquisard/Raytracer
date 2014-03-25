@@ -17,7 +17,7 @@ namespace edu.tamu.courses.imagesynth
         public static void Main(string[] args)
         {
 
-            //Quiz6 quiz = new Quiz6();
+            //Quiz7 quiz = new Quiz7();
             //quiz.Run();
 
             LaunchRaytracer();
@@ -33,7 +33,7 @@ namespace edu.tamu.courses.imagesynth
         {
             Console.WriteLine("Loading Scene from file...");
             var timer = System.Diagnostics.Stopwatch.StartNew();
-            Scene scene = Scene.LoadFromFile("../../data/project3/comprehensive.scn");
+            Scene scene = Scene.LoadFromFile("../../data/testjson.scn");
             Console.WriteLine("Scene Loaded....");
             Raytracer rt = new Raytracer();
             rt.Scene = scene;
