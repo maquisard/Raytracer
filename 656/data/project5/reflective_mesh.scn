@@ -1,9 +1,11 @@
 ﻿{
-	"name"	 : "test_scene",
+	"name"	 : "reflective_mesh",
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Shader" : "M1", "Radius" : 3.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : -2.0, "Z" : 0.0 }, "NormalMap" : "soccerball-normal" },
-		{ "Type" : "SkySphere", "Shader" : "G2", "Radius" : 1000.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "env-map" }
+		{ "Type" : "Mesh", "Shader" : "M1", "FileName" : "../../data/objects/simplemodel.obj" },
+		{ "Type" : "SkySphere", "Shader" : "G2", "Radius" : 20.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "sky-map" },
+		{ "Type" : "Plane", "Shader" : "L3", "Point" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 }, "Normal" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },
+		  "Texture" : "test", "Up" : { "Type" : "Vector3", "X" : 1.0, "Y" : 0.0, "Z" : 0.0 }, "Sx" : 100.0, "Sy" : 100.0 }
 	],
 
 	"repeater" :
@@ -27,7 +29,6 @@
 			{ "Name" : "S2", "Value" : 1.0 }
 		]
 	},
-
 	"camera" : 
 	{
 		"Pe" : { "Type" : "Vector3", "X" : 5.0, "Y" : -3.0, "Z" : 0.0 },
@@ -38,7 +39,6 @@
 		"Ymax" : 320.0,
 		"Sx" : 5.5
 	},
-
 	"sampleperpixel" : { "m" : 4, "n" : 4 },
 
 	"lights" :
@@ -60,12 +60,11 @@
 		{ "Name" : "G5",  "Type" : "Gooch", "Color0" : [55.0, 0.0, 0.0], "Color1" : [255.0, 0.0, 0.0], "Alpha" : 1.0 },
 		
 		{ "Name" : "P1",  "Type" : "Phong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [102.0, 204.0, 255.0], "Color2" : [233.0, 241.0, 245.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0 },
-		
-		{ "Name" : "M1",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [200.0, 0.0, 0.0], "Color2" : [233.0, 241.0, 245.0], 
-				   "KsAlpha": 50.0, "Ks" : 0.65, "SMethod" : 1, "Alpha" : 1.0, "IsReflective" : true },
+		{ "Name" : "M1",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [102.0, 204.0, 255.0], "Color2" : [233.0, 241.0, 245.0], 
+				   "KsAlpha": 75.0, "Ks" : 0.8, "SMethod" : 1, "Alpha" : 1.0, "IsReflective" : true },
 		
 		{ "Name" : "M2",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [0.0, 255.0, 0.0], "Color2" : [233.0, 241.0, 245.0], 
-				   "KsAlpha": 15.0, "Ks" : 0.5, "SMethod" : 1, "Alpha" : 1.0, "IsReflective" : true },
+				   "KsAlpha": 15.0, "Ks" : 0.4, "SMethod" : 1, "Alpha" : 1.0, "IsReflective" : true },
 
 		{ "Name" : "SP1",  "Type" : "SharpPhong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
 		{ "Name" : "SQP1",  "Type" : "SquarePhong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [150.0, 0.0, 0.0], "Color2" : [255.0, 255.0, 255.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "CUTOFF" : 0.5 },
@@ -76,11 +75,9 @@
 	"textures" :
 	[
 		{ "Name" : "soccerball",  "Type" : "ImageTexture", "FileName" : "../../data/textures/soccerball-2.jpg" },
-		{ "Name" : "soccerball-normal",  "Type" : "NormalMap", "FileName" : "../../data/textures/soccerball-1-normalmap.jpg" },
 		{ "Name" : "brick",  "Type" : "ImageTexture", "FileName" : "../../data/textures/brick-small.jpg" },
 		{ "Name" : "wood",  "Type" : "ImageTexture", "FileName" : "../../data/textures/woodimage.jpg" },
 		{ "Name" : "sky-map",  "Type" : "ImageTexture", "FileName" : "../../data/textures/env-maps/sky-map.jpg" },
-		{ "Name" : "env-map",  "Type" : "ImageTexture", "FileName" : "../../data/textures/env-maps/indoor-map-ext.jpg" },
 		{ "Name" : "fabric",  "Type" : "ImageTexture", "FileName" : "../../data/textures/fabric.jpg" },
 		{ "Name" : "fabric-normal",  "Type" : "NormalMap", "FileName" : "../../data/textures/fabric_normal.jpg" },
 		{ "Name" : "test-2",  "Type" : "ImageTexture", "FileName" : "../../data/textures/wallpaper-2-small.png" },

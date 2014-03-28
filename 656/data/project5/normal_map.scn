@@ -1,5 +1,5 @@
 ﻿{
-	"name"	 : "test_scene",
+	"name"	 : "normal_map",
 	"shapes" : 
 	[
 		{ "Type" : "Sphere", "Shader" : "M1", "Radius" : 3.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : -2.0, "Z" : 0.0 }, "NormalMap" : "soccerball-normal" },

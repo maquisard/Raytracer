@@ -102,8 +102,10 @@
     <None Include="data\project4\textture_cube.scn" />
     <None Include="data\project4\texture_suzanne.scn" />
     <None Include="data\project4\texture_tetrahedron.scn" />
+    <None Include="data\project5\environment_map.scn" />
     <None Include="data\project5\reflected_cube.scn" />
     <None Include="data\project5\reflected_sphere.scn" />
+    <None Include="data\project5\reflective_mesh.scn" />
     <None Include="data\testjson.scn" />
   </ItemGroup>
   <ItemGroup>

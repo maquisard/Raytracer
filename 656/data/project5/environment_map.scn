@@ -1,8 +1,8 @@
 ﻿{
-	"name"	 : "test_scene",
+	"name"	 : "environment_map",
 	"shapes" : 
 	[
-		{ "Type" : "Sphere", "Shader" : "M1", "Radius" : 3.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : -2.0, "Z" : 0.0 }, "NormalMap" : "soccerball-normal" },
+		{ "Type" : "Sphere", "Shader" : "M1", "Radius" : 3.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : -2.0, "Z" : 0.0 } },
 		{ "Type" : "SkySphere", "Shader" : "G2", "Radius" : 1000.0, "Center" : { "Type" : "Vector3", "X" : 0.0, "Y" : 0.0, "Z" : 0.0 }, "Texture" : "env-map" }
 	],
 
@@ -27,7 +27,6 @@
 			{ "Name" : "S2", "Value" : 1.0 }
 		]
 	},
-
 	"camera" : 
 	{
 		"Pe" : { "Type" : "Vector3", "X" : 5.0, "Y" : -3.0, "Z" : 0.0 },
@@ -38,7 +37,6 @@
 		"Ymax" : 320.0,
 		"Sx" : 5.5
 	},
-
 	"sampleperpixel" : { "m" : 4, "n" : 4 },
 
 	"lights" :
@@ -76,7 +74,6 @@
 	"textures" :
 	[
 		{ "Name" : "soccerball",  "Type" : "ImageTexture", "FileName" : "../../data/textures/soccerball-2.jpg" },
-		{ "Name" : "soccerball-normal",  "Type" : "NormalMap", "FileName" : "../../data/textures/soccerball-1-normalmap.jpg" },
 		{ "Name" : "brick",  "Type" : "ImageTexture", "FileName" : "../../data/textures/brick-small.jpg" },
 		{ "Name" : "wood",  "Type" : "ImageTexture", "FileName" : "../../data/textures/woodimage.jpg" },
 		{ "Name" : "sky-map",  "Type" : "ImageTexture", "FileName" : "../../data/textures/env-maps/sky-map.jpg" },
