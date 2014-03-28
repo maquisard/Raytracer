@@ -17,7 +17,7 @@ namespace edu.tamu.courses.imagesynth
         public static void Main(string[] args)
         {
 
-            //Quiz7 quiz = new Quiz7();
+            //Quiz8 quiz = new Quiz8();
             //quiz.Run();
 
             LaunchRaytracer();

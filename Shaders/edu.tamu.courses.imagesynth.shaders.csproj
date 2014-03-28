@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Gooch.cs" />
     <Compile Include="Lambert.cs" />
+    <Compile Include="Material.cs" />
     <Compile Include="Phong.cs" />
     <Compile Include="Shader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

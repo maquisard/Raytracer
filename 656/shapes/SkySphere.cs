@@ -13,7 +13,7 @@ namespace edu.tamu.courses.imagesynth.shapes
 
         public override float Intersect(Vector3 pe, Vector3 npe)
         {
-            if (npe.Norm != 1) throw new ArgumentException("The ray vector must be a unit vector.");
+            if (Math.Abs(npe.Norm - 1) > 0.01) throw new ArgumentException("The ray vector must be a unit vector.");
             Vector3 pc = this.Center;
             float r = Radius;
             float b = npe % (pc - pe);
@@ -21,9 +21,9 @@ namespace edu.tamu.courses.imagesynth.shapes
 
             float t = -1f; //No Intersection
             float delta = b * b - c;
-            if (delta >= 0 && b >= 0)
+            if (delta >= 0)
             {
-                t = b - (float)Math.Sqrt(delta);
+                t = b + (float)Math.Sqrt(delta);
             }
             return t;
         }

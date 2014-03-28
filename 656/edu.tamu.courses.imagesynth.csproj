@@ -78,12 +78,15 @@
     <Compile Include="tests\Quiz5.cs" />
     <Compile Include="tests\Quiz6.cs" />
     <Compile Include="tests\Quiz7.cs" />
+    <Compile Include="tests\Quiz8.cs" />
     <Compile Include="tests\VectorTest.cs" />
     <Compile Include="TextureManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="data\objects\cube.obj" />
+    <None Include="data\objects\simplemodel.mtl" />
+    <None Include="data\objects\simplemodel.obj" />
     <None Include="data\objects\Suzanne.obj" />
     <None Include="data\objects\t-cube.obj" />
     <None Include="data\objects\t-suzanne.obj" />
@@ -95,9 +98,12 @@
     <None Include="data\project3\comprehensive.scn" />
     <None Include="data\project4\cube.scn" />
     <None Include="data\project4\suzanne.scn" />
+    <None Include="data\project4\tetahedron.scn" />
     <None Include="data\project4\textture_cube.scn" />
     <None Include="data\project4\texture_suzanne.scn" />
     <None Include="data\project4\texture_tetrahedron.scn" />
+    <None Include="data\project5\reflected_cube.scn" />
+    <None Include="data\project5\reflected_sphere.scn" />
     <None Include="data\testjson.scn" />
   </ItemGroup>
   <ItemGroup>

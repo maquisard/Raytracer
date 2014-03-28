@@ -33,6 +33,10 @@ namespace edu.tamu.courses.imagesynth
                     {
                         property.SetValue(shader, int.Parse(jsonShader[property.Name].ToString()));
                     }
+                    else if (jsonValue.IsBoolean)
+                    {
+                        property.SetValue(shader, (bool)jsonShader[property.Name]);
+                    }
                     else if (jsonValue.IsArray)
                     {
                         float[] value = new float[jsonShader[property.Name].Count];
