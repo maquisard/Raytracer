@@ -37,15 +37,17 @@
 		"View" : { "Type" : "Vector3", "X" : -5.0, "Y" : 1.0, "Z" : 0.0 },
 		"Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },
 		"D" : 3.0,
-		"Xmax" : 320.0,
-		"Ymax" : 320.0,
+		"Xmax" : 640.0,
+		"Ymax" : 640.0,
 		"Sx" : 5.5
 	},
-	"sampleperpixel" : { "m" : 4, "n" : 4 },
+	"sampleperpixel" : { "m" : 16, "n" : 16 },
 
 	"lights" :
 	[
-		{ "Type" : "PointLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -10.5, "Z" : -5.0 }, "Color" : { "Type" : "Color", "X" : 255.0, "Y" : 255.0, "Z" : 255.0 } }
+		{ "Type" : "AreaLight", "Position" : { "Type" : "Vector3", "X" : 0.0, "Y" : -10.5, "Z" : -5.0 }, "Color" : { "Type" : "Color", "X" : 250.0, "Y" : 250.0, "Z" : 250.0 }, 
+					"Nl" : { "Type" : "Vector3", "X" : 0.0, "Y" : 10.5, "Z" : 5.0 }, "Vup" : { "Type" : "Vector3", "X" : 0.0, "Y" : -1.0, "Z" : 0.0 },  "Sx" : 5.0, "Sy" : 5.0 }
+
 	],
 
 	"shaders" :

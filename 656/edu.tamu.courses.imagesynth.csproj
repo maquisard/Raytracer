@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Animations\Custom\Project2_LightMotion.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Irisdescence.cs" />
     <Compile Include="ParallelRaytracer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,10 +104,11 @@
     <None Include="data\project4\texture_suzanne.scn" />
     <None Include="data\project4\texture_tetrahedron.scn" />
     <None Include="data\project5\environment_map.scn" />
+    <None Include="data\project5\iridescence.scn" />
+    <None Include="data\project5\normal_map.scn" />
     <None Include="data\project5\reflected_cube.scn" />
     <None Include="data\project5\reflected_sphere.scn" />
     <None Include="data\project5\reflective_mesh.scn" />
-    <None Include="data\testjson.scn" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\bak.txt" />

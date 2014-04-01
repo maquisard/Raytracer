@@ -12,5 +12,6 @@ namespace edu.tamu.courses.imagesynth.shaders
         public bool IsRefractive { get; set; }
 
         public float Kra { get; set; } //Index of refraction
+        public float Kiris  { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace edu.tamu.courses.imagesynth
         {
             Console.WriteLine("Loading Scene from file...");
             var timer = System.Diagnostics.Stopwatch.StartNew();
-            Scene scene = Scene.LoadFromFile("../../data/testjson.scn");
+            Scene scene = Scene.LoadFromFile("../../data/project5/reflective_mesh.scn");
             Console.WriteLine("Scene Loaded....");
             Raytracer rt = new Raytracer();
             rt.Scene = scene;

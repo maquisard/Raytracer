@@ -201,6 +201,10 @@ namespace edu.tamu.courses.imagesynth
                                             Vector3 v = -1f * Npe;
                                             Vector3 n = iNormal;
                                             reflectionColor = new Color((1 - ki) * diffuseColor + ki * RaytraceReflection(ki, maxRecursions, delta, ref itr, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j));
+                                            if (material.Kiris > 1) //has iris properties
+                                            {
+                                                reflectionColor = new Color(material.Kiris * reflectionColor * Irisdescence.Current.ComputeColor(v, n)); 
+                                            }
                                         }
                                     }
                                     color = new Color(color + diffuseColor + reflectionColor);
@@ -360,6 +364,10 @@ namespace edu.tamu.courses.imagesynth
                                 Vector3 _v = -1f * r;
                                 Vector3 _n = iNormal;
                                 reflectiveColor = new Color((1 - ks) * diffuseColor + ks * RaytraceReflection(ks, max, delta, ref itr, Scene, iPoint, _v, _n, rnd, rndoffsetx, rndoffsety, i, j));
+                                if (material.Kiris > 1) //has iris properties
+                                {
+                                    reflectiveColor = new Color(material.Kiris * reflectiveColor * Irisdescence.Current.ComputeColor(_v, _n));
+                                }
                             }
                         }
                     }
