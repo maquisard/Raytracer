@@ -55,5 +55,10 @@ namespace edu.tamu.courses.imagesynth.core
             G = G / 255f;
             B = B / 255f;
         }
+
+        public float ToGrayScaleValue()
+        {
+            return 0.21f * R + 0.71f * G + 0.07f * B;
+        }
     }
 }

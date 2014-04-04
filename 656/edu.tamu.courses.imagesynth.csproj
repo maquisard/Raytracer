@@ -80,6 +80,7 @@
     <Compile Include="tests\Quiz6.cs" />
     <Compile Include="tests\Quiz7.cs" />
     <Compile Include="tests\Quiz8.cs" />
+    <Compile Include="tests\Quiz9.cs" />
     <Compile Include="tests\VectorTest.cs" />
     <Compile Include="TextureManager.cs" />
   </ItemGroup>
@@ -109,6 +110,11 @@
     <None Include="data\project5\reflected_cube.scn" />
     <None Include="data\project5\reflected_sphere.scn" />
     <None Include="data\project5\reflective_mesh.scn" />
+    <None Include="data\project6\cube.scn" />
+    <None Include="data\project6\indexbytexture.scn" />
+    <None Include="data\project6\mesh.scn" />
+    <None Include="data\project6\normalmap.scn" />
+    <None Include="data\project6\spheres.scn" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\bak.txt" />
