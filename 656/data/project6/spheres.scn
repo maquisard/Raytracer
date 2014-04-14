@@ -69,13 +69,13 @@
 		{ "Name" : "P1",  "Type" : "Phong", "Color0" : [0.0, 0.0, 0.0], "Color1" : [102.0, 204.0, 255.0], "Color2" : [233.0, 241.0, 245.0], "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0 },
 		
 
-		{ "Name" : "M1",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [0.0, 0.0, 255.0], "Color2" : [233.0, 241.0, 245.0], "Kt" : 0.4, "Kr" : 0.25,
+		{ "Name" : "M1",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [0.0, 0.0, 255.0], "Color2" : [233.0, 241.0, 245.0], "Kt" : 0.2, "Kr" : 0.5,
 				   "KsAlpha": 18.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "IsReflective" : true, "IsRefractive" : true, "Kra" : 0.98 },
 
-		{ "Name" : "M2",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [0.0, 255.0, 0.0], "Color2" : [233.0, 241.0, 245.0], "Kr" : 0.6,
+		{ "Name" : "M2",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [0.0, 255.0, 0.0], "Color2" : [233.0, 241.0, 245.0], "Kr" : 0.7,
 				   "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "IsReflective" : true },
 
-		{ "Name" : "M3",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [75.0, 75.0, 75.0], "Color2" : [233.0, 241.0, 245.0], "Kr" : 0.25,
+		{ "Name" : "M3",  "Type" : "Material", "Color0" : [0.0, 0.0, 0.0], "Color1" : [75.0, 75.0, 75.0], "Color2" : [233.0, 241.0, 245.0], "Kr" : 0.5,
 				   "KsAlpha": 15.0, "Ks" : 0.9, "SMethod" : 1, "Alpha" : 1.0, "IsReflective" : true },
 
 

@@ -52,17 +52,10 @@ namespace edu.tamu.courses.imagesynth.shapes
             float b = npe % (pc - pe);
             float c = (pc - pe) % (pc - pe) - r * r;
 
-            //Console.WriteLine("Value of c: {0}", c);
-            //Console.WriteLine("Value of b: {0}", b);
-
-            //if (c < 0) throw new Exception("You are inside the sphere, readjust your camera.");
-
             float t = -1f; //No Intersection
             if (c > 0.01f)
             {
                 float delta = b * b - c;
-
-                // Console.WriteLine("Value of Delta: {0}", delta);
 
                 if (delta >= 0 && b >= 0)
                 {
@@ -99,6 +92,8 @@ namespace edu.tamu.courses.imagesynth.shapes
             float ys = (Ny % (P - Center)) / Radius;
             float zs = (Nz % (P - Center)) / Radius;
 
+            zs = Math.Abs(Math.Abs(zs) - 1) <= 0.0001 ? (zs > 0 ? 1f : -1f) : zs;
+            
             float theta = (float)Math.Acos(zs);
             //float theta = (float)Math.Acos(ys / sinPhi);
             float phi = (float)Math.Atan2(Radius * ys, Radius * xs);

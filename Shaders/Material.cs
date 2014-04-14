@@ -12,6 +12,8 @@ namespace edu.tamu.courses.imagesynth.shaders
 
         public bool IsReflective { get; set; }
         public bool IsRefractive { get; set; }
+        public bool IsGlossy { get; set; }
+        public bool IsTranslucent { get; set; }
 
         public float Kra { get; set; }      //Index of refraction
         public float Kiris  { get; set; }   //Index of iridescence

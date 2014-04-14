@@ -1,4 +1,5 @@
-﻿using edu.tamu.courses.imagesynth.core;
+﻿using edu.tamu.courses.imagesynth.Animations;
+using edu.tamu.courses.imagesynth.core;
 using edu.tamu.courses.imagesynth.core.textures;
 using edu.tamu.courses.imagesynth.shaders;
 using LitJson;
@@ -11,12 +12,13 @@ using System.Threading.Tasks;
 
 namespace edu.tamu.courses.imagesynth.shapes
 {
-    public abstract class Shape
+    public abstract class Shape : Animable
     {
         public Shader Shader { get; protected set; }
         public Texture Texture { get; protected set; }
         public NormalMap NormalMap { get; set; }
         public bool IsTransparent { get; set; }
+        public int Id { get; set; }
 
 
         public virtual void PreLoad() { }
@@ -32,6 +34,7 @@ namespace edu.tamu.courses.imagesynth.shapes
         }
 
         public abstract float Intersect(Vector3 pe, Vector3 npe);
+
 
         public static Shape CreateFromJson(JsonData jsonShape)
         {
@@ -102,5 +105,6 @@ namespace edu.tamu.courses.imagesynth.shapes
             shape.PostLoad();
             return shape;
         }
+
     }
 }

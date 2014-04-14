@@ -51,9 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animations\Animable.cs" />
+    <Compile Include="Animations\Animation.cs" />
+    <Compile Include="Animations\BouncingBalls.cs" />
     <Compile Include="Animations\Custom\Project2_LightMotion.cs" />
+    <Compile Include="Animations\DampedVerticalFall.cs" />
+    <Compile Include="Animations\VerticalFall.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Irisdescence.cs" />
+    <Compile Include="OOFCamera.cs" />
     <Compile Include="ParallelRaytracer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,8 +67,10 @@
     <Compile Include="Scene.cs" />
     <Compile Include="ShaderManager.cs" />
     <Compile Include="shapes\Cylinder.cs" />
+    <Compile Include="shapes\DynSphere.cs" />
     <Compile Include="shapes\Ellipsoid.cs" />
     <Compile Include="shapes\Face.cs" />
+    <Compile Include="shapes\IDynamicShape.cs" />
     <Compile Include="shapes\Mesh.cs" />
     <Compile Include="shapes\Plane.cs" />
     <Compile Include="shapes\Quadrics.cs" />
@@ -72,6 +80,8 @@
     <Compile Include="shapes\Sphere.cs" />
     <Compile Include="shapes\Triangle.cs" />
     <Compile Include="shapes\Vertex.cs" />
+    <Compile Include="StereoCamera.cs" />
+    <Compile Include="StereoRaytracer.cs" />
     <Compile Include="tests\IntersectionTest.cs" />
     <Compile Include="tests\Quiz2.cs" />
     <Compile Include="tests\Quiz3.cs" />
@@ -115,6 +125,13 @@
     <None Include="data\project6\mesh.scn" />
     <None Include="data\project6\normalmap.scn" />
     <None Include="data\project6\spheres.scn" />
+    <None Include="data\project7\animation.scn" />
+    <None Include="data\project7\dof.scn" />
+    <None Include="data\project7\glossy.scn" />
+    <None Include="data\project7\motionblur.scn" />
+    <None Include="data\project7\stereo.scn" />
+    <None Include="data\project7\translucent.scn" />
+    <None Include="data\testjson.scn" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\bak.txt" />

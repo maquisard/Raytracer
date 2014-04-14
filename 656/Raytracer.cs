@@ -1,4 +1,6 @@
-﻿using edu.tamu.courses.imagesynth.core;
+﻿using edu.tamu.courses.imagesynth.Animations;
+using edu.tamu.courses.imagesynth.core;
+using edu.tamu.courses.imagesynth.core.core;
 using edu.tamu.courses.imagesynth.core.imaging;
 using edu.tamu.courses.imagesynth.core.random;
 using edu.tamu.courses.imagesynth.core.system;
@@ -25,24 +27,15 @@ namespace edu.tamu.courses.imagesynth
         protected UniformOneGenerator randomGenerator = new UniformOneGenerator();
         protected UniformGenerator randomGeneratorLight;
 
-        public void Compute(int I, int J, int i, int j, int m, int n, float rx, float ry)
-        {
-            X = I + (i / (float)m) + (rx / (float)m);
-            Y = J + (j / (float)n) + (ry / (float)n);
-            float x = X / Scene.Camera.Xmax;
-            float y = Y / Scene.Camera.Ymax;
-            Pp = Scene.Camera.P0 + (x * Scene.Camera.Sx * Scene.Camera.N0) + (y * Scene.Camera.Sy * Scene.Camera.N1);
-            Npe = Pp - Scene.Camera.Pe;
-            Npe.Normalize();
-            Console.WriteLine("\nX: {0}\nY: {1}\nPP: {2}\nNPE: {3}", X, Y, Pp, Npe);
-        }
+
 
         public virtual void Raytrace()
         {
-            randomGeneratorLight = new UniformGenerator(new Range(0, Scene.MSamplePerPixels * Scene.NSamplePerPixels - 1));
             float max = Scene.Camera.Xmax * Scene.Camera.Ymax;
             float iteration = 0f;
             ImageData image = new ImageData((int)Scene.Camera.Xmax, (int)Scene.Camera.Ymax);
+            randomGeneratorLight = new UniformGenerator(new Range(0, Scene.MSamplePerPixels * Scene.NSamplePerPixels - 1));
+
             for (int I = 0; I < Scene.Camera.Xmax; I++)
             {
                 for (int J = 0; J < Scene.Camera.Ymax; J++)
@@ -55,6 +48,15 @@ namespace edu.tamu.courses.imagesynth
                     float rndoffsetx = randomGenerator.Next();
                     float rndoffsety = randomGenerator.Next();
 
+                    float totalSamples = Scene.MSamplePerPixels * Scene.NSamplePerPixels;
+                    //UniformGenerator randomTime = new UniformGenerator(new Range(tmin, tmax));
+                    //float randt = randomTime.Next();
+                    float time = 0.0f;
+                    VerticalFall animation = new VerticalFall(0f, -9.8f);
+                    //this.ResetAnimation();
+
+                    //randomRefracteddVector = new RandomVector3(randomGenerator);
+
                     for (int i = 0; i < Scene.MSamplePerPixels; i++)
                     {
                         for (int j = 0; j < Scene.NSamplePerPixels; j++)
@@ -64,14 +66,38 @@ namespace edu.tamu.courses.imagesynth
                             float x = X / Scene.Camera.Xmax;
                             float y = Y / Scene.Camera.Ymax;
                             Pp = Scene.Camera.P0 + (x * Scene.Camera.Sx * Scene.Camera.N0) + (y * Scene.Camera.Sy * Scene.Camera.N1);
-                            Npe = Pp - Scene.Camera.Pe;
+                            if (Scene.Camera is OOFCamera)
+                            {
+                                ((OOFCamera)Scene.Camera).Ith = i;
+                                ((OOFCamera)Scene.Camera).Jth = j;
+                                ((OOFCamera)Scene.Camera).RndOffsetX = rndoffsetx;
+                                ((OOFCamera)Scene.Camera).RndOffsetY = rndoffsety;
+                                Npe = Pp - (Scene.Camera as OOFCamera).ComputePe();
+                            }
+                            else
+                            {
+                                Npe = Pp - Scene.Camera.Pe;
+                            }
                             Npe.Normalize();
                             float t = -1f;
-                            Shape shape = Scene.GetIntersectedShape(Scene.Camera.Pe, Npe, ref t); //Implement the Get Intersected Shape
+                            
+                            //doing the animation thing right here.
+                            //float ts = ((I * Scene.Camera.Xmax + J) / max) + randt;
+                            float ts = 0;
+                            //time = ((i * Scene.NSamplePerPixels + j) / totalSamples);
+                            //if (i < Scene.MSamplePerPixels - 1 && j < Scene.NSamplePerPixels - 1)
+                            //{
+                            //    this.UpdateScene(time, animation);
+                            //    time += 0.001f;
+                            //}
+
+                            Shape shape = Scene.GetIntersectedShape(Scene.Camera.Pe, Npe, ref t, ts); //Implement the Get Intersected Shape
+
                             if (shape != null)
                             {
                                 Vector3 iPoint = Scene.Camera.Pe + Npe * t; //Intersection point
                                 Vector3 iNormal = shape.NormalAt(iPoint);   //Normal at the intersection
+
 
                                 foreach (Light light in Scene.Lights)
                                 {
@@ -93,7 +119,7 @@ namespace edu.tamu.courses.imagesynth
                                     //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
                                     ShaderProperties properties = new ShaderProperties();
 
-                                    Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight);
+                                    Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight, ts);
                                     if (intersectedShapes.Count == 0 || light is LightProjection)
                                     {
                                         //ShaderProperties properties = new ShaderProperties();
@@ -200,8 +226,13 @@ namespace edu.tamu.courses.imagesynth
                                             int maxRecursions = 4;
                                             float ki = material.Kr;
                                             Vector3 v = -1f * Npe;
+                                            if (material.IsGlossy)
+                                            {
+                                                v += new RandomVector3(randomGenerator);
+                                                v.Normalize();
+                                            }
                                             Vector3 n = iNormal;
-                                            reflectionColor = new Color((1f - ki) * diffuseColor + ki * RaytraceReflection(ki, maxRecursions, ref itr, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j));
+                                            reflectionColor = new Color((1f - ki) * diffuseColor + ki * RaytraceReflection(ki, maxRecursions, ref itr, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j, ts));
                                             if (material.Kiris > 1) //has iris properties
                                             {
                                                 reflectionColor = new Color(material.Kiris * reflectionColor * Irisdescence.Current.ComputeColor(v, n));
@@ -212,11 +243,17 @@ namespace edu.tamu.courses.imagesynth
                                             int itr = 1;
                                             int maxRecursions = 4;
                                             Vector3 v = -1f * Npe;
+                                            if (material.IsTranslucent)
+                                            {
+                                                v += new RandomVector3(randomGenerator);
+                                                //v += randomRefracteddVector;
+                                                v.Normalize();
+                                            }
                                             Vector3 n = iNormal;
-                                            //float kra = material.Kra;
-                                            float kra = RefractIndex(kraColor);
+                                            float kra = material.Kra;
+                                            //float kra = RefractIndex(kraColor);
                                             float kt = material.Kt;
-                                            refractionColor = new Color(kt * RaytraceRefraction(kra, kt, ref itr, maxRecursions, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j));
+                                            refractionColor = new Color(kt * RaytraceRefraction(kra, kt, ref itr, maxRecursions, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j, ts));
                                             reflectionColor = new Color(refractionColor + (1f - kt) * reflectionColor);
                                         }
 
@@ -232,7 +269,6 @@ namespace edu.tamu.courses.imagesynth
                             }
                         }
                     }
-
                     color = new Color(color / (float)(Scene.MSamplePerPixels * Scene.NSamplePerPixels));
                     image.SetPixel(I, J, color);
                     Console.WriteLine("{0:0.00}% Computed...", (iteration / max) * 100f);
@@ -243,7 +279,7 @@ namespace edu.tamu.courses.imagesynth
             image.SaveToFile(Scene.Name + ".png");
         }
 
-        private Color RaytraceRefraction(float kra, float kt, ref int itr, int max, Scene Scene, Vector3 p, Vector3 v, Vector3 n, float rnd, float rndoffsetx, float rndoffsety, int i, int j)
+        protected Color RaytraceRefraction(float kra, float kt, ref int itr, int max, Scene Scene, Vector3 p, Vector3 v, Vector3 n, float rnd, float rndoffsetx, float rndoffsety, int i, int j, float time)
         {
             Color color = Color.BLACK;
             float t = -1f;
@@ -261,7 +297,7 @@ namespace edu.tamu.courses.imagesynth
                     int _itr = 1;
                     int _maxRecursions = 4;
                     float ki = 1f - kt;
-                    return new Color(ki * RaytraceReflection(ki, max, ref itr, Scene, p, v, n, rnd, rndoffsetx, rndoffsety, i, j));
+                    return new Color(ki * RaytraceReflection(ki, max, ref itr, Scene, p, v, n, rnd, rndoffsetx, rndoffsety, i, j, time));
                 }
                 return color;
             }
@@ -269,7 +305,7 @@ namespace edu.tamu.courses.imagesynth
             Vector3 r = (-1f / kra) * v + ((C / kra) - (float)Math.Sqrt(term)) * n;
             r.Normalize();
 
-            Shape shape = Scene.GetIntersectedShape(p, r, ref t); //Implement the Get Intersected Shape
+            Shape shape = Scene.GetIntersectedShape(p, r, ref t, time); //Implement the Get Intersected Shape
             if (shape != null)
             {
                 Vector3 iPoint = p + r * t; //Intersection point
@@ -294,7 +330,7 @@ namespace edu.tamu.courses.imagesynth
 
                     //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
 
-                    Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight);
+                    Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight, time);
                     ShaderProperties properties = new ShaderProperties();
 
                     if (intersectedShapes.Count == 0 || light is LightProjection)
@@ -405,8 +441,13 @@ namespace edu.tamu.courses.imagesynth
                             {
                                 float ks = material.Kr;
                                 Vector3 _v = -1f * r;
+                                if (material.IsGlossy)
+                                {
+                                    _v += new RandomVector3(randomGenerator);
+                                    _v.Normalize();
+                                }
                                 Vector3 _n = iNormal;
-                                reflectiveColor = new Color((1f - ks) * diffuseColor + ks * RaytraceReflection(ks, max, ref itr, Scene, iPoint, _v, _n, rnd, rndoffsetx, rndoffsety, i, j));
+                                reflectiveColor = new Color((1f - ks) * diffuseColor + ks * RaytraceReflection(ks, max, ref itr, Scene, iPoint, _v, _n, rnd, rndoffsetx, rndoffsety, i, j, time));
                             }
                         }
                         if (material.IsRefractive)
@@ -414,11 +455,17 @@ namespace edu.tamu.courses.imagesynth
                             if (itr <= max)
                             {
                                 Vector3 _v = -1f * r;
+                                if (material.IsTranslucent)
+                                {
+                                    _v += new RandomVector3(randomGenerator);
+                                    //_v += randomRefracteddVector;
+                                    _v.Normalize();
+                                }
                                 Vector3 _n = iNormal;
-                                //float _kra = material.Kra;
-                                float _kra = RefractIndex(kraColor);
+                                float _kra = material.Kra;
+                                //float _kra = RefractIndex(kraColor);
                                 float _kt = material.Kt;
-                                refractiveColor = new Color(_kt * RaytraceRefraction(_kra, _kt, ref itr, max, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j));
+                                refractiveColor = new Color(_kt * RaytraceRefraction(_kra, _kt, ref itr, max, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j, time));
                                 reflectiveColor = new Color(refractiveColor + (1f - _kt) * reflectiveColor);
                             }
                         }
@@ -434,13 +481,13 @@ namespace edu.tamu.courses.imagesynth
         }
 
 
-        private Color RaytraceReflection(float ki, float max, ref int itr, Scene Scene, Vector3 p, Vector3 v, Vector3 n, float rnd, float rndoffsetx, float rndoffsety, int i, int j)
+        protected Color RaytraceReflection(float ki, float max, ref int itr, Scene Scene, Vector3 p, Vector3 v, Vector3 n, float rnd, float rndoffsetx, float rndoffsety, int i, int j, float time)
         {
             Color color = Color.BLACK;
             Vector3 r = (-1f * v) + 2f * (v % n) * n;
             r.Normalize();
             float t = -1f;
-            Shape shape = Scene.GetIntersectedShape(p, r, ref t); //Implement the Get Intersected Shape
+            Shape shape = Scene.GetIntersectedShape(p, r, ref t, time); //Implement the Get Intersected Shape
             if (shape != null)
             {
                 Vector3 iPoint = p + r * t; //Intersection point
@@ -465,7 +512,7 @@ namespace edu.tamu.courses.imagesynth
 
                     //color = new Color(color + shape.Shader.ComputeColor(light, iPoint, Npe, lightVector, iNormal));
 
-                    Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight);
+                    Dictionary<float, Shape> intersectedShapes = Scene.GetIntersectedShapes(iPoint, lightVector, distanceToLight, time);
                     ShaderProperties properties = new ShaderProperties();
 
                     if (intersectedShapes.Count == 0 || light is LightProjection)
@@ -574,8 +621,13 @@ namespace edu.tamu.courses.imagesynth
                             if (itr <= max)
                             {
                                 Vector3 _v = -1f * r;
+                                if (material.IsGlossy)
+                                {
+                                    _v += new RandomVector3(randomGenerator);
+                                    _v.Normalize();
+                                }
                                 Vector3 _n = iNormal;
-                                reflectiveColor = new Color((1f - ks) * diffuseColor + ks * RaytraceReflection(ks, max, ref itr, Scene, iPoint, _v, _n, rnd, rndoffsetx, rndoffsety, i, j));
+                                reflectiveColor = new Color((1f - ks) * diffuseColor + ks * RaytraceReflection(ks, max, ref itr, Scene, iPoint, _v, _n, rnd, rndoffsetx, rndoffsety, i, j, time));
                                 if (material.Kiris > 1f) //has iris properties
                                 {
                                     reflectiveColor = new Color(material.Kiris * reflectiveColor * Irisdescence.Current.ComputeColor(_v, _n));
@@ -587,11 +639,17 @@ namespace edu.tamu.courses.imagesynth
                             if (itr <= max)
                             {
                                 Vector3 _v = -1f * r;
+                                if (material.IsTranslucent)
+                                {
+                                    //_v += randomRefracteddVector;
+                                    _v += new RandomVector3(randomGenerator);
+                                    _v.Normalize();
+                                }
                                 Vector3 _n = iNormal;
-                                //float _kra = material.Kra;
-                                float _kra = RefractIndex(kraColor);
+                                float _kra = material.Kra;
+                                //float _kra = RefractIndex(kraColor);
                                 float _kt = material.Kt;
-                                refractiveColor = new Color(_kt * RaytraceRefraction(_kra, _kt, ref itr, (int)max, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j));
+                                refractiveColor = new Color(_kt * RaytraceRefraction(_kra, _kt, ref itr, (int)max, Scene, iPoint, v, n, rnd, rndoffsetx, rndoffsety, i, j, time));
                                 reflectiveColor = new Color(refractiveColor + (1f - _kt) * reflectiveColor);
                             }
                         }
@@ -606,19 +664,46 @@ namespace edu.tamu.courses.imagesynth
             return color;
         }
 
-        private float RefractIndex(Color color)
+        protected float RefractIndex(Color color)
         {
             return IsBlue(color) ? 0.85f : IsRed(color) ? 0.45f : IsYellow(color) ? 0.65f : 0.95f;
         }
 
-        private bool IsBlue(Color color) { return Proximate(color, new Color(0f, 0f, 1f)); }
-        private bool IsRed(Color color) { return Proximate(color, new Color(1f, 0f, 0f)); }
-        private bool IsYellow(Color color) { return Proximate(color, new Color(1f, 1f, 0f)); }
+        protected bool IsBlue(Color color) { return Proximate(color, new Color(0f, 0f, 1f)); }
+        protected bool IsRed(Color color) { return Proximate(color, new Color(1f, 0f, 0f)); }
+        protected bool IsYellow(Color color) { return Proximate(color, new Color(1f, 1f, 0f)); }
 
 
-        private bool Proximate(Color color1, Color color2)
+        protected bool Proximate(Color color1, Color color2)
         {
             return (color1 - color2).Norm <= 0.5f;
         }
+
+        protected void UpdateScene(float t, Animation<float> animation)
+        {
+            Shape animated = null;
+            foreach (Shape shape in Scene.Shapes)
+            {
+                if (shape.Id == 0)
+                {
+                    animated = shape;
+                    break;
+                }
+            }
+            animation.Update(animated, "Center.Y", t);
+        }
+
+        protected void ResetAnimation()
+        {
+            foreach (Shape shape in Scene.Shapes)
+            {
+                if (shape.Id == 0)
+                {
+                    (shape as Sphere).Center.Y = -4f;
+                    break;
+                }
+            }
+        }
+
     }
 }

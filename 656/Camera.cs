@@ -12,29 +12,29 @@ namespace edu.tamu.courses.imagesynth
     public class Camera
     {
         #region Given Values
-        public Vector3 Pe { get; private set; }
-        public Vector3 View { get; private set; }
-        public Vector3 Up { get; private set; }
+        public Vector3 Pe { get;  set; }
+        public Vector3 View { get;  set; }
+        public Vector3 Up { get;  set; }
 
-        public float D { get; private set; }
-        public float Xmax { get; private set; }
-        public float Ymax { get; private set; }
-        public float Sx { get; private set; }
+        public float D { get;  set; }
+        public float Xmax { get;  set; }
+        public float Ymax { get;  set; }
+        public float Sx { get;  set; }
         #endregion
 
         #region Computed Values
-        public float Sy { get; private set; }
+        public float Sy { get;  set; }
 
-        public Vector3 N2 { get; private set; }
-        public Vector3 N0 { get; private set; }
-        public Vector3 N1 { get; private set; }
-        public Vector3 Pc { get; private set; }
-        public Vector3 P0 { get; private set; }
+        public Vector3 N2 { get;  set; }
+        public Vector3 N0 { get;  set; }
+        public Vector3 N1 { get;  set; }
+        public Vector3 Pc { get;  set; }
+        public Vector3 P0 { get;  set; }
         #endregion
 
         public Camera() { }
 
-        private void updateValues()
+        public virtual void updateValues()
         {
             Up.Normalize();
             Sy = (Ymax / Xmax) * Sx;
@@ -48,8 +48,10 @@ namespace edu.tamu.courses.imagesynth
 
         public static Camera CreateFromJson(JsonData jsonCamera)
         {
-            Camera camera = new Camera();
-            Type cameraType = typeof(Camera);
+            Type cameraType = Type.GetType("edu.tamu.courses.imagesynth." + (String)jsonCamera["Type"]);
+            ConstructorInfo constructer = cameraType.GetConstructor(new Type[] { });
+            Camera camera = (Camera)constructer.Invoke(null);
+
             foreach(PropertyInfo property in cameraType.GetProperties())
             {
                 if (jsonCamera.ToJson().Contains(property.Name))

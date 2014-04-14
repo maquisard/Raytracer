@@ -20,6 +20,7 @@ namespace edu.tamu.courses.imagesynth
         public int MSamplePerPixels { get; private set; }
         public int NSamplePerPixels { get; private set; }
         public String Name { get; set; }
+        public bool MotionBlur { get; set; }
 
         public Scene() 
         { 
@@ -36,12 +37,12 @@ namespace edu.tamu.courses.imagesynth
             this.NSamplePerPixels = -1;
         }
 
-        public Shape GetIntersectedShape(Vector3 pe, Vector3 npe, ref float t)
+        public Shape GetIntersectedShape(Vector3 pe, Vector3 npe, ref float t, float time)
         {
             SortedList<float, int> ts = new SortedList<float, int>();
             for (int i = 0; i < Shapes.Count; i++)
             {
-                float ti = Shapes[i].Intersect(pe, npe);
+                float ti = Shapes[i] is IDynamicShape ? (Shapes[i] as IDynamicShape).Intersect(pe, npe, time) : Shapes[i].Intersect(pe, npe);
                 if (ti >= 0f && !Shapes[i].IsTransparent)
                 {
                     ts[ti] = i;
@@ -52,12 +53,12 @@ namespace edu.tamu.courses.imagesynth
             return this.Shapes[ts[t]];
         }
 
-        public Dictionary<float, Shape> GetIntersectedShapes(Vector3 iPoint, Vector3 lightVector, float lightDistance)
+        public Dictionary<float, Shape> GetIntersectedShapes(Vector3 iPoint, Vector3 lightVector, float lightDistance, float time)
         {
             Dictionary<float, Shape> shapes = new Dictionary<float, Shape>();
             for (int i = 0; i < Shapes.Count; i++)
             {
-                float t = Shapes[i].Intersect(iPoint, lightVector);
+                float t = Shapes[i] is IDynamicShape ? (Shapes[i] as IDynamicShape).Intersect(iPoint, lightVector, time) : Shapes[i].Intersect(iPoint, lightVector);
                 if (t >= 0.0f && t < lightDistance)
                 {
                     shapes[t] = Shapes[i];
@@ -74,7 +75,17 @@ namespace edu.tamu.courses.imagesynth
                 String rawScene = filereader.ReadToEnd();
                 JsonData jsonScene = JsonMapper.ToObject(rawScene);
                 scene = new Scene();
+
+                //Console.WriteLine(scene.Camera.ToString());
+                scene.MSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["m"].ToString());
+                scene.NSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["n"].ToString());
+                scene.Name = jsonScene["name"].ToString();
+
                 scene.Camera = Camera.CreateFromJson(jsonScene["camera"]);
+                if (scene.Camera is OOFCamera)
+                {
+                    (scene.Camera as OOFCamera).CreateLightGrid(scene.MSamplePerPixels, scene.NSamplePerPixels);
+                }
 
                 //loading all the referenced shaders
                 for (int i = 0; i < jsonScene["shaders"].Count; i++)
@@ -123,11 +134,6 @@ namespace edu.tamu.courses.imagesynth
                         scene.Shapes.Add(shape);
                     }
                 }
-
-                //Console.WriteLine(scene.Camera.ToString());
-                scene.MSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["m"].ToString());
-                scene.NSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["n"].ToString());
-                scene.Name = jsonScene["name"].ToString();
 
                 //loading the lights
                 for (int i = 0; i < jsonScene["lights"].Count; i++)

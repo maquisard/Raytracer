@@ -1,4 +1,5 @@
-﻿using edu.tamu.courses.imagesynth.Animations.Custom;
+﻿using edu.tamu.courses.imagesynth.Animations;
+using edu.tamu.courses.imagesynth.Animations.Custom;
 using edu.tamu.courses.imagesynth.core;
 using edu.tamu.courses.imagesynth.core.imaging;
 using edu.tamu.courses.imagesynth.core.textures;
@@ -20,13 +21,19 @@ namespace edu.tamu.courses.imagesynth
             //Quiz9 quiz = new Quiz9();
             //quiz.Run();
 
-            LaunchRaytracer();
-
+            //LaunchRaytracer();
+            RunAnimation();
             //WallPaper wallpaper = new WallPaper("../../data/textures/wallpapertest-2-small.png");
             //wallpaper.CountX = 20;
             //wallpaper.CountY = 20;
             //wallpaper.Generate("../../data/textures/wallpaper-2-small.png");
             //Console.WriteLine("Done....");
+        }
+
+        public static void RunAnimation()
+        {
+            BouncingBalls animation = new BouncingBalls(0f, 1f, 0.01f);
+            animation.Execute();
         }
 
         public static void LaunchRaytracer()
@@ -35,7 +42,7 @@ namespace edu.tamu.courses.imagesynth
             var timer = System.Diagnostics.Stopwatch.StartNew();
             Scene scene = Scene.LoadFromFile("../../data/testjson.scn");
             Console.WriteLine("Scene Loaded....");
-            Raytracer rt = new Raytracer();
+            Raytracer rt = new StereoRaytracer();
             rt.Scene = scene;
             Console.WriteLine("Starting Raytracing....");
             rt.Raytrace();

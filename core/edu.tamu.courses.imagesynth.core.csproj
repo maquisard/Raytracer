@@ -60,6 +60,7 @@
     <Compile Include="core\Matrix4x4.cs" />
     <Compile Include="core\PerlinNoise.cs" />
     <Compile Include="core\Polynomial2.cs" />
+    <Compile Include="core\RandomVector3.cs" />
     <Compile Include="core\random\ExponentialGenerator.cs" />
     <Compile Include="core\random\GaussianGenerator.cs" />
     <Compile Include="core\random\IRandomNumberGenerator.cs" />
