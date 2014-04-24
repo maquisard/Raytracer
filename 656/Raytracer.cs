@@ -23,6 +23,7 @@ namespace edu.tamu.courses.imagesynth
         public float Y { get; protected set; }
         public Vector3 Pp { get; protected set; }
         public Vector3 Npe { get; protected set; }
+        public Vector3 Pe { get; protected set; }
 
         protected UniformOneGenerator randomGenerator = new UniformOneGenerator();
         protected UniformGenerator randomGeneratorLight;
@@ -66,19 +67,21 @@ namespace edu.tamu.courses.imagesynth
                             float x = X / Scene.Camera.Xmax;
                             float y = Y / Scene.Camera.Ymax;
                             Pp = Scene.Camera.P0 + (x * Scene.Camera.Sx * Scene.Camera.N0) + (y * Scene.Camera.Sy * Scene.Camera.N1);
+                            Pe = Scene.Camera.ComputePe();
+                            Npe = Pp - Pe;
+                            if (Scene.Camera is CubistCamera)
+                            {
+                                Npe = (Scene.Camera as CubistCamera).ComputePP(Npe);
+                            }
+                            Npe.Normalize();
+
                             if (Scene.Camera is OOFCamera)
                             {
                                 ((OOFCamera)Scene.Camera).Ith = i;
                                 ((OOFCamera)Scene.Camera).Jth = j;
                                 ((OOFCamera)Scene.Camera).RndOffsetX = rndoffsetx;
                                 ((OOFCamera)Scene.Camera).RndOffsetY = rndoffsety;
-                                Npe = Pp - (Scene.Camera as OOFCamera).ComputePe();
                             }
-                            else
-                            {
-                                Npe = Pp - Scene.Camera.Pe;
-                            }
-                            Npe.Normalize();
                             float t = -1f;
                             
                             //doing the animation thing right here.
@@ -91,11 +94,11 @@ namespace edu.tamu.courses.imagesynth
                             //    time += 0.001f;
                             //}
 
-                            Shape shape = Scene.GetIntersectedShape(Scene.Camera.Pe, Npe, ref t, ts); //Implement the Get Intersected Shape
+                            Shape shape = Scene.GetIntersectedShape(Pe, Npe, ref t, ts); //Implement the Get Intersected Shape
 
                             if (shape != null)
                             {
-                                Vector3 iPoint = Scene.Camera.Pe + Npe * t; //Intersection point
+                                Vector3 iPoint = Pe + Npe * t; //Intersection point
                                 Vector3 iNormal = shape.NormalAt(iPoint);   //Normal at the intersection
 
 

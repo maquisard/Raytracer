@@ -123,7 +123,7 @@ namespace edu.tamu.courses.imagesynth.shapes
                     v.UV = Vector2.Zero;
                 }
 
-                if (entries.Length > 2)
+                if (entries.Length > 2 && entries[2] != "")
                 {
                     int nIndex = int.Parse(entries[2]);
                     nIndex--;

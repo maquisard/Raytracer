@@ -41,8 +41,8 @@
 		"View" : { "Type" : "Vector3", "X" : -5.0, "Y" : 1.0, "Z" : 0.0 },
 		"Up" : { "Type" : "Vector3", "X" : 0.0, "Y" : 1.0, "Z" : 0.0 },
 		"D" : 3.0,
-		"Xmax" : 240.0,
-		"Ymax" : 240.0,
+		"Xmax" : 320.0,
+		"Ymax" : 320.0,
 		"Sx" : 5.5
 	},
 	"sampleperpixel" : { "m" : 1, "n" : 1 },

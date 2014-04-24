@@ -21,8 +21,8 @@ namespace edu.tamu.courses.imagesynth
             //Quiz9 quiz = new Quiz9();
             //quiz.Run();
 
-            //LaunchRaytracer();
-            RunAnimation();
+            LaunchRaytracer();
+            //RunAnimation();
             //WallPaper wallpaper = new WallPaper("../../data/textures/wallpapertest-2-small.png");
             //wallpaper.CountX = 20;
             //wallpaper.CountY = 20;
@@ -42,7 +42,7 @@ namespace edu.tamu.courses.imagesynth
             var timer = System.Diagnostics.Stopwatch.StartNew();
             Scene scene = Scene.LoadFromFile("../../data/testjson.scn");
             Console.WriteLine("Scene Loaded....");
-            Raytracer rt = new StereoRaytracer();
+            Raytracer rt = new GIRaytracer();
             rt.Scene = scene;
             Console.WriteLine("Starting Raytracing....");
             rt.Raytrace();

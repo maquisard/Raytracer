@@ -22,6 +22,9 @@ namespace edu.tamu.courses.imagesynth
         public String Name { get; set; }
         public bool MotionBlur { get; set; }
 
+        public float OcclusionRadius { get; set; }
+        public float OcclusionAmount { get; set; }
+
         public Scene() 
         { 
             this.Shapes = new List<Shape>();
@@ -42,7 +45,7 @@ namespace edu.tamu.courses.imagesynth
             SortedList<float, int> ts = new SortedList<float, int>();
             for (int i = 0; i < Shapes.Count; i++)
             {
-                float ti = Shapes[i] is IDynamicShape ? (Shapes[i] as IDynamicShape).Intersect(pe, npe, time) : Shapes[i].Intersect(pe, npe);
+                float ti = Shapes[i].Intersect(pe, npe);
                 if (ti >= 0f && !Shapes[i].IsTransparent)
                 {
                     ts[ti] = i;
@@ -58,7 +61,7 @@ namespace edu.tamu.courses.imagesynth
             Dictionary<float, Shape> shapes = new Dictionary<float, Shape>();
             for (int i = 0; i < Shapes.Count; i++)
             {
-                float t = Shapes[i] is IDynamicShape ? (Shapes[i] as IDynamicShape).Intersect(iPoint, lightVector, time) : Shapes[i].Intersect(iPoint, lightVector);
+                float t = Shapes[i].Intersect(iPoint, lightVector);
                 if (t >= 0.0f && t < lightDistance)
                 {
                     shapes[t] = Shapes[i];
@@ -80,6 +83,15 @@ namespace edu.tamu.courses.imagesynth
                 scene.MSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["m"].ToString());
                 scene.NSamplePerPixels = int.Parse(jsonScene["sampleperpixel"]["n"].ToString());
                 scene.Name = jsonScene["name"].ToString();
+
+                if (jsonScene.ToJson().Contains("OcclusionRadius"))
+                {
+                    scene.OcclusionRadius = float.Parse(jsonScene["OcclusionRadius"].ToString());
+                }
+                if (jsonScene.ToJson().Contains("OcclusionAmount"))
+                {
+                    scene.OcclusionAmount = float.Parse(jsonScene["OcclusionAmount"].ToString());
+                }
 
                 scene.Camera = Camera.CreateFromJson(jsonScene["camera"]);
                 if (scene.Camera is OOFCamera)

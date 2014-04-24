@@ -58,6 +58,9 @@
     <Compile Include="Animations\DampedVerticalFall.cs" />
     <Compile Include="Animations\VerticalFall.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="CubistCamera.cs" />
+    <Compile Include="GeodosicDome.cs" />
+    <Compile Include="GIRaytracer.cs" />
     <Compile Include="Irisdescence.cs" />
     <Compile Include="OOFCamera.cs" />
     <Compile Include="ParallelRaytracer.cs" />
@@ -97,6 +100,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="data\objects\cube.obj" />
+    <None Include="data\objects\dome.obj" />
     <None Include="data\objects\simplemodel.mtl" />
     <None Include="data\objects\simplemodel.obj" />
     <None Include="data\objects\Suzanne.obj" />
@@ -132,6 +136,20 @@
     <None Include="data\project7\stereo.scn" />
     <None Include="data\project7\translucent.scn" />
     <None Include="data\testjson.scn" />
+    <None Include="domes\dome4.obj" />
+    <None Include="domes\dome5.obj" />
+    <None Include="domes\dome6.obj" />
+    <None Include="domes\dome61.obj" />
+    <None Include="domes\dome610.obj" />
+    <None Include="domes\dome62.obj" />
+    <None Include="domes\dome63.obj" />
+    <None Include="domes\dome64.obj" />
+    <None Include="domes\dome65.obj" />
+    <None Include="domes\dome66.obj" />
+    <None Include="domes\dome67.obj" />
+    <None Include="domes\dome68.obj" />
+    <None Include="domes\dome69.obj" />
+    <None Include="domes\dome8.obj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\bak.txt" />

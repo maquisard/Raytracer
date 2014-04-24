@@ -13,12 +13,6 @@ namespace edu.tamu.courses.imagesynth.lights
 
         public override Color ComputeFinalLightColor(Vector3 ph)
         {
-            float R = (this.Position - ph).Norm;
-            Alpha = Alpha > 2f ? 2f : Alpha;
-            Alpha = Alpha <= 0 ? 0.1f : Alpha;
-
-            float attenuation = (float)Math.Pow(R0 / R, Alpha);
-            //Color = new Color(attenuation * Color);
             return Color;
         }
     }

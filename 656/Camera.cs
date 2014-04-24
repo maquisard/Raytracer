@@ -34,6 +34,11 @@ namespace edu.tamu.courses.imagesynth
 
         public Camera() { }
 
+        public virtual Vector3 ComputePe()
+        {
+            return Pe;
+        }
+
         public virtual void updateValues()
         {
             Up.Normalize();
